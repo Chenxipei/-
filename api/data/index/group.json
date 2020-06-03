@@ -1,0 +1,170 @@
+{
+    "group": [
+        {
+            "title": "限时秒杀",
+            "title_img":"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-18/1589772286_2460.png?x-oss-process=png/resize,w_314/quality,q_80",
+            "group_list": [
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/2020-06-01/1591006928_5803.jpg?x-oss-process=png/resize,w_170/quality,q_80",
+                    "price": 118.00,
+                    "txt_title": "柴火大院   财火大院福财系列五常稻花香大米5kg东北粳米10斤黑龙江新米 新品上市 财米",
+                    "introduce":"",
+                    "sold":66
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-29/1590734739_53098.jpg?x-oss-process=png/resize,w_170/quality,q_80",
+                    "price": 46.00,
+                    "txt_title": "凯司令 血橙益生元60g",
+                    "introduce":"调理肠胃膳食纤维",
+                    "sold":73
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-29/1590737952_19541.png?x-oss-process=png/resize,w_170/quality,q_80",
+                    "price": 58.00,
+                    "txt_title": "花皙蔻  小白刷氨基酸洗面奶带刷头",
+                    "introduce":"360°悬浮硅胶按摩刷头，388根细软刷毛，比传统手洗干净6倍。",
+                    "sold":66
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-06-01/1590981868_31976.jpg?x-oss-process=png/resize,w_170/quality,q_80",
+                    "price": 46.00,
+                    "txt_title": "PE 棉被收纳袋 五个花色随机发货",
+                    "introduce":"会吸收的收纳袋，换季换新家，结实耐磨，防潮防灰，内外层都防水设计，安全无味、可反复水洗.",
+                    "sold":66
+                }
+            ]
+        },
+        {
+            "title": "礼从心意来",
+            "title_img":"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362717_47474.png?x-oss-process=png/resize,w_275/quality,q_80",
+            "group_list": [
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362731_81979.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362802_65249.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362824_47280.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589363205_35796.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362770_42279.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362812_80094.png?x-oss-process=png/resize,w_275/quality,q_80"
+                }
+            ]
+        },
+        {
+            "title": "抖音好物榜",
+            "group_list": [
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-28/1590659478_53603.png?x-oss-process=png/resize,w_824/quality,q_80",
+                    "txt_title": "SKG 按摩仪",
+                    "icon_img":"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/icon/2020-05-28/1590659478_98242.png?x-oss-process=png/resize,w_60/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-15/1589535178_22701.png?x-oss-process=png/resize,w_824/quality,q_80",
+                    "txt_title": "杯具熊夏季清新牛油果绿保温杯 ",
+                    "icon_img":"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/icon/2020-05-18/1589773991_3512.png?x-oss-process=png/resize,w_60/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-18/1589774337_99273.png?x-oss-process=png/resize,w_824/quality,q_80",
+                    "txt_title": "乐汇居多功能收纳衣架",
+                    "icon_img":"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/icon/2020-05-18/1589774059_65198.png?x-oss-process=png/resize,w_60/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-15/1589535143_22958.png?x-oss-process=png/resize,w_824/quality,q_80",
+                    "txt_title": "艺福堂红豆薏米祛湿茶",
+                    "icon_img":"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/icon/2020-05-18/1589774085_53326.png?x-oss-process=png/resize,w_60/quality,q_80"
+                }
+            ]
+        },
+        {
+            "title": "礼享清单",
+            "title_img":"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362869_58487.png?x-oss-process=png/resize,w_275/quality,q_80",
+            "group_list": [
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362879_29881.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362898_81558.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362887_97486.png?x-oss-process=png/resize,w_275/quality,q_80"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362905_77001.png?x-oss-process=png/resize,w_275/quality,q_80"
+                }
+            ]
+        },
+        {
+            "title": "猜您喜欢",
+            "group_list": [
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/16/69/c6/d8b09723343ab24e2c789154e23a41ba.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "家味康腊味 广东公明广式腊肠2斤装广味香肠甜味深圳特产礼盒",
+                    "introduce":""
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762742_32493.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "伊利安慕希草莓燕麦酸奶 200g*10",
+                    "introduce":"希腊风味一口浓郁"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258738_23384.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）",
+                    "introduce":"灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）5L"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-07-16/1563255413_45223.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "【礼】国瓷永丰源 先生瓷 海上明珠 350ml陶瓷马克杯办公室会议水杯带盖 茶杯",
+                    "introduce":"金砖五国 国宴新品"
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-05-09/1557398117_57206.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "海底捞 自煮自热小火锅（脆爽牛肚/麻辣嫩牛/番茄牛腩/番茄小酥肉/香辣素食）单盒",
+                    "introduce":""
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/4f/85/77/8a2ce6879b45aa7cab201570ab22711c.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "黄大壮 东北·朝阳有机红豆· 三袋装 400g*3",
+                    "introduce":""
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-04-30/1556601959_4627.png?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "【时令鲜果 】绿之然 白肉火龙果 5斤装",
+                    "introduce":""
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-03-17/1584431345_88289.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "珍妮曲奇Jennybakery  双花曲奇饼干小礼盒 320g",
+                    "introduce":""
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/c4/ef/e4/051af3d356cc3e87ed3eef1ee8cb04a7.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "【澳洲进口】诺珊娜 净透润颜卸妆水300ml",
+                    "introduce":""
+                },
+                {
+                    "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/c8/02/e7/0fc756036f1655f1e707b2840978bc9c.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                    "integral": 175,
+                    "txt_title": "黄大壮 东北·朝阳有机花生米· 三袋装 400g*3",
+                    "introduce":""
+                }
+            ]
+        }
+    ]
+}
