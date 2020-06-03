@@ -1,7 +1,14 @@
 <template>
   <div id="app">
+
     <!-- <head-nav v-if="$route.path=='/login'||$route.path=='/register'"></head-nav> -->
     <router-view></router-view>
+
+    <top-Head></top-Head>
+    <foot></foot>
+
+    <head-nav></head-nav>
+
   </div>
 </template>
 <script>
@@ -15,4 +22,18 @@
 </script>
 <style lang="less">
 @import url("./assets/css/base.less");
-</style>
+
+    </style>
+
+<script>
+import topHead from './components/topHead'
+import foot from './components/footer'
+export default {
+  nam:'app',
+  components:{
+    topHead,
+    foot
+  }
+}
+</script>
+
