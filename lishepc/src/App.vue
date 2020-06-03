@@ -15,4 +15,7 @@
 </script>
 <style lang="less">
 @import url("./assets/css/base.less");
+#app{
+	background: #f0f0f0;
+}
 </style>
