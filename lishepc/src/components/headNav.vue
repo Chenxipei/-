@@ -46,7 +46,7 @@ export default {
         },
         {
           title: "居家生活",
-          path: "/familyLife",
+          path: "/shopList/familyLife",
           list: [
             {
               imgSrc:
@@ -92,7 +92,7 @@ export default {
         },
         {
           title: "美食酒水",
-          path: "/foodDrink",
+          path: "/shopList/foodDrink",
           list: [
             {
               imgSrc:
