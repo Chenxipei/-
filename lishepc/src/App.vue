@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <top-Head></top-Head>
-    <footer></footer>
+    <foot></foot>
   </div>
 </template>
 <script>
 import topHead from './components/topHead'
-import footer from './components/footer'
+import foot from './components/footer'
 export default {
   nam:'app',
   components:{
     topHead,
-    footer
+    foot
   }
 }
 </script>
