@@ -190,6 +190,7 @@ export default {
     display: flex;
     padding-top: 15px;
     .n-l-item {
+			margin: 0 6px;
       .n-l-name {
         padding: 0 20px;
         .n-l-n-item {
@@ -209,6 +210,7 @@ export default {
       }
     }
     .n-l-list {
+			background: #fff;
       position: absolute;
       top: 37px;
       left: 0;

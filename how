@@ -1,0 +1,61 @@
+[33mcommit 14192607997a48a2c5a76690b9c193786ce1243b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 730de59 60e4cf9
+Author: Chenxipei <1468159931@qq.com>
+Date:   Wed Jun 3 14:12:28 2020 +0800
+
+    西：更新了头部导航
+
+[33mcommit 730de59d6ce9c30ee2ca7c1b2859d53a7e9e857d[m
+Author: Chenxipei <1468159931@qq.com>
+Date:   Wed Jun 3 14:10:52 2020 +0800
+
+    西：更新了头部导航
+
+[33mcommit 60e4cf9fc28a3da554bce8e20de1d2556f89745f[m
+Author: zouwei-hehe <1003867535@qq.com>
+Date:   Tue Jun 2 17:50:21 2020 +0800
+
+    邹伟添加json
+
+[33mcommit 4e3b547466fad816eb20a3802e6875aaeb70a1d0[m
+Author: lbin233 <1872639868@qq.com>
+Date:   Tue Jun 2 16:27:51 2020 +0800
+
+    更新了首页api接口
+
+[33mcommit 743ade36d818f274516e0f3f8dbc5c3160719b57[m
+Merge: 4292848 26736ae
+Author: lbin233 <1872639868@qq.com>
+Date:   Tue Jun 2 14:14:36 2020 +0800
+
+    Merge branch 'master' of github.com:Chenxipei/lishe
+
+[33mcommit 42928487e95616bbec3320bc0cc8d8c0e94586c6[m
+Author: lbin233 <1872639868@qq.com>
+Date:   Tue Jun 2 14:13:32 2020 +0800
+
+    h5端项目结构配置完成
+
+[33mcommit 26736aea4db4641b7001097b203cc0372a0767b3[m
+Author: Chenxipei <1468159931@qq.com>
+Date:   Tue Jun 2 11:47:39 2020 +0800
+
+    增加了data文件夹里面放了两个json文件
+
+[33mcommit 8aa8f69c4ebae5bdf43b28996ae80e3279ffede7[m
+Author: Chenxipei <1468159931@qq.com>
+Date:   Tue Jun 2 10:11:21 2020 +0800
+
+    把移动端的文件夹名修改成H5
+
+[33mcommit e74febe6d22c4d423a7364518901dab6a06f80ee[m
+Author: Chenxipei <1468159931@qq.com>
+Date:   Mon Jun 1 20:22:51 2020 +0800
+
+    初始化了两个项目文件
+
+[33mcommit 4512baa9a391a467c6f9ff82b3c42defc6f31372[m
+Author: Chenxipei <64769845+Chenxipei@users.noreply.github.com>
+Date:   Mon Jun 1 20:10:10 2020 +0800
+
+    Initial commit
