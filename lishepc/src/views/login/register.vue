@@ -1,78 +1,79 @@
 <template>
-    <div class="register">
-        <!-- 头部 -->
-        <div class="register_header_wrap">
-            <div class="register_header mauto clearfix">
-                <div class="ls_vip_logo fl">
-                    <a href="">
-                        <img src="https://www.lishe.cn/common/images/logo_two.png" alt="">
-                    </a>
-                    <p class="register_titleText">欢迎注册</p>
-                </div>
-                <div class="mem_link fr">
-                    <a href="">
-                        <span class="icon-phone"></span>
-                        400-833-0288
-                    </a>
-                </div>
-            </div>
+  <div class="register">
+    <!-- 头部 -->
+    <div class="register_header_wrap">
+      <div class="register_header mauto clearfix">
+        <div class="ls_vip_logo fl">
+          <a href>
+            <img src="../../assets/imgs/login/logo_two.png" alt />
+          </a>
+          <p class="register_titleText">欢迎注册</p>
         </div>
-        <div class="main_wrap">
-            <div class="mauto">
-                    <div class="inp_wrap_pt  clearfix">
-                        <img class="fl" src="https://www.lishe.cn/sign/v2/images/login_img_welcome.png" alt="">
-                        <div class="inp_wrap fr">
-                            <h3>
-                                新用户注册
-                                <a class="fr" href="">返回登录>></a>
-                            </h3>
-                            <div class="register_con">
-                                <div class="user_inp1">
-                                    <span class="user_inp_icon4"></span>
-                                    <input class="ls_input" type="text" name="" id="" placeholder="请输入手机号">
-                                </div>
-                                <div class="user_inp3">
-                                    <span class="user_inp_icon4"></span>
-                                    <input class="ls_input" type="text" name="" id="" placeholder="请输入验证码">
-                                    <button class="send_btn send_1">获取验证码</button>
-                                </div>
-                                <div class="user_inp3">
-                                    <span class="user_inp_icon4"></span>
-                                    <input class="ls_input" type="text" name="" id="" placeholder="请设置密码,长度6-20位">
-                                    
-                                </div>
-                                <div class="ls_text_wraing">
-                                    <p>
-                                        <input type="checkbox">我已阅读并同意
-                                        <a href="">《礼舍网服务协议》</a>
-                                    </p>
-                                       
-                                    <span class="fr backPassword"></span>
-                                </div>
-                                <div class="user_btn">立即注册</div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
+        <div class="mem_link fr">
+          <a href>
+            <span class="iconfont icon-phone"></span>
+            400-833-0288
+          </a>
         </div>
-        <div class="footer mauto">
-            <div class="footer_text">
-                <p>© 2005-2020 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
-                <p>ICP备案证书号:粤ICP备15033641号-1</p>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="main_wrap">
+      <div class="mides">
+        <div class="inp_wrap_pt clearfix">
+          <img class="fl" src="../../assets/imgs/login/login_img_welcome.png" alt />
+
+          <div class="inp_wrap fr">
+            <h3>
+              新用户注册
+              <a class="fr" href>返回登录>></a>
+            </h3>
+            <div class="register_con">
+              <div class="user_inp1">
+                <span class="user_inp_icon1"></span>
+                <input class="ls_input" type="text" name id placeholder="请输入手机号" />
+              </div>
+              <div class="user_inp3">
+                <span class="user_inp_icon2"></span>
+                <input class="ls_input" type="text" name id placeholder="请输入验证码" />
+                <button class="send_btn send_1">获取验证码</button>
+              </div>
+              <div class="user_inp3">
+                <span class="user_inp_icon3"></span>
+                <input class="ls_input" type="text" name id placeholder="请设置密码,长度6-20位" />
+              </div>
+              <div class="ls_text_wraing">
+                <p>
+                  <input type="checkbox" />我已阅读并同意
+                  <a href>《礼舍网服务协议》</a>
+                </p>
+
+                <span class="fr backPassword"></span>
+              </div>
+              <div class="user_btn">立即注册</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reg_footer mauto">
+      <div class="footer_text">
+        <p>© 2005-2020 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
+        <p>ICP备案证书号:粤ICP备15033641号-1</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name:"register",
-}
+  name: "register"
+};
 </script>
 
 <style lang='less'>
-    /* 头部 */
+/* 头部 */
 .register {
+  background: #fff;
   .register_header_wrap {
     .register_header {
       height: 100px;
@@ -137,8 +138,8 @@ export default {
     width: 100%;
     height: 46px;
     background: #f55053;
-    transition: .2s;
-    -webkit-transition: .2s;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
     text-align: center;
     line-height: 46px;
     color: #fff;
@@ -172,6 +173,9 @@ export default {
     height: 30px;
     line-height: 30px;
     font-size: 24px;
+    span {
+      font-size: 21px;
+    }
   }
 }
 .register_titleText {
@@ -181,7 +185,8 @@ export default {
   padding-left: 15px;
 }
 /* 主体 */
-.login_con, .back_inp_con {
+.login_con,
+.back_inp_con {
   width: 100%;
   position: absolute;
   top: 0;
@@ -191,12 +196,33 @@ export default {
   -ms-box-sizing: border-box;
   background: #fff;
 }
-.register .user_inp_icon1, .user_inp_icon2, .user_inp_icon3, .user_inp_icon4 {
+.register .user_inp_icon1 {
+  background: url(../../assets/imgs/icon/icon_phone.png) center center no-repeat;
+}
+.register .user_inp_icon3 {
+  background: url(../../assets/imgs/icon/icon_password.png) center center
+    no-repeat;
+}
+.register .user_inp_icon2 {
+  background: url(../../assets/imgs/icon/icon_secure.png) center center
+    no-repeat;
+}
+.register .inp_wrap_pt{
+  width: 800px;
+  margin: 0 auto;
+}
+.register .user_inp_icon1,
+.user_inp_icon2,
+.user_inp_icon3,
+.user_inp_icon4 {
   float: left;
   width: 41px;
   height: 44px;
 }
-.register_con .user_inp1, .user_inp2, .user_inp3, .user_inp4 {
+.register_con .user_inp1,
+.user_inp2,
+.user_inp3,
+.user_inp4 {
   position: relative;
   margin-bottom: 10px;
   width: 270px;
@@ -220,24 +246,24 @@ export default {
     font-size: 14px;
   }
 }
-.register .user_btn:hover, .user_inp3 .send_btn:hover {
+.register .user_btn:hover,
+.user_inp3 .send_btn:hover {
   background: #cc342d;
 }
 /* 底部 */
-.footer {
+.reg_footer {
   p {
     height: 14px;
     line-height: 14px;
     margin-bottom: 10px;
   }
+  .footer_text {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #666666;
+    width: 100%;
+  }
 }
-.footer_text {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  text-align: center;
-  font-size: 14px;
-  color: #666666;
-  width: 100%;
-}
-
 </style>

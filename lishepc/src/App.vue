@@ -1,10 +1,10 @@
 <template>
 	<div id="app">
 		<!-- <head-nav v-if="$route.path=='/login'||$route.path=='/register'"></head-nav> -->
-		<top-Head></top-Head>
-		<headnav></headnav>
+		<!-- <top-Head></top-Head> -->
+		<!-- <headnav></headnav> -->
 		<router-view></router-view>
-		<foot></foot>
+		<!-- <foot></foot> -->
 	</div>
 </template>
 <script>
@@ -21,7 +21,7 @@
 </script>
 <style lang="less">
 	@import url("./assets/css/base.less");
-
+  
 	#app {
 		background: #f0f0f0;
 	}
