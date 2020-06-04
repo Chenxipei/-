@@ -120,9 +120,13 @@
 			}
 
 			.sold {
+				position: relative;
 				span {
+					position: absolute;
 					font-size: 10px;
 					color: gray;
+					right: 0;
+					top: 0;
 				}
 			}
 		}		

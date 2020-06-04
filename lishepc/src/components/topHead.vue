@@ -87,6 +87,7 @@ export default {
     showFollow() {
       this.$refs.follow.style.height = 350 + "px";
       this.$refs.follow.style.transition = "0.2s";
+			this.$refs.follow.style.display = "block"
     },
     hideFollow() {
       this.$refs.follow.style.height = 0;
@@ -169,6 +170,7 @@ export default {
           .follow {
             position: absolute;
             left: -84px;
+						display: none;
             overflow: hidden;
 						z-index: 99;
             img {
