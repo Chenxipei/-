@@ -4,14 +4,14 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-<<<<<<< HEAD
   {
-    path:'',
-    redirect:"/home"
+    path:'/',
+    redirect:"/home",
+  },
+  {
+    path:'/classify',
+    component:()=>import('../views/Classify/classify.vue')
   }
-=======
-
->>>>>>> 60e4cf9fc28a3da554bce8e20de1d2556f89745f
 ]
 
 const router = new VueRouter({
