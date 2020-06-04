@@ -3,11 +3,13 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-
-
   {
     path:'/',
     redirect:"/home",
+  },
+  {
+    path:'/classify',
+    component:()=>import('../views/Classify/classify.vue')
   },
 	{
 		path:"/home",

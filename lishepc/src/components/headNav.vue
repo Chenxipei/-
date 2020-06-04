@@ -20,11 +20,10 @@
           v-show="curr==i&&item.list.length>0"
           @mouseover="curr = i"
           @mouseout="curr=-1"
-
         >
           <div class="n-l-l-item" v-for="(l,i) in item.list" :key="i">
             <img :src="l.imgSrc" alt />
-            <a href="#">{{l.name}}</a>
+            <a href="#" @click="zwget(l.name)">{{l.name}}</a>
           </div>
         </div>
       </nav>
@@ -165,15 +164,23 @@ export default {
     };
   },
   methods: {
+    zwget(val) {
+      this.$router.push({
+        path:"/classify",
+        query:{
+          val
+        }
+      });
+    },
     toShopList(path) {
       if (!path) return;
       this.$router.push(path);
     },
-    remote(path,i) {
+    remote(path, i) {
       if (!path) return;
-      console.log(path, this.$route.path,i);
-      if(this.$route.path==path){
-        this.curr=i
+      console.log(path, this.$route.path, i);
+      if (this.$route.path == path) {
+        this.curr = i;
       }
     }
   }
@@ -198,7 +205,7 @@ export default {
           font-weight: bold;
           font-size: 14px;
           cursor: pointer;
-          &:hover{
+          &:hover {
             box-shadow: inset 0px -2px 0px rgb(255, 78, 76);
             color: rgb(255, 78, 76);
           }
