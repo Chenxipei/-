@@ -1,32 +1,37 @@
 <template>
   <div class="classify">
     <div class="header w">
-      <zwhead :mylist="routerlist"></zwhead>
+      <zwhead :mylist="routerlist">
+        <div slot="pricefrom" class="price">
+          价格区间：
+          <input type="text" @input="inp" v-model="cmin" >
+          <span>-</span>
+          <input type="text" @input="inp" v-model="cmax">
+          <span class="btn" @click="setlist"> <a href="#">确定</a></span>
+        </div>
+      </zwhead>
     </div>
     <div class="content w">
       <item :list="classifyjson"></item>
     </div>
-    <div class="sidebar">
+    <!-- <div class="sidebar">
       <ul>
         <li v-for="(i,j) in sidebar" :key="j">
           <p @mouseover="sidebarshow=j" @mouseout="sidebarshow=-1">{{i.txt}}</p>
           <div v-show="sidebarshow==j&&j!=0">{{i.num}}</div>
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
 import item from "../../components/item.vue";
 import zwhead from "../../components/zwhead.vue";
-
-// import headtabbar from "../../components/headtabbar.vue";
-
 export default {
   components: {
     item,
     zwhead
-    // headtabbar
+  
   },
   data() {
     return {
@@ -148,37 +153,113 @@ export default {
           {
             title: "数码家电",
             path: "",
-            list: []
+            list: [
+              {
+                name: "家纺床品"
+              },
+              {
+                name: "百变穿搭"
+              },
+              {
+                name: "电脑配件"
+              },
+              {
+                name: "智能设备"
+              },
+              {
+                name: "收纳用品"
+              },
+              {
+                name: "生活日用"
+              },
+              {
+                name: "文具耗材"
+              },
+              {
+                name: "烹饪厨具"
+              }
+            ]
           },
           {
             title: "美妆个护",
             path: "",
-            list: []
+            list: [
+              {
+                name: "家纺床品"
+              },
+              {
+                name: "百变穿搭"
+              },
+              {
+                name: "电脑配件"
+              },
+              {
+                name: "智能设备"
+              },
+              {
+                name: "收纳用品"
+              },
+              {
+                name: "文具耗材"
+              },
+              {
+                name: "烹饪厨具"
+              }
+            ]
           },
           {
             title: "母婴亲子",
             path: "",
-            list: []
+            list: [
+              {
+                name: "家纺床品"
+              },
+              {
+                name: "百变穿搭"
+              },
+              {
+                name: "电脑配件"
+              },
+              {
+                name: "智能设备"
+              },
+              {
+                name: "收纳用品"
+              },
+              {
+                name: "生活日用"
+              },
+              {
+                name: "烹饪厨具"
+              }
+            ]
           },
           {
             title: "运动旅行",
             path: "",
-            list: []
-          },
-          {
-            title: "农友精选",
-            path: "",
-            list: []
-          },
-          {
-            title: "为您精选",
-            path: "",
-            list: []
-          },
-          {
-            title: "扶贫专区",
-            path: "",
-            list: []
+            list: [
+              {
+                name: "家纺床品"
+              },
+              {
+                name: "百变穿搭"
+              },
+              {
+                name: "电脑配件"
+              },
+              {
+                name: "智能设备"
+              },
+              {
+                name: "收纳用品"
+              },
+              {
+                name: "生活日用"
+              },
+              {
+                name: "文具耗材"
+              }
+            ]
           }
         ],
         shop: ["综合排序", "销量", "价格", "上架时间"]
@@ -208,16 +289,30 @@ export default {
   methods: {
     getclassify() {
       this.$axios.get("./data/classify.json").then(res => {
-        console.log(res.data.recommend_one);
+        // console.log(res.data.recommend_one);
         this.classifyjson = res.data.recommend_one;
       });
     },
     setlist() {
-      console.log(this.cmin, this.cmax);
-      if (this.cmin >= 0 && this.cmax >= 0) {
-        console.log("keyi");
-      } else {
-        console.log("输入错了");
+      let arr=[]
+      if (this.cmin!='' && this.cmax!=''){    
+        this.$store.state.price.min=+this.cmin
+        this.$store.state.price.max=+this.cmam
+        this.classifyjson.forEach(i => {
+           if(+this.cmin<=i.score&&+this.cmax>=i.score){
+           console.log(i.score)
+           arr.push(i)
+           }
+        });
+        this.classifyjson=arr
+      }
+    },
+    inp(e){
+      if(parseInt(e.data)>=0){
+      }else{
+        this.cmin = ''
+        this.cmax = ''
+
       }
     }
   }

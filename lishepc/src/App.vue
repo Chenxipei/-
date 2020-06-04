@@ -25,5 +25,8 @@
 	#app {
 		min-width: 1200px;
 	}
+	body{
+	background: #f0f0f0;
+	}
 </style>
 

@@ -14,24 +14,12 @@
         </span>
       </div>
     </div>
+    <!-- <div >{{arr}}</div> -->
   </div>
 </template>
 <script>
 export default {
   props: ["list"],
-  data(){
-    return {
-      // min:'',
-      // max:'',
-    }
-  },
-  methods: {
-    setlist(){
-      // console.log(this.min,this.max)
-      // console.log(1)
-
-    }
-  }
 };
 </script>
 <style scoped lang='less'>

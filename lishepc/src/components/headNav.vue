@@ -1,26 +1,13 @@
 <template>
   <div class="headNav">
     <div class="nav-list">
-      <nav
-        class="n-l-item"
-        v-for="(item,i) in navList"
-        :key="i"
-        @mouseover="curr = i"
-        @mouseout="curr=-1"
-      >
+      <nav class="n-l-item"  v-for="(item,i) in navList" :key="i"   @mouseover="curr = i"    @mouseout="curr=-1" >
         <div class="n-l-name">
-          <div
-            class="n-l-n-item"
-            :class="{'active':item.path==$route.path}"
-            @click="toShopList(item.path,i)"
-          >{{item.title}}</div>
+          <div class="n-l-n-item" :class="{'active':item.path==$route.path}"  @click="toShopList(item.path,i)" >
+            {{item.title}}
+            </div>
         </div>
-        <div
-          class="n-l-list"
-          v-show="curr==i&&item.list.length>0"
-          @mouseover="curr = i"
-          @mouseout="curr=-1"
-        >
+        <div  class="n-l-list" v-show="curr==i&&item.list.length>0" @mouseover="curr = i"  @mouseout="curr=-1" >
           <div class="n-l-l-item" v-for="(l,i) in item.list" :key="i">
             <img :src="l.imgSrc" alt />
             <a href="#" @click="zwget(l.name)">{{l.name}}</a>
@@ -227,6 +214,7 @@ export default {
       flex-wrap: wrap;
       border: 1px solid #ddd;
       padding: 15px;
+      z-index: 999;
       .n-l-l-item {
         float: left;
         margin-right: 15px;
