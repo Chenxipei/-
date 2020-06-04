@@ -12,7 +12,7 @@
       </zwhead>
     </div>
     <div class="content w">
-      <item :list="classifyjson"></item>
+      <item :list="setmylist"></item>
     </div>
     <!-- <div class="sidebar">
       <ul>
@@ -286,11 +286,23 @@ export default {
   mounted() {
     this.getclassify();
   },
+  computed:{
+    setmylist(){
+     this.$axios.get("./data/classify.json").then(res => {
+        let num = this.$store.state.price.count
+        // console.log(num) 
+        this.classifyjson = res.data.recmmend[num].list;
+      });
+      return this.classifyjson
+    }
+  },
   methods: {
     getclassify() {
       this.$axios.get("./data/classify.json").then(res => {
         // console.log(res.data.recommend_one);
-        this.classifyjson = res.data.recommend_one;
+        let num = this.$store.state.price.count
+        // console.log(num)
+        this.classifyjson = res.data.recmmend[num].list;
       });
     },
     setlist() {

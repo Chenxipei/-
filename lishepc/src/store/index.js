@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
      price:{
        min:'',
-       max:''
+       max:'',
+       count:0
      }
   },
   mutations: {

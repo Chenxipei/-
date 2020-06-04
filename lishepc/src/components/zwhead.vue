@@ -37,7 +37,7 @@
           <div class="nav-two" v-if="curr==j">
             <div class="nav-two-left">二级分类:</div>
             <div class="nav-two-conten">
-              <div class="nav-two-item" v-for="(i,j) in i.list" :key="j"><a href="#">{{i.name}}</a></div>
+              <div class="nav-two-item" v-for="(i,n) in i.list" :key="n"><a href="#" @click="setlist(j,n)">{{i.name}}</a></div>
             </div>
             <div class="nav-two-right" @click="navtwoshow=!navtwoshow" >
               <span v-show="!navtwoshow">
@@ -90,7 +90,16 @@ export default {
     };
   },
   methods: {
- 
+   setlist(i,j){
+        //  console.log(i,j)
+
+         if(i==2&&j==3){
+           this.$store.state.price.count=1
+         }
+           if(i==0&&j==0){
+           this.$store.state.price.count=0
+         }
+   }
    
   }
 };
