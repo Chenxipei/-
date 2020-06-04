@@ -1,8 +1,11 @@
 <template>
 	<div class="home">
-		<div class="banner">
-			轮播图
-		</div>
+			<banner style="height: 500px;" swiperName='homeBanner' >
+				<div slot='swiper-con' class="swiper-slide"  v-for="(item,index) in bannerArr" :key="index">
+					<img :src="item.imgSrc" alt="">
+				</div>
+			</banner>
+		
 		<div class="contenter">
 			<homelist :title_img="timeLimit.title_img" :txt_title="timeLimit.title">
 				<div slot="componentItem" class="componentItem" v-for="(item,index) in timeLimit.group_list" :key="index">
@@ -19,7 +22,7 @@
 								限时价：<span>{{item.price}}</span>￥
 							</p>
 							<p class="sold">
-								<el-progress :percentage="item.sold"  color="#e0a3a3" :stroke-width="10"></el-progress><span>已抢</span>
+								<el-progress :percentage="item.sold" color="#e0a3a3" :stroke-width="10"></el-progress><span>已抢</span>
 							</p>
 						</div>
 					</div>
@@ -50,14 +53,17 @@
 </template>
 
 <script>
+	// import Swiper from 'swiper';
 	import homelist from './homeList.vue'
+	import banner from '../../components/Banner.vue'
 	export default {
 		name: 'Home',
 		components: {
-			homelist
+			homelist,banner
 		},
 		data: function() {
 			return {
+				bannerArr:[],
 				timeLimit: [],
 				ceremony: [],
 				tiktok: [],
@@ -78,6 +84,18 @@
 						this.ceremony = res.data.group[1]
 						this.tiktok = res.data.group[2]
 					})
+					.catch(err=>{
+						console.log(errr)
+					})
+					// 请求轮播图数据
+					this.$axios.get('/data/index/banner.json')
+						.then(res => {
+							console.log(res.data.banner)
+							this.bannerArr = res.data.banner
+						})
+						.catch(err=>{
+							console.log(errr)
+						})
 			},
 			tab(index) {
 				this.tab_current = index
@@ -93,9 +111,6 @@
 				if (this.tab_current == 3) {
 					this.$refs.tiktokBox.style.background = "#99d3d4"
 				}
-			},
-			format(percentage) {
-				return percentage === 100 ? '满' : `${percentage}%`;
 			}
 		}
 	}
@@ -116,7 +131,10 @@
 		h2 {
 			margin: 20px 0;
 		}
-
+		img{
+			width: 100%;
+			height: 100%;
+		}
 		.tiktok {
 			width: 1200px;
 			box-sizing: border-box;
