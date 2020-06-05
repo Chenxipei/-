@@ -4,6 +4,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+
     path:'/',
     redirect:"/home",
   },
@@ -31,9 +32,13 @@ const routes = [
     path:"/register",
     component:()=>import("../views/login/register.vue")
   }
+,
+  {
+    path:"/cart",
+    component:()=>import("../views/cart/index.vue")
+  }
 
 ]
-
 const router = new VueRouter({
   mode:"history",
   routes

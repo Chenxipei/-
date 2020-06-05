@@ -5,9 +5,11 @@
         <ul class="navList">
           <li>
             <span>
-              <a href="#" class="line">登录</a>
+              <!-- <a href="#" class="line">登录</a> -->
+							<router-link to="/login">登录</router-link>
               <span class="xiegang">/</span>
-              <a href="#">注册</a>
+              <!-- <a href="#">注册</a> -->
+							<router-link to="/register">注册</router-link>
             </span>
           </li>
           <li class="liShe">

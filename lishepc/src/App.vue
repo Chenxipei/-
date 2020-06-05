@@ -7,26 +7,32 @@
 		<foot></foot>
 	</div>
 </template>
+
 <script>
 	import headnav from '_c/headNav.vue'
-		import topHead from './components/topHead'
+	import topHead from './components/topHead'
 	import foot from './components/footer'
 	export default {
 		name: "app",
 		components: {
-			headnav,topHead,
+			headnav,
+			topHead,
 			foot
 		}
 	}
 </script>
+
 <style lang="less">
 	@import url("./assets/css/base.less");
 
 	#app {
 		min-width: 1200px;
 	}
-	body{
-	background: #f0f0f0;
+
+	body {
+		background: #f0f0f0;
 	}
 </style>
+
+
 

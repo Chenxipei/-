@@ -4,7 +4,7 @@
         <div class="register_header_wrap">
             <div class="register_header mauto clearfix">
                 <div class="ls_vip_logo fl">
-                    <a href="">
+                    <a href="/home">
                         <img src="https://www.lishe.cn/common/images/logo_two.png" alt="">
                     </a>
                     <p class="register_titleText">欢迎注册</p>
@@ -24,7 +24,8 @@
                         <div class="inp_wrap fr">
                             <h3>
                                 新用户注册
-                                <a class="fr" href="">返回登录>></a>
+                                <!-- <a class="fr" href="">返回登录>></a> -->
+																<span class="fr"><router-link to="/login">返回登录>></router-link></span>
                             </h3>
                             <div class="register_con">
                                 <div class="user_inp1">
