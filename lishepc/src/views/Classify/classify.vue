@@ -12,7 +12,7 @@
       </zwhead>
     </div>
     <div class="content w">
-      <item :list="setmylist"></item>
+      <item :list="classifyjson"></item>
     </div>
     <!-- <div class="sidebar">
       <ul>
@@ -110,9 +110,6 @@ export default {
                 name: "电脑配件"
               },
               {
-                name: "智能设备"
-              },
-              {
                 name: "收纳用品"
               },
               {
@@ -154,9 +151,6 @@ export default {
             title: "数码家电",
             path: "",
             list: [
-              {
-                name: "家纺床品"
-              },
               {
                 name: "百变穿搭"
               },
@@ -287,24 +281,36 @@ export default {
     this.getclassify();
   },
   computed:{
-    setmylist(){
-     this.$axios.get("./data/classify.json").then(res => {
-        let num = this.$store.state.price.count
-        // console.log(num) 
-        this.classifyjson = res.data.recmmend[num].list;
-      });
-      return this.classifyjson
+    aaa(){
+      //  console.log('wo',this.$store.state.price.classtou.oneclass+''+this.$store.state.price.classtou.twoclass)
+        return   this.$store.state.price.classtou.oneclass+''+this.$store.state.price.classtou.twoclass
+   
+    }
+  },
+  watch:{
+    aaa: function(newval,oldval) {
+        // console.log('he',newval,oldval);
+        if(newval=='00'){
+          // console.log('换家纺')
+          this.$store.state.price.count=0
+            this.getclassify();
+
+        }else if(newval=='22'){
+          // console.log('换智能')
+            this.$store.state.price.count=1
+            this.getclassify();
+
+        }
     }
   },
   methods: {
     getclassify() {
       this.$axios.get("./data/classify.json").then(res => {
-        // console.log(res.data.recommend_one);
         let num = this.$store.state.price.count
-        // console.log(num)
         this.classifyjson = res.data.recmmend[num].list;
       });
     },
+    // 搜索功能
     setlist() {
       let arr=[]
       if (this.cmin!='' && this.cmax!=''){    
@@ -319,6 +325,7 @@ export default {
         this.classifyjson=arr
       }
     },
+    // 判断搜素数据是否有效
     inp(e){
       if(parseInt(e.data)>=0){
       }else{

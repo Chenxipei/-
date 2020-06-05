@@ -25,9 +25,10 @@ export default {
 <style scoped lang='less'>
 .shoplist {
   margin-top: 20px;
+  width: 1210px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
   .item:hover {
   
     box-shadow: 0 5px 10px 2px #cccccc;
@@ -35,6 +36,7 @@ export default {
   }
   .item {
     width: 230px;
+    margin-right: 12px;
     background: #ffffff;
     text-align: center;
     margin-bottom: 10px;

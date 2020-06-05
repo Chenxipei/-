@@ -8,7 +8,12 @@ export default new Vuex.Store({
      price:{
        min:'',
        max:'',
-       count:0
+       count:0,
+       classtou:{
+        oneclass:'',
+        twoclass:''
+       }
+
      }
   },
   mutations: {

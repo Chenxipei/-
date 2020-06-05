@@ -14,7 +14,7 @@
           </li>
         </ul>
       </div>
-      <div class="right" @click="brandshow=!brandshow">
+      <div class="right myborder" @click="brandshow=!brandshow">
         <span v-show="!brandshow">
           更多
           <i>_</i>
@@ -31,15 +31,17 @@
         <div class="nav-one-item" v-for="(i,j) in mylist.navList" :key="j">
           <div class>
             <div @click="curr=j">
-              <a href="#">{{i.title}}</a>
+              <a href="#" :class="{active:$store.state.price.classtou.oneclass==j}" @click="setroutone(j)">{{i.title}}</a>
             </div>
           </div>
           <div class="nav-two" v-if="curr==j">
             <div class="nav-two-left">二级分类:</div>
             <div class="nav-two-conten">
-              <div class="nav-two-item" v-for="(i,n) in i.list" :key="n"><a href="#" @click="setlist(j,n)">{{i.name}}</a></div>
+              <div class="nav-two-item" v-for="(i,n) in i.list" :key="n">
+                <a href="#" :class="{active:$store.state.price.classtou.twoclass==n}"  @click="setlist(j,n)">{{i.name}}</a>
+                </div>
             </div>
-            <div class="nav-two-right" @click="navtwoshow=!navtwoshow" >
+            <div class="nav-two-right myborder" @click="navtwoshow=!navtwoshow" >
               <span v-show="!navtwoshow">
                 更多
                 <i>_</i>
@@ -52,7 +54,7 @@
           </div>
         </div>
       </div>
-      <div class="right" @click="navoneshow=!navoneshow">
+      <div class="right myborder" @click="navoneshow=!navoneshow">
         <span v-show="!navoneshow">
           更多
           <i>_</i>
@@ -86,25 +88,47 @@ export default {
       brandshow: false,
       navoneshow:false,
       navtwoshow:false,
-      curr: 0
+      curr: 0,
+     
+
     };
   },
   methods: {
-   setlist(i,j){
-        //  console.log(i,j)
+      //设置一级分类路由
+   setroutone(i){
+   this.$store.state.price.classtou.oneclass=i;
+  this.$store.state.price.classtou.twoclass=0;   this.oneacttive=i
+  this.twoacttive=0
+  //  console.log( this.$store.state.price.classtou.oneclass,this.$store.state.price.classtou.twoclass)
 
-         if(i==2&&j==3){
-           this.$store.state.price.count=1
-         }
-           if(i==0&&j==0){
-           this.$store.state.price.count=0
-         }
+   },
+      //设置二级分类路由
+
+   setlist(i,j){
+   this.$store.state.price.classtou.oneclass=i;
+  this.$store.state.price.classtou.twoclass=j; 
+ 
+  // console.log( this.$store.state.price.classtou.oneclass,this.$store.state.price.classtou.twoclass)
    }
    
   }
 };
 </script>
 <style scoped lang='less'>
+.myborder{
+  span{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 2px 3px;
+  }
+  span:hover{
+    border: 1px solid red;
+   color: red;
+  }
+}
+.active{
+  color: red;
+}
 a{
   color: #333333;
 }

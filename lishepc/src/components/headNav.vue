@@ -8,9 +8,9 @@
             </div>
         </div>
         <div  class="n-l-list" v-show="curr==i&&item.list.length>0" @mouseover="curr = i"  @mouseout="curr=-1" >
-          <div class="n-l-l-item" v-for="(l,i) in item.list" :key="i">
+          <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
             <img :src="l.imgSrc" alt />
-            <a href="#" @click="zwget(l.name)">{{l.name}}</a>
+            <a href="#" @click="zwget(i,j)">{{l.name}}</a>
           </div>
         </div>
       </nav>
@@ -151,11 +151,15 @@ export default {
     };
   },
   methods: {
-    zwget(val) {
+    zwget(i,j) {
+      console.log(i-1,j)//设置路由参数
+  this.$store.state.price.classtou.oneclass=--i;
+  this.$store.state.price.classtou.twoclass=j; 
       this.$router.push({
         path:"/classify",
         query:{
-          val
+          oneclass:i,
+          twoclass:j
         }
       });
     },
