@@ -1,5 +1,6 @@
 <template>
-  <div class="headNav">
+  <div class="headNav-wrap">
+<div class="headNav">
     <div class="nav-list">
       <nav
         class="n-l-item"
@@ -30,6 +31,8 @@
       </nav>
     </div>
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -181,11 +184,13 @@ export default {
 </script>
 
 <style scope lang='less'>
+.headNav-wrap{
+  background: rgb(240, 240, 240);
+}
 .headNav {
   width: 1200px;
   margin: 0 auto;
   position: relative;
-  background: rgb(240, 240, 240);
   .nav-list {
     display: flex;
     padding-top: 15px;
@@ -217,6 +222,8 @@ export default {
       overflow: hidden;
       flex-wrap: wrap;
       border: 1px solid #ddd;
+      background: #fff;
+      z-index: 999;
       padding: 15px;
       .n-l-l-item {
         float: left;

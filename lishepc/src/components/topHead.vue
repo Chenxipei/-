@@ -85,11 +85,13 @@ export default {
   name: "topHead",
   methods: {
     showFollow() {
-      this.$refs.follow.style.height = 350 + "px";
+      this.$refs.follow.style.height = 480 + "px";
+      this.$refs.follow.style.width = 280+"px"
       this.$refs.follow.style.transition = "0.2s";
     },
     hideFollow() {
       this.$refs.follow.style.height = 0;
+      this.$refs.follow.style.width = 280+"px"
       this.$refs.follow.style.transition = "0.2s";
     }
   }
@@ -168,12 +170,11 @@ export default {
           position: relative;
           .follow {
             position: absolute;
-            left: -84px;
+            margin-left: -120px;
             height: 0;
             overflow: hidden;
-            img {
-              width: 250px;
-              height: 350px;
+            z-index: 999;
+             img {
               border-radius: 6px;
             }
           }

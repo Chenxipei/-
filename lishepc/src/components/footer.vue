@@ -32,10 +32,10 @@
           <a href="#">关于我们</a>
           <a href="#">礼舍指南</a>
           <a href="#">积分兑换</a>
-          <a href="#">关于我们</a>
-          <a href="#">关于我们</a>
-          <a href="#">关于我们</a>
-          <a href="#">关于我们</a>
+          <a href="#">常见问题</a>
+          <a href="#">客户服务</a>
+          <a href="#">礼舍服务</a>
+          <a href="#">商务合作</a>
         </div>
       </div>
       <div class="footer_2_bottom_text">
