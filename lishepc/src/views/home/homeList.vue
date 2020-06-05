@@ -26,7 +26,6 @@
 </script>
 
 <style lang="less">
-	
 	.homelist {
 		margin: 30px 0;
 	}
@@ -34,6 +33,7 @@
 	.component {
 		margin: 10px 0;
 		width: 100%;
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -120,22 +120,31 @@
 			}
 
 			.sold {
+				position: relative;
+
 				span {
+					position: absolute;
 					font-size: 10px;
 					color: gray;
+					right: -15px;
+					top: 3px;
 				}
 			}
-		}		
+		}
 	}
-.ceremony{
-		>div{
+
+	.ceremony {
+		>div {
 			margin: 0;
 			width: 220px;
 			height: 200px;
-			&:first-child{
-				margin-right:20px ;
+
+			&:first-child {
+				margin-right: 20px;
 			}
-			&:nth-child(2),&:last-child{
+
+			&:nth-child(2),
+			&:last-child {
 				width: 440px;
 			}
 		}

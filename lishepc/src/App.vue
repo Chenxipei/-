@@ -23,7 +23,7 @@
 	@import url("./assets/css/base.less");
   
 	#app {
-		background: #f0f0f0;
+		min-width: 1200px;
 	}
 </style>
 

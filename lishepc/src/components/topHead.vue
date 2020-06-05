@@ -5,9 +5,11 @@
         <ul class="navList">
           <li>
             <span>
-              <a href="#" class="line">登录</a>
+              <router-link to='/login'>登录</router-link>
+              <!-- <a href="#" class="line">登录</a> -->
               <span class="xiegang">/</span>
-              <a href="#">注册</a>
+              <!-- <a href="#">注册</a> -->
+                <router-link to='/register'>注册</router-link>
             </span>
           </li>
           <li class="liShe">
@@ -83,10 +85,12 @@
 <script>
 export default {
   name: "topHead",
+ 
   methods: {
     showFollow() {
       this.$refs.follow.style.height = 350 + "px";
       this.$refs.follow.style.transition = "0.2s";
+			this.$refs.follow.style.display = "block"
     },
     hideFollow() {
       this.$refs.follow.style.height = 0;
@@ -169,6 +173,7 @@ export default {
           .follow {
             position: absolute;
             left: -84px;
+						display: none;
             overflow: hidden;
 						z-index: 99;
             img {
