@@ -37,7 +37,6 @@ const routes = [
     path:"/cart",
     component:()=>import("../views/cart/index.vue")
   }
-
 ]
 const router = new VueRouter({
   mode:"history",

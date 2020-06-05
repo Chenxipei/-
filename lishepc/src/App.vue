@@ -1,28 +1,40 @@
 <template>
-	<div id="app">
-		<!-- <head-nav v-if="$route.path=='/login'||$route.path=='/register'"></head-nav> -->
+
+	<!-- <div id="app">
+		<head-nav v-if="$route.path=='/login'||$route.path=='/register'"></head-nav>
 		<top-Head></top-Head>
 		<headnav></headnav>
 		<router-view></router-view>
+		 <goodList></goodList>
 		<foot></foot>
-	</div>
-</template>
+	</div> -->
 
+ <div id="app">
+
+    <top-Head></top-Head>
+    <head-nav></head-nav>
+    <goodList></goodList>
+    <foot></foot>
+  </div>
+</template>
 <script>
-	import headnav from '_c/headNav.vue'
-	import topHead from './components/topHead'
-	import foot from './components/footer'
-	export default {
-		name: "app",
-		components: {
-			headnav,
-			topHead,
-			foot
-		}
-	}
+import topHead from "./components/topHead";
+import goodList from "./views/productList/goodList";
+import headNav from "_c/headNav.vue";
+import foot from "./components/footer";
+export default {
+  name: "app",
+  components: {
+    headNav,
+    topHead,
+    foot,
+    goodList
+
+}}
 </script>
 
 <style lang="less">
+
 	@import url("./assets/css/base.less");
 
 	#app {
@@ -33,6 +45,4 @@
 		background: #f0f0f0;
 	}
 </style>
-
-
 
