@@ -6,7 +6,10 @@ import axios from 'axios'
 import 'element-ui/lib/theme-chalk/index.css'
 import Element from 'element-ui'
 
-Vue.prototype.$axios = axios
+
+
+Vue.prototype.$axios=axios
+
 Vue.config.productionTip = false
 Vue.use(Element)
 
