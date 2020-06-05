@@ -1,13 +1,38 @@
 <template>
 	<div class="home">
-			<banner style="height: 500px;" swiperName='homeBanner' >
-				<div slot='swiper-con' class="swiper-slide"  v-for="(item,index) in bannerArr" :key="index">
-					<img :src="item.imgSrc" alt="">
+		<Totop></Totop>
+		<banner swiperName='homeBanner'>
+			<div slot="loginbox" class="loginbox">
+				<div class="login">
+					<a href="#">
+						<img src="../../assets/imgs/icon/loginIcon.png" alt="">
+						<span>个人登录</span>
+					</a>
+					<a href="#">
+						<img src="../../assets/imgs/icon/loginIcon.png" alt="">
+						<span>企业登录</span>
+					</a>
 				</div>
-			</banner>
-		
+			</div>
+			<div slot='swiper-con' class="swiper-slide" v-for="(item,index) in bannerArr" :key="index">
+				<img :src="item.imgSrc" alt="">
+			</div>
+		</banner>
+
 		<div class="contenter">
-			<homelist :title_img="timeLimit.title_img" :txt_title="timeLimit.title">
+			<homelist :txt_title="timeLimit.title">
+				<div class="titlebg" slot="titlebg">
+					<img :src="timeLimit.title_img" alt="">
+					<div class="timer" slot="timer">
+						<div class="timer_title">距离结束还剩</div>
+						<div class="timer_time">
+							<div>{{h<10?'0'+h:h}}</div>:
+							<div>{{m<10?'0'+m:m}}</div>:
+							<div>{{s<10?'0'+s:s}}</div>
+						</div>
+					</div>
+				</div>
+
 				<div slot="componentItem" class="componentItem" v-for="(item,index) in timeLimit.group_list" :key="index">
 					<div class="goodsImg">
 						<img :src="item.img_url" alt="">
@@ -43,31 +68,71 @@
 					</div>
 				</div>
 			</div>
-			<homelist :title_img="ceremony.title_img" :txt_title="ceremony.title" ceremony="ceremony">
+			<homelist :txt_title="ceremony.title" ceremony="ceremony">
+				<div class="titlebg" slot="titlebg">
+					<img :src="ceremony.title_img" alt="">
+				</div>
 				<div slot="ceremony" v-for="(item,index) in ceremony.group_list" :key="index">
 					<img :src="item.img_url" alt="">
 				</div>
 			</homelist>
+
+			<homelist :txt_title="qingdan.title">
+				<div slot="bgimg" class="bgimg">
+					<img :src="qingdan.title_img" alt="">
+				</div>
+				<div slot="qingbox" class="qingdan" v-for="(item,index) in qingdan.group_list" :key="index">
+					<div class="goodsImg">
+						<img :src="item.img_url" alt="">
+					</div>
+				</div>
+			</homelist>
+			<div class="like">
+				<a href="#" class="like_goods" v-for="(item,index) in likeArr.group_list" :key="index">
+					<div class="like_goods_img">
+						<img :src="item.img_url" alt="">
+					</div>
+					<p class="like_goods_title">
+						{{item.txt_title}} <br>
+						<!-- <span>{{item.introduce==""?'&nbsp':item.introduce}}</span> -->
+					</p>
+					<div class="like_bottom">
+						<div class="price">
+							175<span>积分</span>
+						</div>
+						<div class="like_bottom_car">
+							<img src="../../assets/imgs/icon/user_cart.png" alt="">
+						</div>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	// import Swiper from 'swiper';
 	import homelist from './homeList.vue'
 	import banner from '../../components/Banner.vue'
+	import Totop from '../../components/Totop.vue'
 	export default {
 		name: 'Home',
 		components: {
-			homelist,banner
+			homelist,
+			banner,
+			Totop
 		},
 		data: function() {
 			return {
-				bannerArr:[],
+				bannerArr: [],
 				timeLimit: [],
 				ceremony: [],
 				tiktok: [],
+				qingdan: [],
+				likeArr: [],
 				tab_current: 0,
+				h: '',
+				m: '',
+				s: "",
 			}
 		},
 		mounted() {
@@ -75,6 +140,9 @@
 			if (this.tab_current == 0) {
 				this.$refs.tiktokBox.style.background = "#ce4757"
 			}
+			setInterval(() => {
+				this.timer()
+			}, 1000)
 		},
 		methods: {
 			getGroupData() {
@@ -83,19 +151,22 @@
 						this.timeLimit = res.data.group[0]
 						this.ceremony = res.data.group[1]
 						this.tiktok = res.data.group[2]
+						this.qingdan = res.data.group[3]
+						this.likeArr = res.data.group[4]
+						console.log(res.data.group[4])
 					})
-					.catch(err=>{
+					.catch(err => {
+						console.log(err)
+					})
+				// 请求轮播图数据
+				this.$axios.get('/data/index/banner.json')
+					.then(res => {
+						console.log(res.data.banner)
+						this.bannerArr = res.data.banner
+					})
+					.catch(err => {
 						console.log(errr)
 					})
-					// 请求轮播图数据
-					this.$axios.get('/data/index/banner.json')
-						.then(res => {
-							console.log(res.data.banner)
-							this.bannerArr = res.data.banner
-						})
-						.catch(err=>{
-							console.log(errr)
-						})
 			},
 			tab(index) {
 				this.tab_current = index
@@ -111,8 +182,27 @@
 				if (this.tab_current == 3) {
 					this.$refs.tiktokBox.style.background = "#99d3d4"
 				}
+			},
+			timer() {
+				let Today = new Date();
+				var NowHour = Today.getHours();
+				var NowMinute = Today.getMinutes();
+				var NowSecond = Today.getSeconds();
+				this.h = 23 - NowHour;
+				this.m = 59 - NowMinute;
+				this.s = 59 - NowSecond
+				if (this.s < 0) {
+					console.log(this.s)
+					this.s = 60 + this.s
+					this.m = this.m - 1
+				}
+				if (this.m < 0) {
+					this.m = 60 + this.m
+					this.h = this.h - 1
+				}
 			}
-		}
+		},
+
 	}
 </script>
 
@@ -128,13 +218,17 @@
 	}
 
 	.home {
+		background: #f0f0f0;
+
 		h2 {
 			margin: 20px 0;
 		}
-		img{
+
+		img {
 			width: 100%;
 			height: 100%;
 		}
+
 		.tiktok {
 			width: 1200px;
 			box-sizing: border-box;
@@ -182,6 +276,12 @@
 			color: #fff;
 			font-size: 25px;
 
+			&:hover {
+				background: #fff;
+				color: black;
+				cursor: pointer;
+			}
+
 			.tiktok_tab_titleImg {
 				position: absolute;
 				width: 50px;
@@ -204,5 +304,58 @@
 			}
 		}
 
+		.like {
+			width: 1200px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 50px;
+			.like_goods {
+				display: block;
+				width: 18%;
+				color: black;
+				background: #fff;
+				padding: 15px;
+				margin-bottom: 20px;
+			}
+
+			.like_goods_img {
+				width: 100%;
+			}
+
+			.like_goods_title {
+				padding-top: 10px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 100%;
+				font-size: 20px;
+
+				span {
+					font-size: 12px;
+					color: #8699ad;
+				}
+			}
+
+			.like_bottom {
+				margin-top: 30px;
+				display: flex;
+				justify-content: space-between;
+
+				.price {
+					color: #e72418;
+					font-size: 17px;
+
+					span {
+						font-size: 12px;
+					}
+				}
+
+				.like_bottom_car {
+					width: 20px;
+					height: 20px;
+				}
+			}
+		}
 	}
 </style>
