@@ -2,13 +2,15 @@
 	<div class="homelist">
 		<h2>{{txt_title}}</h2>
 		<div class="component" :class="{ceremony:flag()}">
-			<div class="titlebg">
-				<img :src="title_img" alt="">
+			<slot name="titlebg">
 				<slot name="timer"></slot>
-			</div>
+			</slot>
+			<slot name="bgimg"></slot>
 			<slot name="componentItem"></slot>
 			<slot name="ceremony"></slot>
+			<slot name="qingbox"></slot>
 		</div>
+
 	</div>
 </template>
 
@@ -17,17 +19,17 @@
 		name: 'homeList',
 		props: ['title_img', 'txt_title', 'ceremony'],
 		data: function() {
-			return {
-	
-				
-			}
+			return {}
 		},
 		mounted() {
-			
+
 		},
 		methods: {
 			flag() {
 				if (this.ceremony == 'ceremony') {
+					return true
+				}
+				if (this.qingdan == "qingdan") {
 					return true
 				}
 			}
@@ -99,19 +101,24 @@
 					color: #ff4c4c;
 					justify-content: space-between;
 					align-items: center;
-					font-size:20px ;
+					font-size: 20px;
+
 					>div {
 						padding: 10px;
 						border-radius: 5px;
 						text-align: center;
 						background: #ff4c4c;
 						color: #fff;
-						font-size:20px ;
+						font-size: 20px;
 					}
 				}
 			}
 		}
 
+		.bgimg {
+			width: 416px;
+			height: 537px;
+		}
 
 		.componentItem {
 			box-sizing: border-box;
@@ -188,6 +195,20 @@
 			&:last-child {
 				width: 440px;
 			}
+		}
+	}
+
+
+
+	.qingdan {
+		img {
+			width: 100%;
+		}
+
+		.goodsImg {
+			width: 371px;
+			height: 261px;
+			margin: 0;
 		}
 	}
 </style>

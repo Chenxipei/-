@@ -10,7 +10,7 @@
 					</a>
 					<a href="#">
 						<img src="../../assets/imgs/icon/loginIcon.png" alt="">
-						<span>个人登录</span>
+						<span>企业登录</span>
 					</a>
 				</div>
 			</div>
@@ -20,15 +20,19 @@
 		</banner>
 
 		<div class="contenter">
-			<homelist :title_img="timeLimit.title_img" :txt_title="timeLimit.title">
-				<div class="timer" slot="timer">
-					<div class="timer_title">距离结束还剩</div>
-					<div class="timer_time">
-						<div>{{h<10?'0'+h:h}}</div>:
-						<div>{{m<10?'0'+m:m}}</div>:
-						<div>{{s<10?'0'+s:s}}</div>
+			<homelist :txt_title="timeLimit.title">
+				<div class="titlebg" slot="titlebg">
+					<img :src="timeLimit.title_img" alt="">
+					<div class="timer" slot="timer">
+						<div class="timer_title">距离结束还剩</div>
+						<div class="timer_time">
+							<div>{{h<10?'0'+h:h}}</div>:
+							<div>{{m<10?'0'+m:m}}</div>:
+							<div>{{s<10?'0'+s:s}}</div>
+						</div>
 					</div>
 				</div>
+
 				<div slot="componentItem" class="componentItem" v-for="(item,index) in timeLimit.group_list" :key="index">
 					<div class="goodsImg">
 						<img :src="item.img_url" alt="">
@@ -64,11 +68,44 @@
 					</div>
 				</div>
 			</div>
-			<homelist :title_img="ceremony.title_img" :txt_title="ceremony.title" ceremony="ceremony">
+			<homelist :txt_title="ceremony.title" ceremony="ceremony">
+				<div class="titlebg" slot="titlebg">
+					<img :src="ceremony.title_img" alt="">
+				</div>
 				<div slot="ceremony" v-for="(item,index) in ceremony.group_list" :key="index">
 					<img :src="item.img_url" alt="">
 				</div>
 			</homelist>
+
+			<homelist :txt_title="qingdan.title">
+				<div slot="bgimg" class="bgimg">
+					<img :src="qingdan.title_img" alt="">
+				</div>
+				<div slot="qingbox" class="qingdan" v-for="(item,index) in qingdan.group_list" :key="index">
+					<div class="goodsImg">
+						<img :src="item.img_url" alt="">
+					</div>
+				</div>
+			</homelist>
+			<div class="like">
+				<a href="#" class="like_goods" v-for="(item,index) in likeArr.group_list" :key="index">
+					<div class="like_goods_img">
+						<img :src="item.img_url" alt="">
+					</div>
+					<p class="like_goods_title">
+						{{item.txt_title}} <br>
+						<!-- <span>{{item.introduce==""?'&nbsp':item.introduce}}</span> -->
+					</p>
+					<div class="like_bottom">
+						<div class="price">
+							175<span>积分</span>
+						</div>
+						<div class="like_bottom_car">
+							<img src="../../assets/imgs/icon/user_cart.png" alt="">
+						</div>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
 </template>
@@ -90,6 +127,8 @@
 				timeLimit: [],
 				ceremony: [],
 				tiktok: [],
+				qingdan: [],
+				likeArr: [],
 				tab_current: 0,
 				h: '',
 				m: '',
@@ -112,9 +151,12 @@
 						this.timeLimit = res.data.group[0]
 						this.ceremony = res.data.group[1]
 						this.tiktok = res.data.group[2]
+						this.qingdan = res.data.group[3]
+						this.likeArr = res.data.group[4]
+						console.log(res.data.group[4])
 					})
 					.catch(err => {
-						console.log(errr)
+						console.log(err)
 					})
 				// 请求轮播图数据
 				this.$axios.get('/data/index/banner.json')
@@ -146,7 +188,7 @@
 				var NowHour = Today.getHours();
 				var NowMinute = Today.getMinutes();
 				var NowSecond = Today.getSeconds();
-				this.h = 23 - NowHour ;
+				this.h = 23 - NowHour;
 				this.m = 59 - NowMinute;
 				this.s = 59 - NowSecond
 				if (this.s < 0) {
@@ -259,6 +301,60 @@
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
+			}
+		}
+
+		.like {
+			width: 1200px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 50px;
+			.like_goods {
+				display: block;
+				width: 18%;
+				color: black;
+				background: #fff;
+				padding: 15px;
+				margin-bottom: 20px;
+			}
+
+			.like_goods_img {
+				width: 100%;
+			}
+
+			.like_goods_title {
+				padding-top: 10px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 100%;
+				font-size: 20px;
+
+				span {
+					font-size: 12px;
+					color: #8699ad;
+				}
+			}
+
+			.like_bottom {
+				margin-top: 30px;
+				display: flex;
+				justify-content: space-between;
+
+				.price {
+					color: #e72418;
+					font-size: 17px;
+
+					span {
+						font-size: 12px;
+					}
+				}
+
+				.like_bottom_car {
+					width: 20px;
+					height: 20px;
+				}
 			}
 		}
 	}
