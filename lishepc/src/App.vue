@@ -12,7 +12,10 @@
  <div id="app">
 
     <top-Head></top-Head>
+
     <head-nav></head-nav>
+		<router-view></router-view>
+
     <goodList></goodList>
     <foot></foot>
   </div>
