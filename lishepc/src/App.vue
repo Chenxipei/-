@@ -39,7 +39,7 @@ export default {
 <style lang="less">
 
 	@import url("./assets/css/base.less");
-
+  
 	#app {
 		min-width: 1200px;
 	}

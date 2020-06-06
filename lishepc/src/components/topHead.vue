@@ -85,6 +85,7 @@
 <script>
 export default {
   name: "topHead",
+ 
   methods: {
     showFollow() {
       this.$refs.follow.style.height = 480 + "px";

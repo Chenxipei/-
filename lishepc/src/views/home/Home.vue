@@ -57,7 +57,7 @@
 			<div class="tiktok">
 				<h2>{{tiktok.title}}</h2>
 				<div class="tiktokBox" ref="tiktokBox">
-					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key="index">
+					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key='index'>
 						<div class="tiktok_tab" @mousemove="tab(index)">
 							<div class="tiktok_tab_titleImg"><img :src="item.icon_img" alt=""></div>
 							<span>{{item.txt_title}}</span>
