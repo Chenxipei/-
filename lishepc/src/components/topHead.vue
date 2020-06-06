@@ -58,28 +58,7 @@
         </ul>
       </div>
     </div>
-    <div class="head-search">
-      <div class="search">
-        <div class="logo">
-          <a href="#">
-            <img src="../../assets/img/index/logo_two.png" alt />
-          </a>
-        </div>
-        <div class="search-box">
-          <input type="text" placeholder="八马茶叶" />
-          <a href="#">
-            <i class="searchIput"></i>
-          </a>
-        </div>
-        <div class="cart">
-          <a href="#">
-            <img src="../../assets/img/index/cart.png" alt />
-          </a>
-          <p class="ShoppingCart">我的购物车</p>
-          <span class="ling">0</span>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </template>
 <script>
@@ -218,6 +197,10 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
+
+</style>
+=======
   .head-search {
     background: rgb(240, 240, 240);
 
@@ -317,3 +300,4 @@ export default {
   }
 
 </style>
+>>>>>>> c4a8bf1fc1fe66c43f379af6444e8588b1e7c5aa
