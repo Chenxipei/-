@@ -101,6 +101,7 @@
           </div>
         </div>
       </div>
+
     </div>
     <div class="futto">
       <div class="w">
@@ -141,6 +142,10 @@ export default {
 </script>
 <style scoped lang='less'>
 .futto{
+  
+  width: 100%;
+
+
   background: #f0f0f0;
   img{
     margin-top: 30px;
@@ -171,7 +176,7 @@ export default {
 }
 #main-info {
   width: 100%;
-  height: 560px;
+  // height: 560px;
   background: #ffffff;
   margin: 10px 0;
   .w {
