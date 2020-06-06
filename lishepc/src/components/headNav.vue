@@ -155,7 +155,7 @@ export default {
   },
   methods: {
     zwget(i,j) {
-      console.log(i-1,j)//设置路由参数
+     // console.log(i-1,j)//设置路由参数
   this.$store.state.price.classtou.oneclass=--i;
   this.$store.state.price.classtou.twoclass=j; 
       this.$router.push({
