@@ -1,5 +1,6 @@
 <template>
-  <div class="headNav">
+  <div class="headNav-wrap">
+<div class="headNav">
     <div class="nav-list">
       <nav class="n-l-item"  v-for="(item,i) in navList" :key="i"   @mouseover="curr = i"    @mouseout="curr=-1" >
         <div class="n-l-name">
@@ -8,14 +9,16 @@
             </div>
         </div>
         <div  class="n-l-list" v-show="curr==i&&item.list.length>0" @mouseover="curr = i"  @mouseout="curr=-1" >
-          <div class="n-l-l-item" v-for="(l,i) in item.list" :key="i">
+          <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
             <img :src="l.imgSrc" alt />
-            <a href="#" @click="zwget(l.name)">{{l.name}}</a>
+            <a href="#" @click="zwget(i,j)">{{l.name}}</a>
           </div>
         </div>
       </nav>
     </div>
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -151,11 +154,15 @@ export default {
     };
   },
   methods: {
-    zwget(val) {
+    zwget(i,j) {
+      console.log(i-1,j)//设置路由参数
+  this.$store.state.price.classtou.oneclass=--i;
+  this.$store.state.price.classtou.twoclass=j; 
       this.$router.push({
         path:"/classify",
         query:{
-          val
+          oneclass:i,
+          twoclass:j
         }
       });
     },
@@ -175,11 +182,13 @@ export default {
 </script>
 
 <style scope lang='less'>
+.headNav-wrap{
+  background: rgb(240, 240, 240);
+}
 .headNav {
   width: 1200px;
   margin: 0 auto;
   position: relative;
-  background: rgb(240, 240, 240);
   .nav-list {
     display: flex;
     padding-top: 15px;
@@ -214,6 +223,8 @@ export default {
       overflow: hidden;
       flex-wrap: wrap;
       border: 1px solid #ddd;
+      background: #fff;
+      z-index: 999;
       padding: 15px;
       z-index: 999;
       .n-l-l-item {

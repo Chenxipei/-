@@ -4,20 +4,25 @@
       <zwhead :mylist="routerlist">
         <div slot="pricefrom" class="price">
           价格区间：
-          <input type="text" @input="inp" v-model="cmin" >
+          <input type="text" @input="inp" v-model="cmin" />
           <span>-</span>
-          <input type="text" @input="inp" v-model="cmax">
-          <span class="btn" @click="setlist"> <a href="#">确定</a></span>
+          <input type="text" @input="inp" v-model="cmax" />
+          <span class="btn" @click="setlist">
+            <a href="#">确定</a>
+          </span>
         </div>
       </zwhead>
     </div>
     <div class="content w">
-      <item :list="setmylist"></item>
+      <item :list="classifyjson"></item>
     </div>
     <!-- <div class="sidebar">
       <ul>
         <li v-for="(i,j) in sidebar" :key="j">
-          <p @mouseover="sidebarshow=j" @mouseout="sidebarshow=-1">{{i.txt}}</p>
+          <p @mouseover="sidebarshow=j"  @mouseout="sidebarshow=-1">
+            {{i.txt}}
+            回去
+          </p>
           <div v-show="sidebarshow==j&&j!=0">{{i.num}}</div>
         </li>
       </ul>
@@ -31,7 +36,6 @@ export default {
   components: {
     item,
     zwhead
-  
   },
   data() {
     return {
@@ -110,9 +114,6 @@ export default {
                 name: "电脑配件"
               },
               {
-                name: "智能设备"
-              },
-              {
                 name: "收纳用品"
               },
               {
@@ -154,9 +155,6 @@ export default {
             title: "数码家电",
             path: "",
             list: [
-              {
-                name: "家纺床品"
-              },
               {
                 name: "百变穿搭"
               },
@@ -285,48 +283,82 @@ export default {
   },
   mounted() {
     this.getclassify();
+    //  window.addEventListener("scroll",this.showbtn,true);
   },
-  computed:{
-    setmylist(){
-     this.$axios.get("./data/classify.json").then(res => {
-        let num = this.$store.state.price.count
-        // console.log(num) 
-        this.classifyjson = res.data.recmmend[num].list;
-      });
-      return this.classifyjson
+  computed: {
+    aaa() {
+      //  console.log('wo',this.$store.state.price.classtou.oneclass+''+this.$store.state.price.classtou.twoclass)
+      return (
+        this.$store.state.price.classtou.oneclass +
+        "" +
+        this.$store.state.price.classtou.twoclass
+      );
+    }
+  },
+  watch: {
+    aaa: function(newval, oldval) {
+      // console.log('he',newval,oldval);
+      if (newval == "00") {
+        // console.log('换家纺')
+        this.$store.state.price.count = 0;
+        this.getclassify();
+      } else if (newval == "22") {
+        // console.log('换智能')
+        this.$store.state.price.count = 1;
+        this.getclassify();
+      }
     }
   },
   methods: {
     getclassify() {
       this.$axios.get("./data/classify.json").then(res => {
-        // console.log(res.data.recommend_one);
-        let num = this.$store.state.price.count
-        // console.log(num)
+        let num = this.$store.state.price.count;
         this.classifyjson = res.data.recmmend[num].list;
       });
     },
+    // 搜索功能
     setlist() {
-      let arr=[]
-      if (this.cmin!='' && this.cmax!=''){    
-        this.$store.state.price.min=+this.cmin
-        this.$store.state.price.max=+this.cmam
+      let arr = [];
+      if (this.cmin != "" && this.cmax != "") {
+        this.$store.state.price.min = +this.cmin;
+        this.$store.state.price.max = +this.cmam;
         this.classifyjson.forEach(i => {
-           if(+this.cmin<=i.score&&+this.cmax>=i.score){
-           console.log(i.score)
-           arr.push(i)
-           }
+          if (+this.cmin <= i.score && +this.cmax >= i.score) {
+            console.log(i.score);
+            arr.push(i);
+          }
         });
-        this.classifyjson=arr
+        this.classifyjson = arr;
       }
     },
-    inp(e){
-      if(parseInt(e.data)>=0){
-      }else{
-        this.cmin = ''
-        this.cmax = ''
-
+    // 判断搜素数据是否有效
+    inp(e) {
+      if (parseInt(e.data) >= 0) {
+      } else {
+        this.cmin = "";
+        this.cmax = "";
       }
-    }
+    },
+    // backtop() {
+    //   var timer = setInterval(function() {
+    //     let osTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //     let ispeed = Math.floor(-osTop / 5);
+    //     document.documentElement.scrollTop = document.body.scrollTop =osTop + ispeed;
+    //     console.log('os',osTop)
+    //     console.log('is',osTop)
+
+    //     this.isTop = true;
+    //     if (osTop === 0) {
+    //       clearInterval(timer);
+    //     }
+    //   }, 30);
+    // },
+    // showbtn() {
+    //   let that = this;
+    //   let scrollTop =window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
+     
+    //   that.scrollTop = scrollTop;
+    // }
   }
 };
 </script>

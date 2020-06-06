@@ -1,0 +1,69 @@
+{
+    "shoplist": [
+        {
+            "url": [
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/48/8a/b7/d1dc08d936de8d4de0484e48c903db36.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/39/ae/4b/f8f6a3ae388d0b3e6cae135575e86d46.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/0a/24/9f/8ff6ce48e1b7d1d505d23f89a112eebe.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/a7/5a/80/0c462a4aa06572c51cd59f64efb2da16.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
+            ],
+            "title": "赛诺（SINOMAX）美梦小童调节慢回弹记忆儿童枕头双层调节枕芯（1个）",
+            "oldprice": "368积分",
+            "newprice": "226积分",
+            "shopname":"品质家纺馆",
+            "color": [
+                "粉蓝色",
+                "粉红色"
+            ]
+        },
+        {
+            "url": [
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-01-07/1546843640_44441.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-01-07/1546843646_15479.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-01-07/1546843649_28890.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-01-07/1546843651_66722.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-01-07/1546843654_32030.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
+            ],
+            "title": "洁丽雅 毛巾纯棉洗脸吸水加厚毛巾全棉成人洗脸面巾家用纯棉 7174单条装 红灰绿蓝四色可选  74*34",
+            "oldprice": "",
+            "newprice": "",
+            "shopname":"",
+            "color": [
+                "",
+                ""
+            ]
+        },
+        {
+            "url": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "title": "",
+            "oldprice": "",
+            "newprice": "",
+            "shopname":"",
+            "color": [
+                "",
+                ""
+            ]
+        },
+        {
+            "url": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "title": "",
+            "oldprice": "",
+            "newprice": "",
+            "shopname":"",
+            "color": [
+                "",
+                ""
+            ]
+        }
+    ]
+}
