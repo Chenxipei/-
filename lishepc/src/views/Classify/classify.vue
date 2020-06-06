@@ -366,6 +366,9 @@ export default {
 };
 </script>
 <style scoped lang='less' >
+.classify{
+  background: #f0f0f0;
+}
 * {
   margin: 0;
   padding: 0;

@@ -102,6 +102,11 @@
         </div>
       </div>
     </div>
+    <div class="futto">
+      <div class="w">
+         <img src="../../assets/imgs/index/shopbigpro.png" alt="">
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -135,6 +140,12 @@ export default {
 };
 </script>
 <style scoped lang='less'>
+.futto{
+  background: #f0f0f0;
+  img{
+    margin-top: 30px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
