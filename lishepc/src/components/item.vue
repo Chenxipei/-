@@ -14,7 +14,7 @@
         </span>
       </div>
     </div>
-    <!-- <div >{{arr}}</div> -->
+    
   </div>
 </template>
 <script>

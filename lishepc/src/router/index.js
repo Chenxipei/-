@@ -12,6 +12,10 @@ const routes = [
     path:'/classify',
     component:()=>import('../views/Classify/classify.vue')
   },
+  {
+    path:'/good_detail',
+    component:()=>import('../views/Classify/good_detail.vue')
+  },
 	{
 		path:"/home",
 		component:()=>import("@/views/home/Home.vue")
