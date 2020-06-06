@@ -197,10 +197,6 @@ export default {
     }
   }
 }
-<<<<<<< HEAD
-
-</style>
-=======
   .head-search {
     background: rgb(240, 240, 240);
 
@@ -300,4 +296,3 @@ export default {
   }
 
 </style>
->>>>>>> c4a8bf1fc1fe66c43f379af6444e8588b1e7c5aa
