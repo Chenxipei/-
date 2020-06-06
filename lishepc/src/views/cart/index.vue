@@ -15,15 +15,18 @@
     </header>
     <div class="my-address">
       <div class="address-list">
-        <div class="item" v-for="(tab,i) in tableData" :key="i">
-          <div class="name-box">{{tab.name}}</div>
+        <div class="item" v-for="(tab,i) in addressData" :key="i">
+          <div class="name-box">
+            {{tab.name}}
+            <i v-if="i===0" class="icon el-icon-check"></i>
+          </div>
           <div class="name">{{tab.name}}</div>
-          <div class="addrress">{{tab.address}}</div>
+          <div class="addrress">{{tab.area.join("")}}{{tab.address}}</div>
           <div class="phone">{{tab.phone}}</div>
           <div class="edit">
-            <a class="table-edit" href="#" v-if="i!==0">设为默认</a>
-            <a class="table-edit" href="#">编辑</a>
-            <a class="table-edit" href="#" v-if="i!==0">删除</a>
+            <a class="table-edit" href="#" @click.prevent="toFirst(i)" v-if="i!==0">设为默认</a>
+            <a class="table-edit" href="#" @click.prevent="editAddress(i)">编辑</a>
+            <a class="table-edit" href="#" @click.prevent="delAddress(i)" v-if="i!==0">删除</a>
             <a class="table-edit" href="#" v-if="i===0">默认地址不可删除</a>
           </div>
         </div>
@@ -36,7 +39,7 @@
     <div class="cart">
       <div class="c-title">
         心意商城
-        <span class="cart-num">0</span>
+        <span class="cart-num">{{cartData.length}}</span>
       </div>
       <div class="tab-title">
         <div>选择</div>
@@ -67,16 +70,16 @@
           </div>
           <div class="all-price">{{parseInt(item.price)*item.num}}</div>
           <div class="del">
-            <a href="#">删除</a>
+            <a href="#" @click.prevent="delCartItem(i)">删除</a>
           </div>
         </div>
       </div>
 
       <div class="tab-total">
         <div class="total-left selectAll">
-          <i :class="selectedAll?'el-icon-success':'el-icon-circle-check'"></i>
+          <i @click="selectAllFn" :class="selectedAll?'el-icon-success':'el-icon-circle-check'"></i>
           <span class="selall">全选</span>
-          <a href="#" class="del">删除</a>
+          <a href="#" class="del" @click.prevent="delCartData">删除</a>
         </div>
         <div class="total-right">
           <div class="all-num">
@@ -107,54 +110,86 @@
         <el-form-item label="手机号" prop="phone" v-model="ruleForm.phone">
           <el-input v-model="ruleForm.phone"></el-input>
         </el-form-item>
-        <el-form-item label="详细地址" prop="desc">
-          <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+        <el-form-item label="选择地区" prop="area" v-model="ruleForm.area">
+          <el-cascader v-model="ruleForm.area" :options="areaOptions" :props="areaName"></el-cascader>
         </el-form-item>
-        <el-form-item label="设为默认地址" prop="delivery">
-          <el-switch v-model="ruleForm.delivery"></el-switch>
+
+        <el-form-item label="详细地址" prop="address">
+          <el-input type="textarea" v-model="ruleForm.address"></el-input>
+        </el-form-item>
+        <el-form-item label="设为默认地址" prop="defaultAddressStatus">
+          <el-switch v-model="ruleForm.defaultAddressStatus"></el-switch>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">确 定</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import area from "@/lib/area";
 export default {
   data() {
+    var checkPhone = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error("手机号不能为空"));
+      }
+      if (!/^1[3456789]\d{9}$/.test(value)) {
+        callback(new Error("请输入正确的手机号"));
+      } else {
+        callback();
+      }
+    };
     return {
+      saveShow: false,
       ruleForm: {
         name: "",
+        defaultAddressStatus: true,
+        area: [],
         phone: "",
-        desc: ""
+        address: ""
       },
+      areaName: {
+        value: "name",
+        label: "name",
+        children: "city"
+      },
+      areaOptions: [],
       rules: {
         name: [
-          { required: true, message: "清填写姓名", trigger: "blur" },
+          { required: true, message: "请填写姓名", trigger: "blur" },
           { min: 2, max: 5, message: "长度在 2 到 5 个字符", trigger: "blur" }
         ],
-        phone: [
-          { required: true, message: "手机号不能为空", trigger: "blur" },
-          { type: "number", message: "手机号必须为数字值", trigger: "blur" }
+        phone: [{ required: true, validator: checkPhone, trigger: "blur" }],
+        address: [
+          { required: true, message: "请填写详细地址", trigger: "blur" }
         ],
-        desc: [{ required: true, message: "请填写详细地址", trigger: "blur" }]
+        area: [
+          {
+            required: true,
+            message: "请填写区域",
+            trigger: "blur"
+          }
+        ]
       },
       formLabelWidth: "120px",
       dialogFormVisible: false,
-      selectedAll: true,
+      // selectedAll: true,
       selectGoodsNum: 0,
-      tableData: [
+      addressData: [
         {
           name: "老刘",
-          address: "上海市普陀区金沙江路 1518 弄",
+          address: "金沙江路1",
+          area: ["上海", "上海", "普陀区"],
           phone: 13188888888
         },
         {
           name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          address: "金沙江路2",
+          area: ["上海", "上海", "普陀区"],
           phone: 13188888888
         }
       ],
@@ -182,6 +217,7 @@ export default {
   created() {
     // 初始化选中状态
     this.init_cart_data();
+    this.init_area();
   },
   computed: {
     allPrice() {
@@ -194,6 +230,9 @@ export default {
       });
       return all_price;
     },
+    selectedAll() {
+      return this.cartData.every(item => item.selected == true);
+    },
     allNum() {
       let all_num = 0;
       this.cartData.forEach(item => {
@@ -205,6 +244,29 @@ export default {
     }
   },
   methods: {
+    init_area() {
+      // 初始化城市区域
+      // console.log(area.area)
+      let newAreaOptions = area.area.map((item, i) => {
+        let newCityName = item.city.map((item, i) => {
+          let newAreaName = item.area.map(item => {
+            return {
+              name: item
+            };
+          });
+          return {
+            name: item.name,
+            city: [...newAreaName]
+          };
+        });
+        return {
+          name: item.name,
+          city: [...newCityName]
+        };
+      });
+      console.log("newAreaOptions", newAreaOptions);
+      this.areaOptions = [...newAreaOptions];
+    },
     init_cart_data() {
       this.cartData.map(item => (item.selected = true));
     },
@@ -217,6 +279,92 @@ export default {
       this.cartData.__ob__.dep.notify();
       // this.$set(this.cartData[i], `selected`, false)
       // console.log(this.cartData)
+    },
+    selectAllFn() {
+      if (this.selectedAll) {
+        this.cartData.map(item => (item.selected = false));
+      } else {
+        this.cartData.map(item => (item.selected = true));
+      }
+      this.cartData.__ob__.dep.notify();
+      // console.log(this.cartData)
+    },
+    delCartData() {
+      this.cartData = [];
+    },
+    delCartItem(i) {
+      this.cartData.splice(i, 1);
+    },
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          // console.log(this.ruleForm);
+
+          let {
+            name,
+            address,
+            area,
+            phone,
+            defaultAddressStatus
+          } = this.ruleForm;
+          console.log(area);
+          if (edit) {
+          } else {
+            if (defaultAddressStatus) {
+              this.addressData.unshift({
+                name,
+                address: `${area.join("")}${address}`,
+                area,
+                phone
+              });
+            } else {
+              this.addressData.push({
+                name,
+                address: `${area.join("")}${address}`,
+                area,
+                phone
+              });
+            }
+          }
+
+          this.ruleForm = {
+            name: "",
+            address: "",
+            phone: "",
+            area: [],
+            defaultAddressStatus: true
+          };
+          this.$message({
+            message: "添加成功",
+            type: "success",
+            duration: 1000
+          });
+          this.dialogFormVisible = false;
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    delAddress(i) {
+      this.addressData.splice(i, 1);
+    },
+    editAddress(i) {
+      // let { name, address, phone, area } = this.addressData[i];
+
+      // this.ruleForm = {
+      //   name,
+      //   address,
+      //   phone,
+      //   area,
+      //   defaultAddressStatus: true
+      // };
+      // this.dialogFormVisible = true;
+    },
+    toFirst(index) {
+      if (index != 0) {
+        this.addressData.unshift(this.addressData.splice(index, 1)[0]);
+      }
     }
   }
 };
@@ -309,8 +457,19 @@ export default {
           &.name-box {
             padding: 6px 0;
             width: 140px;
+            position: relative;
             text-align: center;
             border: 1px solid #ff0000;
+            overflow: hidden;
+            .el-icon-check {
+              position: absolute;
+              right: -2px;
+              bottom: -8px;
+              color: #fff;
+              background: rgb(245, 80, 83);
+              width: 20px;
+              height: 20px;
+            }
           }
         }
         .edit {
