@@ -217,6 +217,7 @@ export default {
   created() {
     // 初始化选中状态
     this.init_cart_data();
+    // 初始化城市区域
     this.init_area();
   },
   computed: {
@@ -245,7 +246,6 @@ export default {
   },
   methods: {
     init_area() {
-      // 初始化城市区域
       // console.log(area.area)
       let newAreaOptions = area.area.map((item, i) => {
         let newCityName = item.city.map((item, i) => {
@@ -308,23 +308,21 @@ export default {
             defaultAddressStatus
           } = this.ruleForm;
           console.log(area);
-          if (edit) {
+
+          if (defaultAddressStatus) {
+            this.addressData.unshift({
+              name,
+              address: `${area.join("")}${address}`,
+              area,
+              phone
+            });
           } else {
-            if (defaultAddressStatus) {
-              this.addressData.unshift({
-                name,
-                address: `${area.join("")}${address}`,
-                area,
-                phone
-              });
-            } else {
-              this.addressData.push({
-                name,
-                address: `${area.join("")}${address}`,
-                area,
-                phone
-              });
-            }
+            this.addressData.push({
+              name,
+              address: `${area.join("")}${address}`,
+              area,
+              phone
+            });
           }
 
           this.ruleForm = {
@@ -351,7 +349,6 @@ export default {
     },
     editAddress(i) {
       // let { name, address, phone, area } = this.addressData[i];
-
       // this.ruleForm = {
       //   name,
       //   address,
