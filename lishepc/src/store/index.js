@@ -13,7 +13,6 @@ export default new Vuex.Store({
         oneclass:'',
         twoclass:''
        }
-
      }
   },
   mutations: {

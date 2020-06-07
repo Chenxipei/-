@@ -27,15 +27,18 @@
         </li>
       </ul>
     </div> -->
+		<Totop></Totop>
   </div>
 </template>
 <script>
 import item from "../../components/item.vue";
 import zwhead from "../../components/zwhead.vue";
+import Totop from '../../components/Totop.vue'
 export default {
   components: {
     item,
-    zwhead
+    zwhead,
+		Totop
   },
   data() {
     return {
@@ -285,6 +288,7 @@ export default {
     this.getclassify();
     //  window.addEventListener("scroll",this.showbtn,true);
   },
+  // 监控路由
   computed: {
     aaa() {
       //  console.log('wo',this.$store.state.price.classtou.oneclass+''+this.$store.state.price.classtou.twoclass)
@@ -295,6 +299,7 @@ export default {
       );
     }
   },
+  // 监控路由
   watch: {
     aaa: function(newval, oldval) {
       // console.log('he',newval,oldval);
@@ -339,6 +344,7 @@ export default {
         this.cmax = "";
       }
     },
+    // 回到顶部
     // backtop() {
     //   var timer = setInterval(function() {
     //     let osTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -363,6 +369,9 @@ export default {
 };
 </script>
 <style scoped lang='less' >
+.classify{
+  background: #f0f0f0;
+}
 * {
   margin: 0;
   padding: 0;
