@@ -285,6 +285,7 @@ export default {
     this.getclassify();
     //  window.addEventListener("scroll",this.showbtn,true);
   },
+  // 监控路由
   computed: {
     aaa() {
       //  console.log('wo',this.$store.state.price.classtou.oneclass+''+this.$store.state.price.classtou.twoclass)
@@ -295,6 +296,7 @@ export default {
       );
     }
   },
+  // 监控路由
   watch: {
     aaa: function(newval, oldval) {
       // console.log('he',newval,oldval);
@@ -339,6 +341,7 @@ export default {
         this.cmax = "";
       }
     },
+    // 回到顶部
     // backtop() {
     //   var timer = setInterval(function() {
     //     let osTop = document.documentElement.scrollTop || document.body.scrollTop;

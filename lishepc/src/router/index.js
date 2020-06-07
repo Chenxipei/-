@@ -40,6 +40,10 @@ const routes = [
   {
     path: "/register",
     component: () => import("../views/login/register.vue")
+  },
+  {
+    path: "/entry",
+    component:() => import("../views/entry/entry.vue")
   }
 ]
 const router = new VueRouter({

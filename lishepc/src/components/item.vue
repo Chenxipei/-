@@ -1,7 +1,7 @@
 <template>
   <div class="shoplist">
     <!-- {{list}} -->
-    <div class="item" v-for="(i,j) in list" :key="j">
+    <div @click="togoodDetail(j)" class="item" v-for="(i,j) in list" :key="j">
       <img :src="i.url" alt />
       <div class="details">
         <h3>{{i.score}}积分</h3>
@@ -20,6 +20,17 @@
 <script>
 export default {
   props: ["list"],
+  methods:{
+    togoodDetail(i){
+      // console.log(i)
+      this.$router.push({
+        path:'/good_detail',
+        query:{
+          itemld:i
+        }
+      })
+    }
+  }
 };
 </script>
 <style scoped lang='less'>
