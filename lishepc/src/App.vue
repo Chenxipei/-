@@ -3,10 +3,10 @@
 		<!-- <head-nav v-if="$route.path!='/login'&&$route.path!='/register'"></head-nav> -->
 		<top-Head></top-Head>
 		<!--    <head-nav></head-nav> -->
-		<head-search v-if="$route.path!='/cart'"></head-search>
-		<headnav v-if="$route.path!='/cart'"></headnav>
+		<!-- <head-search v-if="$route.path!='/cart'"></head-search> -->
+		<!-- <headnav v-if="$route.path!='/cart'"></headnav> -->
 		<router-view></router-view>
-		<foot></foot>
+		<!-- <foot></foot> -->
 	</div>
 </template>
 <script>
