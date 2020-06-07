@@ -95,6 +95,13 @@
         <p class="bottom">
           <span>普通快递 运费：</span>
           <span>0积分</span>
+<<<<<<< HEAD
+=======
+          <span class="fr">
+            总质量:0.25kg；店铺总计:
+            <b>150积分</b>
+          </span>
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
         </p>
       </div>
       <!-- 优惠券 -->
@@ -184,10 +191,17 @@ export default {
     };
   },
   methods: {
+<<<<<<< HEAD
     goCart(){
       this.$router.push("/cart")
     }
   },
+=======
+    goCart() {
+      this.$router.push("/cart");
+    }
+  }
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
 };
 </script>
 <style lang="less" scope>
@@ -245,6 +259,10 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
+=======
+//收货地址
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
 .my-address {
   font-size: 14px;
 }
@@ -297,6 +315,10 @@ export default {
     font-size: 13px;
   }
 }
+<<<<<<< HEAD
+=======
+//商品列表
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
 .wrap {
   h4 {
     padding: 20px 0;
@@ -377,7 +399,11 @@ export default {
 }
 .group_item {
   width: 1000px;
+<<<<<<< HEAD
   height: 143px;
+=======
+  height: 135px;
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
   background: rgb(245, 253, 255);
   .shopping_ul {
     padding-top: 16px;
@@ -458,7 +484,17 @@ export default {
     font-size: 12px;
     color: #666;
   }
+<<<<<<< HEAD
 }
+=======
+  .fr {
+    b {
+      color: rgb(245, 80, 83);
+    }
+  }
+}
+// 优惠券
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
 .discounts {
   margin-top: 30px;
   position: relative;
@@ -589,11 +625,19 @@ export default {
 // 底部按钮
 .bottom_cart {
   text-align: right;
+<<<<<<< HEAD
   .goback img{
    margin-right: 5px;
     vertical-align: baseline;
   }
    .dindan{
+=======
+  .goback img {
+    margin-right: 5px;
+    vertical-align: baseline;
+  }
+  .dindan {
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
     background: #ff4138;
     color: #fff;
     height: 40px;

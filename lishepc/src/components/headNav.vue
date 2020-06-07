@@ -26,6 +26,17 @@
               <img :src="l.imgSrc" alt />
               <a href="#" @click="zwget(l.name)">{{l.name}}</a>
             </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        </div>
+        <div  class="n-l-list" v-show="curr==i&&item.list.length>0" @mouseover="curr = i"  @mouseout="curr=-1" >
+          <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
+            <img :src="l.imgSrc" alt />
+            <a href="#" @click="zwget(i,j)">{{l.name}}</a>
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
           </div>
         </nav>
       </div>
@@ -166,11 +177,27 @@ export default {
     };
   },
   methods: {
-    zwget(val) {
+    zwget(i,j) {
+     // console.log(i-1,j)//设置路由参数
+  this.$store.state.price.classtou.oneclass=--i;
+  this.$store.state.price.classtou.twoclass=j; 
       this.$router.push({
+<<<<<<< HEAD
         path: "/classify",
         query: {
           val
+=======
+<<<<<<< HEAD
+        path: "/classify",
+        query: {
+          val
+=======
+        path:"/classify",
+        query:{
+          oneclass:i,
+          twoclass:j
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
         }
       });
     },
