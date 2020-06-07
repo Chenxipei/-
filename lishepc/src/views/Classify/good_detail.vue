@@ -72,7 +72,7 @@
             <div>
               <p>菜单</p>
               <!-- <input type="text"> -->
-             
+             <button @click="goCart()">加入购物车</button>
               <!-- <v-distpicker v-show="isShowProvince" :class="{'disabled-select': dialogStatus=='update'}" :province="temp.addressprovince" :city="temp.addresscity" :area="temp.address__dist" @selected="onSelected"></v-distpicker> -->
             </div>
           </div>

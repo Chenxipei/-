@@ -6,6 +6,7 @@
     <headnav v-if="$route.path!='/cart'"></headnav>
     <router-view></router-view>
     <foot></foot>
+  </div>
 </template>
 <script>
 import headnav from "_c/headNav.vue";
@@ -15,6 +16,9 @@ import goodList from "./views/productList/goodList";
 import foot from "./components/footer";
 export default {
   name: "app",
+  mounted(){
+    console.log(this)
+  },
   components: {
     headnav,
     topHead,

@@ -366,11 +366,6 @@ export default {
 };
 </script>
 <style scoped lang='less' >
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .w {
   width: 1200px;
