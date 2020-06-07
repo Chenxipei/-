@@ -56,7 +56,7 @@
                 <span class="details_title">颜色</span>:
               </div>
               <div class="detail_right">
-                <span v-for="(i,j) in shopobj.color" :key="j">{{i}}</span>
+                <span @click="coloractive=j" :class="{active:coloractive==j}" v-for="(i,j) in shopobj.color" :key="j">{{i}}</span>
               </div>
             </div>
             <div class="data_content content_btn">
@@ -64,9 +64,9 @@
                 <div class="btn">
                   <input type="text" v-model="num" />
                   <p>
-                    <a href="#" class="hasbor" @click="num++">+</a>
+                    <span class="hasbor" @click="num++">+</span>
 
-                    <a href="#" @click="num>1?(num--):num">-</a>
+                    <span @click="num>1?(num--):num">-</span>
                   </p>
                 </div>
               </div>
@@ -118,7 +118,8 @@ export default {
     return {
       shopobj: "",
       count: 0,
-      num: 1
+      num: 1,
+      coloractive:0
     };
   },
   mounted() {
@@ -256,11 +257,23 @@ export default {
             margin-bottom: 20px;
             .detail_right {
               span {
-                border: 2px solid #ff3737;
-                color: #ff3737;
+          
+                border:1px solid #7f667f;
+                color: #7f667f;
                 padding: 2px 10px;
                 margin-right: 10px;
               }
+              span:hover{
+                border: 2px solid #ff3737;
+                color: #ff3737;
+
+
+              }
+              .active{
+                 border: 2px solid #ff3737;
+                color: #ff3737;
+              }
+
             }
           }
           .content_distpicker {
@@ -300,7 +313,7 @@ export default {
                 }
                 p {
                   width: 25px;
-                  a {
+                  span {
                     display: block;
                     width: 100%;
                     height: 50%;
@@ -308,6 +321,7 @@ export default {
                     line-height: 25px;
                     border-left: 1px solid #c0c0c0;
                     background: #f3f3f3;
+                     cursor:pointer;
                   }
                   .hasbor {
                     border-bottom: 1px solid #c0c0c0;
