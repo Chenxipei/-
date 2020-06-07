@@ -19,8 +19,12 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    
   },
   actions: {
+    addCart({commit},goodsId){
+      // this.$axios.get("/data/") 
+    }
   },
   modules: {
   }
