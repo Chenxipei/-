@@ -11,7 +11,11 @@
     <!--  详情列表1-->
     <div class="brand_title" v-for="(i,index) in good_list" :key="index">
       <h3 :class="{'cnxh-title':i.title=='猜您喜欢'}" ref="title">{{i.title}}</h3>
-      <ul class="component-item" :class="{'yxyl':i.title=='优选有礼','cnxh':i.title=='猜您喜欢'}">
+      <ul
+        v-if="i.title!='精选店铺'"
+        class="component-item"
+        :class="{'yxyl':i.title=='优选有礼','cnxh':i.title=='猜您喜欢'}"
+      >
         <li v-for="(item,index) in i.group_list" :key="index">
           <img :src="item.img_url" class="component_r_img" />
           <!-- 详情列表2 -->
@@ -40,19 +44,32 @@
           </div>
         </li>
       </ul>
+      <!-- 轮播图区域 -->
+      <div v-else id="jxdp">
+        <div class="swiper-container" ref="banner">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="(banner,i) in i.group_list" :key="i">
+              <img :src="banner.imgSrc" alt />
+            </div>
+          </div>
+          <!-- 如果需要导航按钮 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
     </div>
-    <!-- 底部banner -->
+    <!-- 底部 -->
     <div class="banner1">
       <img src="../../assets/imgsrc/details/1589262526_28974.png" alt />
     </div>
     <!-- 右侧导航 -->
-    <div class="nav-float-l">
+    <div class="nav-float-l" v-show="showNav">
       <div class="nav-float-l-top">
         <p>居家生活</p>
         <img src="../../assets/imgsrc/details/1591327317.jpg" alt />
       </div>
       <div class="nav_link" v-for="(item,i) in navTitle" :key="i">
-        <p :class="{'active':i===navActive}">{{item}}</p>
+        <p :class="{'active':i===navActive}" @click="goItem(i)">{{item}}</p>
       </div>
     </div>
   </div>
@@ -65,8 +82,9 @@ export default {
   data() {
     return {
       // 存在对象里面
-      navActive: "",
-      navTitle: ["精选大牌", "优选有礼", "猜您喜欢"],
+      navActive: -1,
+      showNav: false,
+      navTitle: ["精选大牌", "精选店铺","优选有礼", "猜您喜欢"],
       carousel: [
         {
           img:
@@ -79,21 +97,52 @@ export default {
       ],
       good_list: [],
       banner_list: [],
-      yxyl: []
+      yxyl: [],
+      // 存h3数组
+      positionArr: []
     };
   },
-  mounted() {
+
+  created() {
     this.getlist();
-    window.onscroll = e => {
-      let scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
+  },
+  mounted() {
+    setTimeout(() => {
+      // 获取所有h3标签
       let titleEl = Array.from(this.$refs.title);
       titleEl.forEach((item, i) => {
-        if (scrollTop >= item.offsetTop) {
-          this.navActive = i;
+        this.positionArr.push(item.offsetTop + 3);
+      });
+      let mySwiper = new Swiper(this.$refs.banner, {
+        loop: true, // 循环模式选项
+        observeParents: true,
+        observer: true,
+        slidesPerView: 4, //显示4张图片
+        autoplay: true,
+        // 如果需要前进后退按钮
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
         }
       });
-    };
+    }, 1000);
+    this.$nextTick(() => {
+      window.onscroll = e => {
+        let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= this.positionArr[0]) {
+          this.showNav = true;
+        } else {
+          this.showNav = false;
+        }
+        let titleEl = Array.from(this.$refs.title);
+        titleEl.forEach((item, i) => {
+          if (scrollTop >= item.offsetTop) {
+            this.navActive = i;
+          }
+        });
+      };
+    });
   },
   methods: {
     getlist() {
@@ -102,12 +151,31 @@ export default {
         this.good_list = res.data.group;
         this.banner_list = res.data.banner;
       });
+    },
+    goItem(i) {
+      console.log(this.positionArr);
+      //滚动条距离h3标签的位置
+      document.documentElement.scrollTop = this.positionArr[i];
+      // 兼容性写法
+      document.body.scrollTop = this.positionArr[i];
     }
-  },
-  watch: {}
+  }
 };
 </script>
 <style lang="less" scope>
+// swiper样式
+.swiper-container {
+  .swiper-slide {
+    margin: 0 10px;
+  }
+  --swiper-theme-color: #ff0000; /* 设置Swiper风格 */
+  --swiper-navigation-color: #fff; /* 单独设置按钮颜色 */
+  --swiper-navigation-size: 30px; /* 设置按钮大小 */
+}
+#jxdp{
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
 .content {
   background: rgb(245, 245, 245);
   .brand_title {
@@ -279,17 +347,17 @@ export default {
     .nav_link {
       p {
         &.active {
-          background: rgb(255,65,56);
+          background: rgb(255, 65, 56);
           border-radius: 5px;
+          color: #fff;
         }
         color: #666;
         width: 62px;
-        height: 25px;
+        height: 30px;
         font-size: 12px;
-        line-height: 25px;
-        display: block;
+        line-height: 30px;
         text-align: center;
-        float: left;
+        cursor: pointer;
         margin: 6px 0;
         margin-left: 10px;
         overflow: hidden;

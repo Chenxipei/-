@@ -89,7 +89,7 @@
               <span>{{allPrice}}</span>
             </p>
           </div>
-          <div class="total-btn">去结算</div>
+          <div class="total-btn" @click="gototal">去结算</div>
         </div>
       </div>
     </div>
@@ -218,7 +218,13 @@ export default {
       // this.$set(this.cartData[i], `selected`, false)
       // console.log(this.cartData)
     }
-  }
+  },
+  // 去结算
+  methods: {
+    gototal(){
+      this.$router.push("/total")
+    }
+  },
 };
 </script>
 
