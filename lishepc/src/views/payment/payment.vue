@@ -9,7 +9,7 @@
 			<div class="payment_content_middle">
 				<ul>
 					<li>
-						<!-- <img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt=""> -->
+						<img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt="">
 						积分支付方式
 					</li>
 					<li>
@@ -24,16 +24,16 @@
 				</ul>
 				<ul>
 					<li>
-						<!-- <img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt=""> -->
+						<img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt="">
 						现金支付方式
 					</li>
 					<li>
 						<el-radio-group v-model="radio4" size="medium " text-color>
 							<el-radio label="2" border>
-								<!-- <img src="../../assets/imgs/icon/payment_ic_wepay.png" alt=""> -->
+								<img src="../../assets/imgs/icon/payment_ic_wepay.png" alt="">
 							微信支付</el-radio>
 							<el-radio label="3" border>
-								<!-- <img src="../../assets/imgs/icon/payment_ic_alipay.png" alt=""> -->
+								<img src="../../assets/imgs/icon/payment_ic_alipay.png" alt="">
 								支付宝</el-radio>
 						</el-radio-group>
 					</li>
@@ -101,7 +101,7 @@
 
 	.el-radio__input.is-checked .el-radio__inner {
 		border: none;
-		// background: url(..) no-repeat;
+		background: url(../../assets/imgs/icon/cart_ic_choose_select.png) no-repeat;
 		background-size: cover;
 
 		&::after {
