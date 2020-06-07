@@ -12,17 +12,13 @@
  <div id="app">
 
     <top-Head></top-Head>
-
     <head-nav></head-nav>
-		<router-view></router-view>
-
-    <goodList></goodList>
+	<router-view></router-view>
     <foot></foot>
   </div>
 </template>
 <script>
 import topHead from "./components/topHead";
-import goodList from "./views/productList/goodList";
 import headNav from "_c/headNav.vue";
 import foot from "./components/footer";
 export default {
@@ -30,8 +26,7 @@ export default {
   components: {
     headNav,
     topHead,
-    foot,
-    goodList
+    foot
 
 }}
 </script>
