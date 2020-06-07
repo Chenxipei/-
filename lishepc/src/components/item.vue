@@ -1,7 +1,7 @@
 <template>
   <div class="shoplist">
     <!-- {{list}} -->
-    <div class="item" v-for="(i,j) in list" :key="j">
+    <div @click="togoodDetail(j)" class="item" v-for="(i,j) in list" :key="j">
       <img :src="i.url" alt />
       <div class="details">
         <h3>{{i.score}}积分</h3>
@@ -14,20 +14,32 @@
         </span>
       </div>
     </div>
-    <!-- <div >{{arr}}</div> -->
+    
   </div>
 </template>
 <script>
 export default {
   props: ["list"],
+  methods:{
+    togoodDetail(i){
+      console.log(i)
+      this.$router.push({
+        path:'/good_detail',
+        query:{
+          itemld:i
+        }
+      })
+    }
+  }
 };
 </script>
 <style scoped lang='less'>
 .shoplist {
   margin-top: 20px;
+  width: 1210px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
   .item:hover {
   
     box-shadow: 0 5px 10px 2px #cccccc;
@@ -35,6 +47,7 @@ export default {
   }
   .item {
     width: 230px;
+    margin-right: 12px;
     background: #ffffff;
     text-align: center;
     margin-bottom: 10px;

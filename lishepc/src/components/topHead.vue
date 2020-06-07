@@ -58,11 +58,16 @@
         </ul>
       </div>
     </div>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
   </div>
 </template>
 <script>
 export default {
   name: "topHead",
+ 
   methods: {
     showFollow() {
       this.$refs.follow.style.height = 480 + "px";
@@ -192,5 +197,8 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
  
+=======
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
 </style>
