@@ -1,115 +1,4 @@
 <template>
-
-<!-- 	<div id="main-info">
-		<div class="w">
-			<div class="detail">
-				<div class="details_left">
-					<div class="preview_big"> -->
-						<!-- <img :src="shopobj_url" alt /> -->
-				<!-- 	</div>
-					<div class="preview_small">
-						<img @mouseover="setcurr(j)" v-for="(i,j) in shopobj.url" :key="j" :src="i" alt />
-					</div>
-				</div>
-				<div class="details_middle">
-					<div class="goods_name">{{shopobj.title}}</div>
-					<div class="product_data_content">
-						<div class="data_content content_price">
-							<div class="detail_left">
-								<span class="details_title">单价</span>:
-							</div>
-							<div class="detail_right">
-								<span>{{shopobj.newprice}}</span>
-								<s>{{shopobj.oldprice}}</s>
-							</div>
-						</div>
-						<div class="data_content content_discount">
-							<div class="detail_left">
-								<span class="details_title">促销信息</span>:
-							</div>
-							<div class="detail_right">
-								<span>店铺满{{shopobj.discount}}积分包邮</span>
-							</div>
-						</div>
-					</div>
-					<div class="address_content_wrap">
-						<div class="data_content content_shopname">
-							<div class="detail_left">
-								<span class="details_title">店铺</span>:
-							</div>
-							<div class="detail_right">
-								<span>{{shopobj.shopname}}</span>
-							</div>
-						</div>
-						<div class="data_content content_distpicker">
-							<div class="detail_left">
-								<span class="details_title">配送至</span>:
-							</div>
-							<div class="detail_right">
-								<v-distpicker></v-distpicker>
-								<p>
-									<span>23:59前下单</span>，预计48小时内发货， 受全国道路交通影响，您的订单以快递实际派送为准，请您耐心等待
-								</p>
-							</div>
-						</div>
-						<div class="data_content content_color">
-							<div class="detail_left">
-								<span class="details_title">颜色</span>:
-							</div>
-							<div class="detail_right">
-								<span v-for="(i,j) in shopobj.color" :key="j">{{i}}</span>
-							</div>
-						</div>
-						<div class="data_content content_btn">
-							<div class="detail_left">
-								<div class="btn">
-									<input type="text" v-model="num" />
-									<p>
-										<a href="#" class="hasbor" @click="num++">+</a>
-
-										<a href="#" @click="num>1?(num--):num">-</a>
-									</p>
-								</div>
-							</div>
-							<div class="detail_right">
-								<div>
-									<button class="buy">立即购买</button>
-
-								</div>
-								<div>
-									<button class="car">加入购物车</button>
-
-								</div>
-								<div>
-									<button class="enshrine">
-										<p>☆</p>
-
-										<span>收藏</span>
-									</button>
-
-								</div>
-
-							</div>
-						</div>
-						<div class="data_content content_tishi">
-							<div class="detail_left">
-								<span class="details_title">温馨提示</span>
-							</div>
-							<div class="detail_right">
-								<span>支持七天无理由退货</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<div class="futto">
-			<div class="w">
-				<img src="../../assets/imgs/index/shopbigpro.png" alt="">
-			</div>
-		</div> -->
-
   <div id="main-info">
     <div class="w">
       <div class="detail">
@@ -221,6 +110,7 @@
     </div>
 		<!-- 回到顶部 -->
 		<Totop></Totop>
+		<fixedNav></fixedNav>
 	</div>
 	
 </template>
@@ -229,6 +119,7 @@
 	// import VDistpicker from 'v-distpicker'
 	import VDistpicker from "v-distpicker";
 	import Totop from '../../components/Totop.vue'
+	import fixedNav from '../../components/fixedNav.vue'
 	export default {
 		data() {
 			return {
@@ -264,7 +155,8 @@
 		},
 		components: {
 			VDistpicker,
-			Totop
+			Totop,
+			fixedNav
 		}
 	};
 </script>

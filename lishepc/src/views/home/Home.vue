@@ -114,6 +114,7 @@
 	import homelist from './homeList.vue'
 	import banner from '../../components/Banner.vue'
 	import Totop from '../../components/Totop.vue'
+	
 	export default {
 		name: 'Home',
 		components: {
