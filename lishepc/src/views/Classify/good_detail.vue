@@ -4,7 +4,7 @@
       <div class="detail">
         <div class="details_left">
           <div class="preview_big">
-            <!-- <img :src="shopobj.url[count]" alt /> -->
+            <img :src="ceshi" alt />
           </div>
           <div class="preview_small">
             <img @mouseover="setcurr(j)" v-for="(i,j) in shopobj.url" :key="j" :src="i" alt />
@@ -88,8 +88,10 @@ export default {
   data() {
     return {
       shopobj: "",
-      count: 0,
-      
+      count: 0,//大图
+      num: 1,//商品数
+      coloractive:0,
+      ceshi:''
     };
   },
   mounted() {
@@ -101,19 +103,13 @@ export default {
       this.$axios.get("./data/shopExplain.json").then(res => {
         // console.log(res.data.shoplist[id]);
         this.shopobj = res.data.shoplist[id];
+        this.ceshi = res.data.shoplist[id].url[0]
       });
     },
+// 设置大图片
     setcurr(val) {
-      console.log(val);
-      this.count = val;
-    },
-     handleChange(value) {
-        console.log(value);
-      }
-    // onSelected(data) {
-    //   alert(data.province + ' | ' + data.city + ' | ' + data.area)
-    //   console.log(data)
-    // },
+     this.ceshi = this.shopobj.url[val]
+    }
   },
   components: { VDistpicker }
 };
