@@ -108,11 +108,14 @@
          <img src="../../assets/imgs/index/shopbigpro.png" alt="">
       </div>
     </div>
+		<!-- 回到顶部 -->
+		<Totop></Totop>
   </div>
 </template>
 <script>
 // import VDistpicker from 'v-distpicker'
 import VDistpicker from "v-distpicker";
+import Totop from '../../components/Totop.vue'
 export default {
   data() {
     return {
@@ -138,7 +141,7 @@ export default {
       this.count = val;
     }
   },
-  components: { VDistpicker }
+  components: { VDistpicker ,Totop}
 };
 </script>
 <style scoped lang='less'>

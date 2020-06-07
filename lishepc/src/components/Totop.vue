@@ -1,10 +1,11 @@
 <template>
 	<div class="toTop" v-show="btnFlag">
+		<slot name="nav-float-l"></slot>
 		<a href="#">
 			<i class="kefu"></i>
 			<br>联系客服</a>
-		<div><i class="saoma"></i><br>扫码下载</div>
-		<div @click="backTop"><i class="totop"></i><br>回到顶部</div>
+		<div class="saomabox"><i class="saoma"></i><br>扫码下载</div>
+		<div @click="backTop" class="totopbox"><i class="totop"></i><br>回到顶部</div>
 	</div>
 </template>
 
@@ -50,10 +51,11 @@
 
 <style lang="less">
 	.toTop {
+		width: 100px;
 		z-index: 99;
 		position: fixed;
 		right: 20px;
-		top: 300px;
+		top: 200px;
 		background: #fff;
 		display: flex;
 		text-align: center;
@@ -78,18 +80,18 @@
 				cursor: pointer;
 			}
 
-			&:nth-child(2) {
-				&:hover i {
-					background: url(../assets/imgs/icon/icon_footer_select2.png);
-				}
-			}
+		}
 
-			&:nth-child(3) {
-				&:hover i {
-					background: url(../assets/imgs/icon/icon_footer_select1.png);
-				}
+		.saomabox {
+			&:hover i {
+				background: url(../assets/imgs/icon/icon_footer_select2.png);
 			}
+		}
 
+		.totopbox {
+			&:hover i {
+				background: url(../assets/imgs/icon/icon_footer_select1.png);
+			}
 		}
 
 		i {
