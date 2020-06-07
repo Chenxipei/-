@@ -212,7 +212,7 @@ export default {
   methods: {
     addCart() {
       let goods = {
-        cover:this.shopobj.,
+        cover:this.shopobj.url[0],
         name: this.shopobj.title,
         attr: "口味：奶茶*1+鲜奶*1+酸奶*1",
         price: "100积分",
