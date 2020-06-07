@@ -153,7 +153,7 @@
 						this.tiktok = res.data.group[2]
 						this.qingdan = res.data.group[3]
 						this.likeArr = res.data.group[4]
-						console.log(res.data.group[4])
+						console.log(res)
 					})
 					.catch(err => {
 						console.log(err)
@@ -161,7 +161,6 @@
 				// 请求轮播图数据
 				this.$axios.get('/data/index/banner.json')
 					.then(res => {
-						console.log(res.data.banner)
 						this.bannerArr = res.data.banner
 					})
 					.catch(err => {

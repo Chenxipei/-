@@ -22,7 +22,7 @@ export default {
   props: ["list"],
   methods:{
     togoodDetail(i){
-      // console.log(i)
+      console.log(i)
       this.$router.push({
         path:'/good_detail',
         query:{

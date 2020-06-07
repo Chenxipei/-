@@ -125,10 +125,12 @@ export default {
     };
   },
   mounted() {
+		
     this.getShopExplain(this.$router.currentRoute.query.itemld);
   },
   methods: {
     getShopExplain(id) {
+		
       this.$axios.get("./data/shopExplain.json").then(res => {
         this.shopobj = res.data.shoplist[id];
       });
@@ -138,6 +140,7 @@ export default {
       let a = 10;
       a = a > 2 ? a-- : a++;
       this.count = val;
+				
     }
   },
   components: { VDistpicker ,Totop}
