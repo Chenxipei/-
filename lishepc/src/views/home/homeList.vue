@@ -114,12 +114,10 @@
 				}
 			}
 		}
-
 		.bgimg {
 			width: 416px;
 			height: 537px;
 		}
-
 		.componentItem {
 			box-sizing: border-box;
 			padding: 20px 0;
@@ -157,7 +155,6 @@
 					padding: 3px 5px;
 				}
 			}
-
 			.price {
 				font-size: 16px;
 				color: red;
@@ -166,10 +163,8 @@
 					font-size: 30px;
 				}
 			}
-
 			.sold {
 				position: relative;
-
 				span {
 					position: absolute;
 					font-size: 10px;
@@ -180,7 +175,6 @@
 			}
 		}
 	}
-
 	.ceremony {
 		>div {
 			margin: 0;
@@ -197,14 +191,10 @@
 			}
 		}
 	}
-
-
-
 	.qingdan {
 		img {
 			width: 100%;
 		}
-
 		.goodsImg {
 			width: 371px;
 			height: 261px;

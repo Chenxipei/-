@@ -92,7 +92,7 @@
               <span>{{allPrice}}</span>
             </p>
           </div>
-          <div class="total-btn">去结算</div>
+          <div class="total-btn" @click="gototal">去结算</div>
         </div>
       </div>
     </div>
@@ -363,7 +363,13 @@ export default {
         this.addressData.unshift(this.addressData.splice(index, 1)[0]);
       }
     }
-  }
+  },
+  // 去结算
+  methods: {
+    gototal(){
+      this.$router.push("/total")
+    }
+  },
 };
 </script>
 
