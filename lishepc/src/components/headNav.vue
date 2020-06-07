@@ -1,24 +1,44 @@
 <template>
   <div class="headNav-wrap">
-<div class="headNav">
-    <div class="nav-list">
-      <nav class="n-l-item"  v-for="(item,i) in navList" :key="i"   @mouseover="curr = i"    @mouseout="curr=-1" >
-        <div class="n-l-name">
-          <div class="n-l-n-item" :class="{'active':item.path==$route.path}"  @click="toShopList(item.path,i)" >
-            {{item.title}}
+    <div class="headNav">
+      <div class="nav-list">
+        <nav
+          class="n-l-item"
+          v-for="(item,i) in navList"
+          :key="i"
+          @mouseover="curr = i"
+          @mouseout="curr=-1"
+        >
+          <div class="n-l-name">
+            <div
+              class="n-l-n-item"
+              :class="{'active':item.path==$route.path}"
+              @click="toShopList(item.path,i)"
+            >{{item.title}}</div>
+          </div>
+          <div
+            class="n-l-list"
+            v-show="curr==i&&item.list.length>0"
+            @mouseover="curr = i"
+            @mouseout="curr=-1"
+          >
+            <div class="n-l-l-item" v-for="(l,i) in item.list" :key="i">
+              <img :src="l.imgSrc" alt />
+              <a href="#" @click="zwget(l.name)">{{l.name}}</a>
             </div>
+<<<<<<< HEAD
+=======
         </div>
         <div  class="n-l-list" v-show="curr==i&&item.list.length>0" @mouseover="curr = i"  @mouseout="curr=-1" >
           <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
             <img :src="l.imgSrc" alt />
             <a href="#" @click="zwget(i,j)">{{l.name}}</a>
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
   </div>
-  </div>
-  
 </template>
 
 <script>
@@ -159,10 +179,16 @@ export default {
   this.$store.state.price.classtou.oneclass=--i;
   this.$store.state.price.classtou.twoclass=j; 
       this.$router.push({
+<<<<<<< HEAD
+        path: "/classify",
+        query: {
+          val
+=======
         path:"/classify",
         query:{
           oneclass:i,
           twoclass:j
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
         }
       });
     },
@@ -182,7 +208,7 @@ export default {
 </script>
 
 <style scope lang='less'>
-.headNav-wrap{
+.headNav-wrap {
   background: rgb(240, 240, 240);
 }
 .headNav {
@@ -193,7 +219,7 @@ export default {
     display: flex;
     padding-top: 15px;
     .n-l-item {
-			margin: 0 6px;
+      margin: 0 6px;
       .n-l-name {
         padding: 0 20px;
         .n-l-n-item {
@@ -213,9 +239,9 @@ export default {
       }
     }
     .n-l-list {
-			background: #fff;
+      background: #fff;
       position: absolute;
-			z-index: 99;
+      z-index: 99;
       top: 37px;
       left: 0;
       width: 1200px;
