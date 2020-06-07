@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -14,17 +15,22 @@ export default new Vuex.Store({
         twoclass: ''
       }
     },
-    cartData:[
+    goodsData:[
       
     ]
   },
+  // getters:{
+  //   goodsData: state => state.goodsData
+  // },
   mutations: {
-    
+    setCart(state,goods){
+      state.goodsData = [
+        
+      ]
+    }
   },
   actions: {
-    addCart({commit},goodsId){
-      // this.$axios.get("/data/") 
-    }
+    
   },
   modules: {
   }
