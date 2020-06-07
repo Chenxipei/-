@@ -27,15 +27,18 @@
         </li>
       </ul>
     </div> -->
+		<Totop></Totop>
   </div>
 </template>
 <script>
 import item from "../../components/item.vue";
 import zwhead from "../../components/zwhead.vue";
+import Totop from '../../components/Totop.vue'
 export default {
   components: {
     item,
-    zwhead
+    zwhead,
+		Totop
   },
   data() {
     return {
@@ -366,6 +369,17 @@ export default {
 };
 </script>
 <style scoped lang='less' >
+<<<<<<< HEAD
+=======
+.classify{
+  background: #f0f0f0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+>>>>>>> fe3805700c54554fb8185801bbd42e7a4d12dfee
 
 .w {
   width: 1200px;
