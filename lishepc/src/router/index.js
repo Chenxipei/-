@@ -3,6 +3,88 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
+    path: '/',
+    redirect: "/home",
+  },
+  {
+    path: '/classify',
+    component: () => import('../views/Classify/classify.vue')
+  },
+  {
+    path: '/shopList/familyLife',
+    component: () => import('../views/productList/goodList.vue')
+<<<<<<< HEAD
+  },
+  {
+    path: "/home",
+    component: () => import("@/views/home/Home.vue")
+  },
+  {
+    path: "/shopList",
+    meta: {
+
+    },
+    component: () => import("@/views/shopList/shopList.vue")
+  }
+  ,
+  {
+    path: "/login",
+    component: () => import("../views/login/login.vue")
+  },
+  {
+    path: "/register",
+    component: () => import("../views/login/register.vue")
+  }
+  ,
+  {
+    path: "/cart",
+    component: () => import("../views/cart/index.vue")
+  },
+  {
+=======
+  },
+  {
+    path: "/home",
+    component: () => import("@/views/home/Home.vue")
+  },
+  {
+    path: "/shopList",
+    meta: {
+
+    },
+    component: () => import("@/views/shopList/shopList.vue")
+  }
+  ,
+  {
+    path: "/login",
+    component: () => import("../views/login/login.vue")
+  },
+  {
+    path: "/register",
+    component: () => import("../views/login/register.vue")
+  }
+  ,
+  {
+    path: "/cart",
+    component: () => import("../views/cart/index.vue")
+  },
+  {
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
+    path:"/total",
+    component: () => import("../views/settlement/settlement.vue")
+  }
+]
+const router = new VueRouter({
+  mode: "history",
+  routes
+=======
+>>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
 
 const routes = [{
 		path: '',

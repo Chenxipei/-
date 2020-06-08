@@ -7,11 +7,23 @@
           <div class="n-l-n-item" :class="{'active':item.path==$route.path}"  @click="toShopList(item.path,i)" >
             {{item.title}}
             </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
         </div>
         <div  class="n-l-list" v-show="curr==i&&item.list.length>0" @mouseover="curr = i"  @mouseout="curr=-1" >
           <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
             <img :src="l.imgSrc" alt />
             <a href="#" @click="zwget(i,j)">{{l.name}}</a>
+<<<<<<< HEAD
+=======
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
+>>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
           </div>
         </div>
       </nav>
@@ -159,10 +171,28 @@ export default {
   this.$store.state.price.classtou.oneclass=--i;
   this.$store.state.price.classtou.twoclass=j; 
       this.$router.push({
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        path: "/classify",
+        query: {
+          val
+=======
+<<<<<<< HEAD
+        path: "/classify",
+        query: {
+          val
+=======
+>>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
         path:"/classify",
         query:{
           oneclass:i,
           twoclass:j
+<<<<<<< HEAD
+=======
+>>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
+>>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
+>>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
         }
       });
     },
