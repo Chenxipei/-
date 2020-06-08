@@ -28,17 +28,20 @@
       </ul>
     </div> -->
 		<Totop></Totop>
+		<fixedNav></fixedNav>
   </div>
 </template>
 <script>
 import item from "../../components/item.vue";
 import zwhead from "../../components/zwhead.vue";
 import Totop from '../../components/Totop.vue'
+import fixedNav from '../../components/fixedNav.vue'
 export default {
   components: {
     item,
     zwhead,
-		Totop
+		Totop,
+		fixedNav
   },
   data() {
     return {
@@ -371,6 +374,11 @@ export default {
 <style scoped lang='less' >
 .classify{
   background: #f0f0f0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .w {

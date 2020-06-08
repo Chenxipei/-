@@ -1,36 +1,40 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    price: {
-      min: '',
-      max: '',
-      count: 0,
-      classtou: {
-        oneclass: '',
-        twoclass: ''
-      }
-    },
-    goodsData:[
-      
-    ]
+     price:{
+       min:'',
+       max:'',
+       count:0,
+       classtou:{
+        oneclass:'',
+        twoclass:''
+       }
+     },
+     cartData:[],
+     addressData:[]
   },
-  // getters:{
-  //   goodsData: state => state.goodsData
-  // },
+  getters: {
+    cartData: state => state.cartData,
+    addressData:state => state.addressData
+	},
   mutations: {
-    setCart(state,goods){
-      state.goodsData = [
-        
+    addCart(state,goodsItem){
+      console.log(goodsItem)
+      state.cartData = [
+        ...state.cartData,
+        goodsItem
       ]
+      console.log(state.cartData)
+    },
+    delCartData(state){
+      state.cartData = []
     }
+    
   },
   actions: {
-    
   },
   modules: {
   }
