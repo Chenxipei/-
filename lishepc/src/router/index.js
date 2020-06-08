@@ -3,85 +3,6 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
-    path: '/',
-    redirect: "/home",
-  },
-  {
-    path: '/classify',
-    component: () => import('../views/Classify/classify.vue')
-  },
-  {
-    path: '/shopList/familyLife',
-    component: () => import('../views/productList/goodList.vue')
-<<<<<<< HEAD
-  },
-  {
-    path: "/home",
-    component: () => import("@/views/home/Home.vue")
-  },
-  {
-    path: "/shopList",
-    meta: {
-
-    },
-    component: () => import("@/views/shopList/shopList.vue")
-  }
-  ,
-  {
-    path: "/login",
-    component: () => import("../views/login/login.vue")
-  },
-  {
-    path: "/register",
-    component: () => import("../views/login/register.vue")
-  }
-  ,
-  {
-    path: "/cart",
-    component: () => import("../views/cart/index.vue")
-  },
-  {
-=======
-  },
-  {
-    path: "/home",
-    component: () => import("@/views/home/Home.vue")
-  },
-  {
-    path: "/shopList",
-    meta: {
-
-    },
-    component: () => import("@/views/shopList/shopList.vue")
-  }
-  ,
-  {
-    path: "/login",
-    component: () => import("../views/login/login.vue")
-  },
-  {
-    path: "/register",
-    component: () => import("../views/login/register.vue")
-  }
-  ,
-  {
-    path: "/cart",
-    component: () => import("../views/cart/index.vue")
-  },
-  {
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
-    path:"/total",
-    component: () => import("../views/settlement/settlement.vue")
-  }
-]
-const router = new VueRouter({
-  mode: "history",
-  routes
-=======
 
 const routes = [{
 		path: '',
@@ -132,13 +53,25 @@ const routes = [{
 	{
 		path: "/payment",
 		component: () => import("../views/payment/payment.vue")
+	},
+	{
+		path: "/settlement",
+		component: () => import("../views/settlement/settlement.vue")
+	},
+	{
+		path: "/member",
+		component: () => import("../views/mine/member.vue"),
+		children:[
+			{path: "myorder",
+			component: () => import("../views/mine/myorder.vue")}
+		]
 	}
 ]
 const router = new VueRouter({
 	mode: "history",
 	routes
 
->>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
+
 })
 
 export default router

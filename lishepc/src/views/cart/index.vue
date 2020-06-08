@@ -367,7 +367,7 @@ export default {
   // 去结算
   methods: {
     gototal(){
-      this.$router.push("/total")
+      this.$router.push("/settlement")
     }
   },
 };
