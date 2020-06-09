@@ -70,12 +70,11 @@
 					<span>营业执照 礼舍科技版权所有 统一社会信用代码：91440300071136394Y</span>
 				</div>
 				<div class="footerimg">
-					<img src="../assets/img/index/govIcon.gif" alt="">
+					<img src="../assets/imgs/index/govIcon.gif" alt="">
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 </template>
 <script>
@@ -168,8 +167,8 @@
 					}
 				}
 			}
+
 			.lishe_txt {
-				color: #666;
 				margin: 10px auto;
 				width: 250px;
 				height: 120px;

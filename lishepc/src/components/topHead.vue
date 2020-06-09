@@ -52,7 +52,7 @@
           <li class="focus" @mouseover="showFollow" @mouseout="hideFollow">
             <a href="#">关注我们</a>
             <div class="follow" ref="follow">
-              <img src="../assets/img/index/share.png" alt />
+              <img src="../assets/imgs/index/share.png" alt />
             </div>
           </li>
         </ul>
@@ -79,6 +79,9 @@ export default {
   }
 };
 </script>
+
+
+
 <style lang="less" scope>
 .head-nav {
   height: 30px;
@@ -129,14 +132,12 @@ export default {
           }
 
           .arrow {
-            position: absolute;
             width: 8px;
             height: 8px;
-            top: 50%;
-            right: 5px;
-            vertical-align: middle;
-            transform: translateY(-50%) rotate(180deg);
-            background-image: url(../assets/img/index/top_ic_fold.png);
+            display:inline-block;
+            vertical-align: baseline;
+            transform: rotate(180deg);
+            background-image: url(../assets/imgs/index/top_ic_fold.png);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;

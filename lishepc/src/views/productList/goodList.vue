@@ -64,7 +64,10 @@
     </div>
     <!-- 右侧导航 -->
     <div class="nav-float-l" v-show="showNav">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25354f30effb42d462493c8a21802baa7c06bdb4
 	<div class="content">
 		<!-- 轮播图区域 -->
 		<div class="banner-wrap">
@@ -118,7 +121,7 @@
         <img src="../../assets/imgsrc/details/1591327317.jpg" alt />
       </div>
       <div class="nav_link" v-for="(item,i) in navTitle" :key="i">
-        <p :class="{'active':i===navActive}" @click="goItem(i)">{{item}}</p>
+        <p :class="{'active':i===navActive}">{{item}}</p>
       </div>
     </div> -->
 		<Totop>
@@ -132,16 +135,19 @@
 				</div>
 			</div>
 		</Totop>
+		<fixedNav></fixedNav>
 	</div>
 </template>
 <script>
 	import Swiper from "swiper";
 	import "swiper/css/swiper.css";
 	import Totop from '../../components/Totop.vue'
+	import fixedNav from '../../components/fixedNav.vue'
 	export default {
 		name: "goodList",
 		components: {
-			Totop
+			Totop,
+			fixedNav
 		},
 		data() {
 			return {
