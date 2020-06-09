@@ -5,7 +5,7 @@
       <div class="search">
         <div class="logo">
           <a href="#">
-            <img src="../assets/img/index/logo_two.png" alt />
+            <!-- <img src="../assets/img/index/logo_two.png" alt /> -->
           </a>
         </div>
         <div class="search-box">
@@ -16,10 +16,10 @@
         </div>
         <div class="cart">
           <a href="#">
-            <img src="../assets/img/index/cart.png" alt />
+            <!-- <img src="../assets/img/index/cart.png" alt /> -->
           </a>
           <p class="ShoppingCart">我的购物车</p>
-          <span class="ling">0</span>
+          <span class="ling">{{$store.state.cartData.length}}</span>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@ export default {
             transform: translate(-50%, -50%);
             width: 16px;
             height: 16px;
-            background-image: url(../assets/img/index/search.png);
+            // background-image: url(../assets/img/index/search.png);
             background-size: cover;
             background-repeat: no-repeat;
             display: inline-block;
@@ -125,5 +125,4 @@ export default {
       }
     }
   }
-
 </style>

@@ -15,13 +15,18 @@
     </header>
     <div class="my-address">
       <div class="address-list">
+        <div v-if="addressData.length===0" style="text-align:center;margin:10px 0">
+          还没有收获地址呢:
+          <a style="color:#0000ff" @click.prevent="dialogFormVisible = true">新增收货地址</a>
+        </div>
+
         <div class="item" v-for="(tab,i) in addressData" :key="i">
           <div class="name-box">
             {{tab.name}}
             <i v-if="i===0" class="icon el-icon-check"></i>
           </div>
           <div class="name">{{tab.name}}</div>
-          <div class="addrress">{{tab.area.join("")}}{{tab.address}}</div>
+          <div class="addrress">{{tab.address}}</div>
           <div class="phone">{{tab.phone}}</div>
           <div class="edit">
             <a class="table-edit" href="#" @click.prevent="toFirst(i)" v-if="i!==0">设为默认</a>
@@ -51,7 +56,10 @@
         <div>操作</div>
       </div>
       <div class="cart-box">
-        <div class="none-goods" v-show="cartData.length==0">购物车空空如也，快去选点东西吧</div>
+        <div class="none-goods" v-show="cartData.length==0">
+          购物车空空如也，
+          <router-link to="/home">快去选点东西吧</router-link>
+        </div>
         <div class="tab-container" v-for="(item,i) in cartData" :key="i">
           <div class="selectAll">
             <i
@@ -92,7 +100,7 @@
               <span>{{allPrice}}</span>
             </p>
           </div>
-          <div class="total-btn" @click="gototal">去结算</div>
+          <div class="total-btn" @click="goTotal()">去结算</div>
         </div>
       </div>
     </div>
@@ -131,6 +139,7 @@
 
 <script>
 import area from "@/lib/area";
+import { mapGetters } from "vuex";
 export default {
   data() {
     var checkPhone = (rule, value, callback) => {
@@ -179,48 +188,37 @@ export default {
       dialogFormVisible: false,
       // selectedAll: true,
       selectGoodsNum: 0,
-      addressData: [
-        {
-          name: "老刘",
-          address: "金沙江路1",
-          area: ["上海", "上海", "普陀区"],
-          phone: 13188888888
-        },
-        {
-          name: "王小虎",
-          address: "金沙江路2",
-          area: ["上海", "上海", "普陀区"],
-          phone: 13188888888
-        }
-      ],
-      cartData: [
-        {
-          cover:
-            "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-06-03/1591163478_32704.jpg?x-oss-process=png/resize,w_100/quality,q_100/format,jpg",
-          name: "果然萌 台湾风味免煮即食烧仙草3盒装",
-          attr: "口味：奶茶*1+鲜奶*1+酸奶*1",
-          price: "100积分",
-          num: 1
-        },
-        {
-          cover:
-            "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-06-03/1591163478_32704.jpg?x-oss-process=png/resize,w_100/quality,q_100/format,jpg",
-          name: "果然萌 台湾风味免煮即食烧仙草3盒装",
-          attr: "口味：奶茶*1+鲜奶*1+酸奶*1",
-          price: "100积分",
-          num: 2
-        }
-      ]
+      addressData: []
+      // cartData: [
+      //   {
+      //     cover:
+      //       "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-06-03/1591163478_32704.jpg?x-oss-process=png/resize,w_100/quality,q_100/format,jpg",
+      //     name: "果然萌 台湾风味免煮即食烧仙草3盒装",
+      //     attr: "口味：奶茶*1+鲜奶*1+酸奶*1",
+      //     price: "100积分",
+      //     num: 1
+      //   },
+      //   {
+      //     cover:
+      //       "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-06-03/1591163478_32704.jpg?x-oss-process=png/resize,w_100/quality,q_100/format,jpg",
+      //     name: "果然萌 台湾风味免煮即食烧仙草3盒装",
+      //     attr: "口味：奶茶*1+鲜奶*1+酸奶*1",
+      //     price: "100积分",
+      //     num: 2
+      //   }
+      // ]
     };
   },
 
   created() {
     // 初始化选中状态
     this.init_cart_data();
+    console.log(this.cartData);
     // 初始化城市区域
     this.init_area();
   },
   computed: {
+    ...mapGetters(["cartData"]),
     allPrice() {
       let all_price = 0;
       this.cartData.forEach(item => {
@@ -290,7 +288,7 @@ export default {
       // console.log(this.cartData)
     },
     delCartData() {
-      this.cartData = [];
+      this.$store.commit("delCartData");
     },
     delCartItem(i) {
       this.cartData.splice(i, 1);
@@ -324,7 +322,6 @@ export default {
               phone
             });
           }
-
           this.ruleForm = {
             name: "",
             address: "",
@@ -361,6 +358,17 @@ export default {
     toFirst(index) {
       if (index != 0) {
         this.addressData.unshift(this.addressData.splice(index, 1)[0]);
+      }
+    },
+    goTotal() {
+      if (this.addressData.length === 0) {
+        this.$message.warning("请添加收货地址")
+        return false;
+      } else if (this.cartData.length === 0) {
+        this.$message.warning("购物车还没有商品呢")
+        return false;
+      } else {
+        this.$router.push("/total");
       }
     }
   },

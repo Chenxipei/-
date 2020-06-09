@@ -7,22 +7,22 @@
 					<div class="order_status">
 						<div>
 							<ul class="all_orders">
-								<a href="/userAPI.php/Order/orderList.html">
+								<a href="#" @click="orderStatus=1">
 									<li id="all" class="statusCheck current">全部订单</li>
 								</a>
-								<a href="/userAPI.php/Order/orderList/status/WAIT_BUYER_PAY.html">
+								<a href="#" @click="orderStatus=2">
 									<li id="topay" class="statusCheckWAIT_BUYER_PAY">待付款</li>
 								</a>
-								<a href="/userAPI.php/Order/orderList/status/WAIT_SELLER_SEND_GOODS.html">
+								<a href="#" @click="orderStatus=3">
 									<li id="waitsend" class="statusCheckWAIT_SELLER_SEND_GOODS">待发货</li>
 								</a>
-								<a href="/userAPI.php/Order/orderList/status/WAIT_BUYER_CONFIRM_GOODS.html">
+								<a href="#" @click="orderStatus=4">
 									<li id="tosign" class="statusCheckWAIT_BUYER_CONFIRM_GOODS">待收货</li>
 								</a>
 								<!--<a href="/userAPI.php/Order/orderList/status/WAIT_COMMENT.html">-->
 								<!--<li id="write_review" class="statusCheckWAIT_COMMENT">待评价</li>-->
 								<!--</a>-->
-								<a href="/userAPI.php/Order/orderList/status/NO_APPLY.html">
+								<a href="#" @click="orderStatus=5">
 									<li id="write_review" class="statusCheckNO_APPLY">退换货</li>
 								</a>
 							</ul>
@@ -84,7 +84,7 @@
 								<div class="ammount">&times;1</div>
 								<div class="ammount" style="margin-left: 50px;">
 									<a href="/userAPI.php/Order/applyAfterSaleTwo/aftersales_bn/">
-										无售后 </a> </td>
+									无售后 </a> 
 								</div>
 							</div>
 							<div class="paid_money">
@@ -133,13 +133,24 @@
 
 		</div>
 	</div>
-	</div>
-	</div>
+	
+	
 </template>
 
 <script>
+import LocalStorage  from '../../lib/LocalStorage'
 	export default {
-		name: 'myorder'
+		name: 'myorder',
+		daat:function(){
+			return{
+				orderStatus:1
+			}
+		},
+		computed: {
+			orderStatus(val){
+				console.log(val)
+			}
+		},
 	}
 </script>
 

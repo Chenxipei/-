@@ -1,5 +1,5 @@
 <template>
-	<div class="headNav-wrap">
+ <div class="headNav-wrap">
 		<div class="headNav">
 			<div class="nav-list">
 				<nav class="n-l-item" v-for="(item,i) in navList" :key="i" @mouseover="curr = i" @mouseout="curr=-1">
@@ -23,7 +23,7 @@
 				</nav>
 			</div>
 		</div>
-	</div>
+		</div>
 </template>
 
 <script>
@@ -39,7 +39,7 @@
 					},
 					{
 						title: "居家生活",
-						path: "/shopList/familyLife",
+						path: "/goodList",
 						list: [{
 								imgSrc: "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/2020-05-18/1589802577_40857.jpg",
 								name: "家纺床品"

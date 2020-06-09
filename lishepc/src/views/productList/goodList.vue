@@ -1,4 +1,5 @@
 <template>
+
 	<div class="content">
 		<!-- 轮播图区域 -->
 		<div class="banner-wrap">
@@ -59,22 +60,18 @@
 			<img src="../../assets/imgsrc/details/1589262526_28974.png" alt />
 		</div>
 		<!-- 右侧导航 -->
-		<div class="nav-float-l" v-show="showNav">
-
-
-			<Totop>
-				<div class="nav-float-l" slot="nav-float-l">
-					<div class="nav-float-l-top">
-						<p>居家生活</p>
-						<img src="../../assets/imgsrc/details/1591327317.jpg" alt />
-					</div>
-					<div class="nav_link" v-for="(item,i) in navTitle" :key="i">
-						<p :class="{'active':i===navActive}">{{item}}</p>
-					</div>
+		<Totop>
+			<div class="nav-float-l" slot="nav-float-l">
+				<div class="nav-float-l-top">
+					<p>居家生活</p>
+					<img src="../../assets/imgsrc/details/1591327317.jpg" alt />
 				</div>
-			</Totop>
-			<fixedNav></fixedNav>
-		</div>
+				<div class="nav_link" v-for="(item,i) in navTitle" :key="i">
+					<p :class="{'active':i===navActive}">{{item}}</p>
+				</div>
+			</div>
+		</Totop>
+		<fixedNav></fixedNav>
 	</div>
 </template>
 <script>
@@ -363,14 +360,14 @@
 		}
 
 		.nav-float-l {
-// 			position: fixed;
-// 			right: 5%;
-// 			top: 200px;
-// 			z-index: 999;
-// 			width: 83px;
-// 			height: 246px;
-// 			text-align: center;
-// 			background: white;
+			// 			position: fixed;
+			// 			right: 5%;
+			// 			top: 200px;
+			// 			z-index: 999;
+			// 			width: 83px;
+			// 			height: 246px;
+			// 			text-align: center;
+			// 			background: white;
 			color: #666;
 			border-radius: 6px;
 

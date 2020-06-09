@@ -2,6 +2,32 @@
     "code": "0000",
     "toast": "",
     "new_recommend_count_str": "",
+    "banner": [
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276882_90072.png?x-oss-process=png/resize,w_600/quality,q_80"
+        },
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276961_17810.png?x-oss-process=png/resize,w_600/quality,q_80"
+        },
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276969_73764.png?x-oss-process=png/resize,w_600/quality,q_80"
+        },
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276975_62154.png?x-oss-process=png/resize,w_600/quality,q_80"
+        },
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276882_90072.png?x-oss-process=png/resize,w_600/quality,q_80"
+        },
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276961_17810.png?x-oss-process=png/resize,w_600/quality,q_80"
+        },
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276969_73764.png?x-oss-process=png/resize,w_600/quality,q_80"
+        },
+        {
+            "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276975_62154.png?x-oss-process=png/resize,w_600/quality,q_80"
+        }
+    ],
     "group": [
         {
             "title": "精选大牌",
@@ -17,35 +43,6 @@
                 },
                 {
                     "img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276865_82530.png?x-oss-process=png/resize,w_600/quality,q_80"
-                }
-            ]
-        },
-        {
-            "title":"精选店铺",
-            "group_list": [
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276882_90072.png?x-oss-process=png/resize,w_600/quality,q_80"
-                },
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276961_17810.png?x-oss-process=png/resize,w_600/quality,q_80"
-                },
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276969_73764.png?x-oss-process=png/resize,w_600/quality,q_80"
-                },
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276975_62154.png?x-oss-process=png/resize,w_600/quality,q_80"
-                },
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276882_90072.png?x-oss-process=png/resize,w_600/quality,q_80"
-                },
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276961_17810.png?x-oss-process=png/resize,w_600/quality,q_80"
-                },
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276969_73764.png?x-oss-process=png/resize,w_600/quality,q_80"
-                },
-                {
-                    "imgSrc": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-12/1589276975_62154.png?x-oss-process=png/resize,w_600/quality,q_80"
                 }
             ]
         },

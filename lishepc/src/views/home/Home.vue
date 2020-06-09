@@ -58,7 +58,6 @@
 				<h2>{{tiktok.title}}</h2>
 				<div class="tiktokBox" ref="tiktokBox">
 					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key='index'>
-
 						<div class="tiktok_tab" @mousemove="tab(index)">
 							<div class="tiktok_tab_titleImg"><img :src="item.icon_img" alt=""></div>
 							<span>{{item.txt_title}}</span>
@@ -77,6 +76,7 @@
 					<img :src="item.img_url" alt="">
 				</div>
 			</homelist>
+
 			<homelist :txt_title="qingdan.title">
 				<div slot="bgimg" class="bgimg">
 					<img :src="qingdan.title_img" alt="">
@@ -111,10 +111,13 @@
 </template>
 
 <script>
+	import {setStore,getStore,removeStore,validatenull} from '../../lib/LocalStorage.js'
 	import homelist from './homeList.vue'
 	import banner from '../../components/Banner.vue'
 	import Totop from '../../components/Totop.vue'
-	
+	var jb = {name:'zhangsan'}
+	setStore(jb)
+	console.log(setStore)
 	export default {
 		name: 'Home',
 		components: {
@@ -154,7 +157,6 @@
 						this.tiktok = res.data.group[2]
 						this.qingdan = res.data.group[3]
 						this.likeArr = res.data.group[4]
-						console.log(res)
 					})
 					.catch(err => {
 						console.log(err)
@@ -165,7 +167,7 @@
 						this.bannerArr = res.data.banner
 					})
 					.catch(err => {
-						console.log(errr)
+						console.log(err)
 					})
 			},
 			tab(index) {

@@ -2,7 +2,7 @@
 	<div class="fixedNav-wrap" v-show="btnFlag">
 		<div class="fixedNav">
 			<div class="logo_nav">
-				<a href="#" class="logo"><img src="../assets/imgs/icon/logo_two.a7b7ff2f.png" alt=""></a>
+				<router-link to="/home"><img src="../assets/imgs/icon/logo_two.a7b7ff2f.png" alt=""></router-link>
 				<div class="nav-list">
 					<nav class="n-l-item" v-for="(item,i) in navList" :key="i" @mouseover="curr = i" @mouseout="curr=-1">
 						<div class="n-l-name">
@@ -21,7 +21,7 @@
 			</div>
 			<div class="fixedNav_right">
 				<a href="#"><img src="../assets/imgs/icon_suosou.png" alt=""></a>
-				<a href="#"><img src="../assets/imgs/icon_cart.png" alt=""><span class="num">0</span></a>
+				<a href="#" @click.prevent="goCart()"><img src="../assets/imgs/icon_cart.png" alt=""><span class="num">{{$store.state.cartData.length}}</span></a>
 			</div>
 		</div>
 	</div>
@@ -33,7 +33,7 @@
 		name: "fixedNav",
 		data() {
 			return {
-				btnFlag:false,
+				btnFlag: false,
 				curr: 0,
 				navList: [{
 						title: "首页",
@@ -141,6 +141,9 @@
 						twoclass: j
 					}
 				});
+			},
+			goCart() {
+				this.$router.push("/cart")
 			},
 			toShopList(path) {
 				if (!path) return;

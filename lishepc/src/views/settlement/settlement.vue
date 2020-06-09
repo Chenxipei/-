@@ -2,7 +2,7 @@
 	<div class="sellementHead">
 		<div class="top">
 			<div class="warp-left">
-				<img src="../../assets/imgsrc/settlement/1590561641_90344.png" alt />
+				<!-- <img src="../../assets/imgsrc/settlement/1590561641_90344.png" alt /> -->
 				<span>结算页</span>
 			</div>
 			<div class="warp-rigth">
@@ -51,11 +51,11 @@
 			<div class="shop_list_wrap">
 				<div class="shop_tit">
 					<div class="shop_name">
-						<img src="../../assets/imgsrc/settlement/house.png" alt />
+						<!-- <img src="../../assets/imgsrc/settlement/house.png" alt /> -->
 						<a href="#" class="name">八马茶业旗舰店</a>
 						<span class="shop_kefu">
 							<a href="#" class="name1">
-								<img src="../../assets/imgsrc/settlement/pay_ic_service.png" alt />联系客服
+								<!-- <img src="../../assets/imgsrc/settlement/pay_ic_service.png" alt />联系客服 -->
 							</a>
 						</span>
 						<span class="shop_text">满1积分包邮</span>
@@ -66,7 +66,7 @@
 					<ul class="shopping_ul">
 						<li>
 							<a href="#">
-								<img src="https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/32/0f/97/00e952f4936be1f30bb871f1dedb4237.jpg?x-oss-process=png/resize,w_100/quality,q_80/format,jpg"
+								<!-- <img src="https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/32/0f/97/00e952f4936be1f30bb871f1dedb4237.jpg?x-oss-process=png/resize,w_100/quality,q_80/format,jpg" -->
 								 alt />
 							</a>
 							<span>八马茶叶 安溪铁观音清香型茶叶新茶 小清新1号铁观音252克</span>
@@ -80,7 +80,7 @@
 						<div class="number">1</div>
 						<div class="you">
 							满1积分包邮
-							<img src="../../assets/imgsrc/settlement/you.png" alt />
+							<!-- <img src="../../assets/imgsrc/settlement/you.png" alt /> -->
 						</div>
 						<div class="sum_text">
 							<p class="sum_price">150积分</p>
@@ -163,7 +163,8 @@
 			<!-- 底部按钮 -->
 			<div class="bottom_cart">
 				<span class="goback" @click="goCart()">
-					<img src="../../assets/imgsrc/settlement/blue_back.png" alt />
+
+					<!-- <img src="../../assets/imgsrc/settlement/blue_back.png" alt /> -->
 					返回购物车
 				</span>
 				<span class="dindan" @click="topayment()">提交订单</span>
