@@ -57,7 +57,7 @@
 			<div class="tiktok">
 				<h2>{{tiktok.title}}</h2>
 				<div class="tiktokBox" ref="tiktokBox">
-					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key='index'>
+					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key="index">
 						<div class="tiktok_tab" @mousemove="tab(index)">
 							<div class="tiktok_tab_titleImg"><img :src="item.icon_img" alt=""></div>
 							<span>{{item.txt_title}}</span>
@@ -76,7 +76,6 @@
 					<img :src="item.img_url" alt="">
 				</div>
 			</homelist>
-
 			<homelist :txt_title="qingdan.title">
 				<div slot="bgimg" class="bgimg">
 					<img :src="qingdan.title_img" alt="">
@@ -153,7 +152,7 @@
 						this.tiktok = res.data.group[2]
 						this.qingdan = res.data.group[3]
 						this.likeArr = res.data.group[4]
-						console.log(res.data.group[4])
+						console.log(res)
 					})
 					.catch(err => {
 						console.log(err)
@@ -161,7 +160,6 @@
 				// 请求轮播图数据
 				this.$axios.get('/data/index/banner.json')
 					.then(res => {
-						console.log(res.data.banner)
 						this.bannerArr = res.data.banner
 					})
 					.catch(err => {

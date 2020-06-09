@@ -4,7 +4,7 @@
       <div class="detail">
         <div class="details_left">
           <div class="preview_big">
-            <img :src="ceshi" alt />
+            <img :src="shopobj_url" alt />
           </div>
           <div class="preview_small">
             <img @mouseover="setcurr(j)" v-for="(i,j) in shopobj.url" :key="j" :src="i" alt />
@@ -56,7 +56,12 @@
                 <span class="details_title">颜色</span>:
               </div>
               <div class="detail_right">
-                <span @click="coloractive=j" :class="{active:coloractive==j}" v-for="(i,j) in shopobj.color" :key="j">{{i}}</span>
+                <span
+                  @click="coloractive=j"
+                  :class="{active:coloractive==j}"
+                  v-for="(i,j) in shopobj.color"
+                  :key="j"
+                >{{i}}</span>
               </div>
             </div>
             <div class="data_content content_btn">
@@ -72,22 +77,18 @@
               </div>
               <div class="detail_right">
                 <div>
-                <button class="buy">立即购买</button>
-
+                  <button class="buy">立即购买</button>
                 </div>
                 <div>
-                <button class="car">加入购物车</button>
-
+                  <button class="car">加入购物车</button>
                 </div>
                 <div>
-                     <button class="enshrine">
-                  <p>☆</p>
+                  <button class="enshrine">
+                    <p>☆</p>
 
-                  <span>收藏</span>
-                </button>
-
+                    <span>收藏</span>
+                  </button>
                 </div>
-             
               </div>
             </div>
             <div class="data_content content_tishi">
@@ -101,29 +102,28 @@
           </div>
         </div>
       </div>
-
     </div>
     <div class="futto">
       <div class="w">
-         <img src="../../assets/imgs/index/shopbigpro.png" alt="">
+        <img src="../../assets/imgs/index/shopbigpro.png" alt />
       </div>
     </div>
-		<!-- 回到顶部 -->
-		<Totop></Totop>
+    <!-- 回到顶部 -->
+    <Totop></Totop>
   </div>
 </template>
 <script>
 // import VDistpicker from 'v-distpicker'
 import VDistpicker from "v-distpicker";
-import Totop from '../../components/Totop.vue'
+import Totop from "../../components/Totop.vue";
 export default {
   data() {
     return {
       shopobj: "",
-      count: 0,//大图
-      num: 1,//商品数
-      coloractive:0,
-      ceshi:''
+      count: 0, //大图
+      num: 1, //商品数
+      coloractive: 0,
+      ceshi: ""
     };
   },
   mounted() {
@@ -133,25 +133,25 @@ export default {
     getShopExplain(id) {
       this.$axios.get("./data/shopExplain.json").then(res => {
         this.shopobj = res.data.shoplist[id];
-        this.ceshi = res.data.shoplist[id].url[0]
+        this.ceshi = res.data.shoplist[id].url[0];
       });
     },
-// 设置大图片
+    // 设置大图片
     setcurr(val) {
-     this.ceshi = this.shopobj.url[val]
+      this.ceshi = this.shopobj.url[val];
     }
   },
-  components: { VDistpicker ,Totop}
+  components: { VDistpicker, Totop }
 };
 </script>
+
+
 <style scoped lang='less'>
-.futto{
-  
+.futto {
   width: 100%;
 
-
   background: #f0f0f0;
-  img{
+  img {
     margin-top: 30px;
   }
 }
@@ -260,23 +260,19 @@ export default {
             margin-bottom: 20px;
             .detail_right {
               span {
-          
-                border:1px solid #7f667f;
+                border: 1px solid #7f667f;
                 color: #7f667f;
                 padding: 2px 10px;
                 margin-right: 10px;
               }
-              span:hover{
+              span:hover {
                 border: 2px solid #ff3737;
                 color: #ff3737;
-
-
               }
-              .active{
-                 border: 2px solid #ff3737;
+              .active {
+                border: 2px solid #ff3737;
                 color: #ff3737;
               }
-
             }
           }
           .content_distpicker {
@@ -289,7 +285,7 @@ export default {
               .distpicker-address-wrapper {
                 margin-bottom: 10px;
                 select {
-                  height:10px !important  ;
+                  height: 10px !important  ;
                 }
               }
               p {
@@ -324,7 +320,7 @@ export default {
                     line-height: 25px;
                     border-left: 1px solid #c0c0c0;
                     background: #f3f3f3;
-                     cursor:pointer;
+                    cursor: pointer;
                   }
                   .hasbor {
                     border-bottom: 1px solid #c0c0c0;
@@ -358,8 +354,8 @@ export default {
               }
             }
           }
-          .content_tishi{
-            color: #666666; 
+          .content_tishi {
+            color: #666666;
           }
         }
       }
@@ -367,3 +363,4 @@ export default {
   }
 }
 </style>
+

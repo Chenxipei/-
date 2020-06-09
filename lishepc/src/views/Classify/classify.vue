@@ -286,7 +286,7 @@ export default {
   },
   mounted() {
     this.getclassify();
-    //  window.addEventListener("scroll",this.showbtn,true);
+     window.addEventListener("scroll",this.showbtn,true);
   },
   // 监控路由
   computed: {
@@ -345,26 +345,26 @@ export default {
       }
     },
     // 回到顶部
-    // backtop() {
-    //   var timer = setInterval(function() {
-    //     let osTop = document.documentElement.scrollTop || document.body.scrollTop;
-    //     let ispeed = Math.floor(-osTop / 5);
-    //     document.documentElement.scrollTop = document.body.scrollTop =osTop + ispeed;
-    //     console.log('os',osTop)
-    //     console.log('is',osTop)
+    backtop() {
+      var timer = setInterval(function() {
+        let osTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let ispeed = Math.floor(-osTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =osTop + ispeed;
+        console.log('os',osTop)
+        console.log('is',osTop)
 
-    //     this.isTop = true;
-    //     if (osTop === 0) {
-    //       clearInterval(timer);
-    //     }
-    //   }, 30);
-    // },
-    // showbtn() {
-    //   let that = this;
-    //   let scrollTop =window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
+        this.isTop = true;
+        if (osTop === 0) {
+          clearInterval(timer);
+        }
+      }, 30);
+    },
+    showbtn() {
+      let that = this;
+      let scrollTop =window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
      
-    //   that.scrollTop = scrollTop;
-    // }
+      that.scrollTop = scrollTop;
+    }
   }
 };
 </script>

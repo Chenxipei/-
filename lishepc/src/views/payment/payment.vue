@@ -9,11 +9,14 @@
 			<div class="payment_content_middle">
 				<ul>
 					<li>
-						<img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt="">积分支付方式
+						<img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt="">
+						积分支付方式
 					</li>
 					<li>
 						<el-radio-group v-model="radio3" size="medium " text-color>
-							<el-radio label="1" border><img src="../../assets/imgs/icon/pay_ic_exclusive.png" alt="">积分支付</el-radio>
+							<el-radio label="1" border>
+								<!-- <img src="../../assets/imgs/icon/pay_ic_exclusive.png" alt=""> -->
+							积分支付</el-radio>
 						</el-radio-group>
 						&nbsp;&nbsp;
 						<span>可用：0.00元/不可用：0.00元<a href="#">(查看)</a></span>
@@ -21,12 +24,17 @@
 				</ul>
 				<ul>
 					<li>
-						<img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt="">现金支付方式
+						<img class="payment_content_middle_icon" src="../../assets/imgs/icon/pay_icon1.png" alt="">
+						现金支付方式
 					</li>
 					<li>
 						<el-radio-group v-model="radio4" size="medium " text-color>
-							<el-radio label="2" border><img src="../../assets/imgs/icon/payment_ic_wepay.png" alt="">微信支付</el-radio>
-							<el-radio label="3" border><img src="../../assets/imgs/icon/payment_ic_alipay.png" alt="">支付宝</el-radio>
+							<el-radio label="2" border>
+								<img src="../../assets/imgs/icon/payment_ic_wepay.png" alt="">
+							微信支付</el-radio>
+							<el-radio label="3" border>
+								<img src="../../assets/imgs/icon/payment_ic_alipay.png" alt="">
+								支付宝</el-radio>
 						</el-radio-group>
 					</li>
 				</ul>
