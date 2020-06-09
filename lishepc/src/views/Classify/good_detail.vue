@@ -118,6 +118,7 @@
 import VDistpicker from "v-distpicker";
 import Totop from "../../components/Totop.vue";
 import fixedNav from "../../components/fixedNav.vue";
+import { getStore } from "@/lib/store";
 export default {
   data() {
     return {
@@ -134,15 +135,27 @@ export default {
   },
   methods: {
     addCart() {
+      // if (getStore({ name: "userInfo" })) {
+      //   let goodsItem = {
+      //     cover: this.shopobj.url[0],
+      //     name: this.shopobj.title,
+      //     attr: `颜色：${this.shopobj.color[this.coloractive]}`,
+      //     price: this.shopobj.newprice,
+      //     num: this.num
+      //   };
+      //   this.$store.commit("addCart", goodsItem);
+      // }else{
+      //   this.$router.push("/login")
+      // }
       let goodsItem = {
-        cover: this.shopobj.url[0],
-        name: this.shopobj.title,
-        attr: `颜色：${this.shopobj.color[this.coloractive]}`,
-        price: this.shopobj.newprice,
-        num: this.num
+          cover: this.shopobj.url[0],
+          name: this.shopobj.title,
+          attr: `颜色：${this.shopobj.color[this.coloractive]}`,
+          price: this.shopobj.newprice,
+          num: this.num
       };
-      console.log(goodsItem)
-      this.$store.commit("addCart", goodsItem);
+      
+        this.$store.commit("addCart", goodsItem);
     },
     getShopExplain(id) {
       this.$axios.get("./data/shopExplain.json").then(res => {

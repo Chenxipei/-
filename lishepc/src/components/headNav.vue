@@ -1,36 +1,36 @@
 <template>
   <div class="headNav-wrap">
-<div class="headNav">
-    <div class="nav-list">
-      <nav class="n-l-item"  v-for="(item,i) in navList" :key="i"   @mouseover="curr = i"    @mouseout="curr=-1" >
-        <div class="n-l-name">
-          <div class="n-l-n-item" :class="{'active':item.path==$route.path}"  @click="toShopList(item.path,i)" >
-            {{item.title}}
-            </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
-        </div>
-        <div  class="n-l-list" v-show="curr==i&&item.list.length>0" @mouseover="curr = i"  @mouseout="curr=-1" >
-          <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
-            <img :src="l.imgSrc" alt />
-            <a href="#" @click="zwget(i,j)">{{l.name}}</a>
-<<<<<<< HEAD
-=======
->>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
+    <div class="headNav">
+      <div class="nav-list">
+        <nav
+          class="n-l-item"
+          v-for="(item,i) in navList"
+          :key="i"
+          @mouseover="curr = i"
+          @mouseout="curr=-1"
+        >
+          <div class="n-l-name">
+            <div
+              class="n-l-n-item"
+              :class="{'active':item.path==$route.path}"
+              @click="toShopList(item.path,i)"
+            >{{item.title}}</div>
           </div>
-        </div>
-      </nav>
+          <div
+            class="n-l-list"
+            v-show="curr==i&&item.list.length>0"
+            @mouseover="curr = i"
+            @mouseout="curr=-1"
+          >
+            <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
+              <img :src="l.imgSrc" alt />
+              <a href="#" @click="zwget(i,j)">{{l.name}}</a>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
-  </div>
-  
 </template>
 
 <script>
@@ -166,33 +166,15 @@ export default {
     };
   },
   methods: {
-    zwget(i,j) {
-     // console.log(i-1,j)//设置路由参数
-  this.$store.state.price.classtou.oneclass=--i;
-  this.$store.state.price.classtou.twoclass=j; 
+    zwget(i, j) {
+      // console.log(i-1,j)//设置路由参数
+      this.$store.state.price.classtou.oneclass = --i;
+      this.$store.state.price.classtou.twoclass = j;
       this.$router.push({
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
         path: "/classify",
         query: {
-          val
-=======
-<<<<<<< HEAD
-        path: "/classify",
-        query: {
-          val
-=======
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
-        path:"/classify",
-        query:{
-          oneclass:i,
-          twoclass:j
-<<<<<<< HEAD
-=======
->>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
+          oneclass: i,
+          twoclass: j
         }
       });
     },
@@ -212,7 +194,7 @@ export default {
 </script>
 
 <style scope lang='less'>
-.headNav-wrap{
+.headNav-wrap {
   background: rgb(240, 240, 240);
 }
 .headNav {
@@ -223,7 +205,7 @@ export default {
     display: flex;
     padding-top: 15px;
     .n-l-item {
-			margin: 0 6px;
+      margin: 0 6px;
       .n-l-name {
         padding: 0 20px;
         .n-l-n-item {
@@ -243,9 +225,9 @@ export default {
       }
     }
     .n-l-list {
-			background: #fff;
+      background: #fff;
       position: absolute;
-			z-index: 99;
+      z-index: 99;
       top: 37px;
       left: 0;
       width: 1200px;

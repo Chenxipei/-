@@ -52,23 +52,12 @@
           <li class="focus" @mouseover="showFollow" @mouseout="hideFollow">
             <a href="#">关注我们</a>
             <div class="follow" ref="follow">
-              <img src="../../assets/img/index/share.png" alt />
+              <img src="../assets/imgs/index/share.png" alt />
             </div>
           </li>
         </ul>
       </div>
     </div>
-<<<<<<< HEAD
-    
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    
->>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
   </div>
 </template>
 <script>
@@ -148,7 +137,7 @@ export default {
             display:inline-block;
             vertical-align: baseline;
             transform: rotate(180deg);
-            background-image: url(../../assets/img/index/top_ic_fold.png);
+            background-image: url(../assets/imgs/index/top_ic_fold.png);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
@@ -205,15 +194,4 @@ export default {
     }
   }
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
- 
-=======
-<<<<<<< HEAD
- 
-=======
->>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
 </style>

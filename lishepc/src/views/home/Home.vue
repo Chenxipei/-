@@ -57,19 +57,8 @@
 			<div class="tiktok">
 				<h2>{{tiktok.title}}</h2>
 				<div class="tiktokBox" ref="tiktokBox">
-<<<<<<< HEAD
 					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key='index'>
-=======
-<<<<<<< HEAD
-					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key="index">
-=======
-<<<<<<< HEAD
-					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key="index">
-=======
-					<div class="tabBox" v-for="(item,index) in tiktok.group_list" :key='index'>
->>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
+
 						<div class="tiktok_tab" @mousemove="tab(index)">
 							<div class="tiktok_tab_titleImg"><img :src="item.icon_img" alt=""></div>
 							<span>{{item.txt_title}}</span>

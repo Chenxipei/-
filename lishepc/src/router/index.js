@@ -1,92 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { getStore } from "@/lib/store";
+
 Vue.use(VueRouter)
 
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
-    path: '/',
-    redirect: "/home",
-  },
-  {
-    path: '/classify',
-    component: () => import('../views/Classify/classify.vue')
-  },
-  {
-    path: '/shopList/familyLife',
-    component: () => import('../views/productList/goodList.vue')
-<<<<<<< HEAD
-  },
-  {
-    path: "/home",
-    component: () => import("@/views/home/Home.vue")
-  },
-  {
-    path: "/shopList",
-    meta: {
-
-    },
-    component: () => import("@/views/shopList/shopList.vue")
-  }
-  ,
-  {
-    path: "/login",
-    component: () => import("../views/login/login.vue")
-  },
-  {
-    path: "/register",
-    component: () => import("../views/login/register.vue")
-  }
-  ,
-  {
-    path: "/cart",
-    component: () => import("../views/cart/index.vue")
-  },
-  {
-=======
-  },
-  {
-    path: "/home",
-    component: () => import("@/views/home/Home.vue")
-  },
-  {
-    path: "/shopList",
-    meta: {
-
-    },
-    component: () => import("@/views/shopList/shopList.vue")
-  }
-  ,
-  {
-    path: "/login",
-    component: () => import("../views/login/login.vue")
-  },
-  {
-    path: "/register",
-    component: () => import("../views/login/register.vue")
-  }
-  ,
-  {
-    path: "/cart",
-    component: () => import("../views/cart/index.vue")
-  },
-  {
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
-    path:"/total",
-    component: () => import("../views/settlement/settlement.vue")
-  }
-]
-const router = new VueRouter({
-  mode: "history",
-  routes
-=======
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
-
-const routes = [{
+const routes = [
+	{
 		path: '',
 		redirect: "/home"
 	},
@@ -106,11 +25,7 @@ const routes = [{
 		path: "/shopList/familyLife",
 		component: () => import("../views/productList/goodList.vue")
 	},
-	{
-		path: "/shopList",
-
-		component: () => import("@/views/shopList/shopList.vue")
-	},
+	
 	{
 		path: '/classify',
 		component: () => import('../views/Classify/classify.vue')
@@ -144,7 +59,26 @@ const routes = [{
 const router = new VueRouter({
 	mode: "history",
 	routes
-
 })
+
+// router.beforeEach((to, from, next) => {
+//   const userInfo = getStore({name:"userInfo"})
+//   if (!userInfo && (to.path === "/cart"||to.path === "/myorder"||to.path === "/total"||to.path==="/payment")) {
+//     // 未登录且要跳转的页面是购物车页
+//     next({
+//       path: "/login" // 跳转到登录页
+//     })
+//   } else if (!userInfo && to.path === "/login") {
+//     // 未登陆且要跳转的页面是登录页
+//     next() // 跳转
+//   } else if (userInfo && to.path === "/login") {
+//     // 已登录且要跳转的页面是登录页
+//     next({
+//       path:"/home" // 跳转到homeName页
+//     })
+//   }else{
+// 	  next()
+//   }
+// })
 
 export default router

@@ -1,7 +1,4 @@
 <template>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
   <div class="content">
     <!-- 轮播图区域 -->
     <div class="banner-wrap">
@@ -67,10 +64,6 @@
     </div>
     <!-- 右侧导航 -->
     <div class="nav-float-l" v-show="showNav">
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
 	<div class="content">
 		<!-- 轮播图区域 -->
 		<div class="banner-wrap">
@@ -119,11 +112,6 @@
 		</div>
 		<!-- 右侧导航 -->
 		<!--  <div class="nav-float-l">
-<<<<<<< HEAD
-=======
->>>>>>> e9936d3503d75fc6f6163c484325e199b2170fd3
->>>>>>> 156c8efdcfb26ed31b019eff6a7c303719860570
->>>>>>> 46667d54ebc03a69c1585f536b10e2be051a7073
       <div class="nav-float-l-top">
         <p>居家生活</p>
         <img src="../../assets/imgsrc/details/1591327317.jpg" alt />
