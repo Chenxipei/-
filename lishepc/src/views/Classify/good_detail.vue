@@ -200,7 +200,6 @@ export default {
 #main-info {
   width: 100%;
   background: #ffffff;
-
   margin: 15px 0;
   .w {
     width: 1200px;

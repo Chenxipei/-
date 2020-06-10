@@ -84,7 +84,7 @@
 								<div class="ammount">&times;1</div>
 								<div class="ammount" style="margin-left: 50px;">
 									<a href="/userAPI.php/Order/applyAfterSaleTwo/aftersales_bn/">
-										无售后 </a> </td>
+										无售后 </a>
 								</div>
 							</div>
 							<div class="paid_money">

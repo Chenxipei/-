@@ -2,19 +2,9 @@
   <div class="headNav-wrap">
     <div class="headNav">
       <div class="nav-list">
-        <nav
-          class="n-l-item"
-          v-for="(item,i) in navList"
-          :key="i"
-          @mouseover="curr = i"
-          @mouseout="curr=-1"
-        >
+        <nav class="n-l-item" v-for="(item,i) in navList" :key="i" @mouseover="curr = i" @mouseout="curr=-1" >
           <div class="n-l-name">
-            <div
-              class="n-l-n-item"
-              :class="{'active':item.path==$route.path}"
-              @click="toShopList(item.path,i)"
-            >{{item.title}}</div>
+            <div class="n-l-n-item" :class="{'active':item.path==$route.path}" @click="toShopList(item.path,i)" >{{item.title}}</div>
           </div>
           <div
             class="n-l-list"

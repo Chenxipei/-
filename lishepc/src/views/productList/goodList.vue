@@ -190,28 +190,23 @@
 <style lang="less" scope>
 	.content {
 		background: rgb(245, 245, 245);
-
 		.brand_title {
 			width: 1200px;
 			margin: 0 auto;
 			padding: 18px 0 0;
-
 			h3 {
 				font-size: 28px;
 				color: #333;
-
 				&.cnxh-title {
 					text-align: center;
 				}
 			}
-
 			.component-item {
 				box-sizing: border-box;
 				margin: 0 auto;
 				padding-top: 28px;
 				width: 1200px;
 				overflow: hidden;
-
 				.component_r_img {
 					width: 600px;
 					height: 379px;
@@ -219,13 +214,11 @@
 					padding-bottom: 24px;
 					cursor: pointer;
 				}
-
 				&.yxyl {
 					display: flex;
 					justify-content: space-between;
 					flex-wrap: wrap;
 					cursor: pointer;
-
 					li {
 						width: 590px;
 						height: 100%;
@@ -234,11 +227,9 @@
 						justify-content: space-between;
 						background: #fff;
 						margin-bottom: 20px;
-
 						&:nth-of-type(even) {
 							margin-left: 20px;
 						}
-
 						.component_r_img {
 							width: 255px;
 							height: 255px;
@@ -246,13 +237,11 @@
 						}
 					}
 				}
-
 				&.cnxh {
 					display: flex;
 					flex-wrap: wrap;
 					justify-content: space-between;
 					cursor: pointer;
-
 					li {
 						width: 19%;
 						padding: 15px 19px;
@@ -261,20 +250,17 @@
 						display: flex;
 						flex-direction: column;
 						background: #fff;
-
 						img {
 							width: 190px;
 							height: 190px;
 						}
 					}
 				}
-
 				.component_box {
 					width: 293px;
 					height: 255px;
 					box-sizing: border-box;
 					background: #fff;
-
 					.titel {
 						font-size: 24px;
 						color: #2a2a2a;
@@ -283,7 +269,6 @@
 						line-height: 28px;
 						overflow: hidden;
 					}
-
 					.introduce {
 						font-size: 15px;
 						color: #686868;
@@ -292,27 +277,22 @@
 						overflow: hidden;
 						margin-top: 8px;
 					}
-
 					.price {
 						color: #be4754;
 						font-size: 42px;
 						font-weight: bold;
 						text-align: left;
-
 						span {
 							font-size: 18px;
 						}
-
 						s {
 							color: #828282;
 							font-size: 14px;
 						}
 					}
-
 					.list_btn {
 						display: flex;
 						margin-top: 15px;
-
 						.RedeemNow {
 							width: 146px;
 							height: 40px;
@@ -325,7 +305,6 @@
 						}
 					}
 				}
-
 				.content_list {
 					.txt_title {
 						font-size: 20px;
@@ -335,7 +314,6 @@
 						overflow: hidden;
 						margin-bottom: 5px;
 					}
-
 					& .introduce {
 						font-size: 14px;
 						color: #666;
@@ -345,13 +323,11 @@
 						overflow: hidden;
 						margin-bottom: 16px;
 					}
-
 					& .integral {
 						font-size: 20px;
 						color: #ff4e4c;
 						line-height: 24px;
 					}
-
 					& .integral img {
 						width: 18px;
 						height: 18px;
@@ -361,7 +337,6 @@
 				}
 			}
 		}
-
 		.nav-float-l {
 			// position: fixed;
 			// right: 5%;
@@ -372,7 +347,6 @@
 			background: white;
 			color: #666;
 			border-radius: 6px;
-
 			.nav-float-l-top {
 				color: #ff4c4e;
 				font-size: 15px;
@@ -381,7 +355,6 @@
 				font-weight: bold;
 				height: 65px;
 			}
-
 			.nav_link {
 				p {
 					&.active {
@@ -389,7 +362,6 @@
 						border-radius: 5px;
 						color: #fff;
 					}
-
 					color: #666;
 					// width: 62px;
 					height: 25px;
