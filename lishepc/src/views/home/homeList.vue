@@ -10,7 +10,6 @@
 			<slot name="ceremony"></slot>
 			<slot name="qingbox"></slot>
 		</div>
-
 	</div>
 </template>
 

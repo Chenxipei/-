@@ -1,11 +1,9 @@
 <template>
-
-<div>
-     <div class="head-search">
+    <div class="head-search">
       <div class="search">
         <div class="logo">
           <a href="#">
-            <!-- <img src="../assets/img/index/logo_two.png" alt /> -->
+            <img src="../assets/imgs/index/logo_two.png" alt />
           </a>
         </div>
         <div class="search-box">
@@ -14,21 +12,24 @@
             <i class="searchIput"></i>
           </a>
         </div>
-        <div class="cart">
+        <div class="cart" @click="goCart()">
           <a href="#">
-            <!-- <img src="../assets/img/index/cart.png" alt /> -->
+            <img src="../assets/imgs/index/cart.png" alt />
           </a>
           <p class="ShoppingCart">我的购物车</p>
           <span class="ling">{{$store.state.cartData.length}}</span>
         </div>
       </div>
-    </div>
-</div>
+  </div>
 </template>
 <script>
 export default {
-    
-}
+  methods: {
+    goCart(){
+      this.$router.push("/cart")
+    }
+  },
+};
 </script>
 <style lang="less" scope>
      .head-search {
@@ -86,7 +87,7 @@ export default {
             transform: translate(-50%, -50%);
             width: 16px;
             height: 16px;
-            // background-image: url(../assets/img/index/search.png);
+            background-image: url(../assets/imgs/index/search.png);
             background-size: cover;
             background-repeat: no-repeat;
             display: inline-block;
@@ -125,4 +126,5 @@ export default {
       }
     }
   }
+
 </style>

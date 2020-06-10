@@ -108,7 +108,8 @@
 					],
 					"integral": 175,
 					"txt_title": "家味康腊味 广东公明广式腊肠2斤装广味香肠甜味深圳特产礼盒",
-					"introduce": ""
+					"introduce": "",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -120,7 +121,8 @@
 					],
 					"integral": 175,
 					"txt_title": "伊利安慕希草莓燕麦酸奶 200g*10",
-					"introduce": "希腊风味一口浓郁"
+					"introduce": "希腊风味一口浓郁",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -132,7 +134,8 @@
 					],
 					"integral": 175,
 					"txt_title": "灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）",
-					"introduce": "灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）5L"
+					"introduce": "灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）5L",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -143,7 +146,8 @@
 					],
 					"integral": 175,
 					"txt_title": "【礼】国瓷永丰源 先生瓷 海上明珠 350ml陶瓷马克杯办公室会议水杯带盖 茶杯",
-					"introduce": "金砖五国 国宴新品"
+					"introduce": "金砖五国 国宴新品",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -152,7 +156,8 @@
 					],
 					"integral": 175,
 					"txt_title": "海底捞 自煮自热小火锅（脆爽牛肚/麻辣嫩牛/番茄牛腩/番茄小酥肉/香辣素食）单盒",
-					"introduce": ""
+					"introduce": "",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -164,7 +169,8 @@
 					],
 					"integral": 175,
 					"txt_title": "黄大壮 东北·朝阳有机红豆· 三袋装 400g*3",
-					"introduce": ""
+					"introduce": "",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -175,7 +181,8 @@
 					],
 					"integral": 175,
 					"txt_title": "【时令鲜果 】绿之然 红肉火龙果 5斤装",
-					"introduce": ""
+					"introduce": "",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -186,7 +193,8 @@
 					],
 					"integral": 175,
 					"txt_title": "珍妮曲奇Jennybakery  双花曲奇饼干小礼盒 320g",
-					"introduce": ""
+					"introduce": "",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -197,7 +205,8 @@
 					],
 					"integral": 175,
 					"txt_title": "【澳洲进口】诺珊娜 净透润颜卸妆水300ml",
-					"introduce": ""
+					"introduce": "",
+					"number":1
 				},
 				{
 					"img_url": [
@@ -209,7 +218,8 @@
 					],
 					"integral": 175,
 					"txt_title": "黄大壮 东北·朝阳有机花生米· 三袋装 400g*3",
-					"introduce": ""
+					"introduce": "",
+					"number":1
 				}
 			]
 		}

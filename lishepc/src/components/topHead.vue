@@ -52,13 +52,12 @@
           <li class="focus" @mouseover="showFollow" @mouseout="hideFollow">
             <a href="#">关注我们</a>
             <div class="follow" ref="follow">
-              <!-- <img src="../../assets/img/index/share.png" alt /> -->
+              <img src="../assets/imgs/index/share.png" alt />
             </div>
           </li>
         </ul>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -138,7 +137,7 @@ export default {
             display:inline-block;
             vertical-align: baseline;
             transform: rotate(180deg);
-            background-image: url(../../assets/img/index/top_ic_fold.png);
+            background-image: url(../assets/imgs/index/top_ic_fold.png);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;

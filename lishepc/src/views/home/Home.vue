@@ -88,7 +88,7 @@
 				</div>
 			</homelist>
 			<div class="like">
-				<a href="#" class="like_goods" v-for="(item,index) in likeArr.group_list" :key="index">
+				<a href="#" @click.prevent="todetail(index)" class="like_goods" v-for="(item,index) in likeArr.group_list" :key="index">
 					<div class="like_goods_img">
 						<img :src="item.img_url" alt="">
 					</div>
@@ -202,8 +202,14 @@
 					this.m = 60 + this.m
 					this.h = this.h - 1
 				}
+			},
+			todetail(i){
+				// setStore("homeGoods",this.likeArr.group_list[i])
+				let homeGoods = JSON.stringify(this.likeArr.group_list[i])
+				sessionStorage.setItem("homeGoods",homeGoods)
+				this.$router.push('/good_detail')
 			}
-		},
+		}
 
 	}
 </script>
