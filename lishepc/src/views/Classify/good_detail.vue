@@ -4,7 +4,7 @@
       <div class="detail">
         <div class="details_left">
           <div class="preview_big">
-            <img :src="shopobj_url" alt />
+            <img :src="ceshi" alt />
           </div>
           <div class="preview_small">
             <img @mouseover="setcurr(j)" v-for="(i,j) in shopobj.url" :key="j" :src="i" alt />
@@ -70,7 +70,6 @@
                   <input type="text" readonly v-model="num" />
                   <p>
                     <span class="hasbor" @click="num++">+</span>
-
                     <span @click="num>1?(num--):num">-</span>
                   </p>
                 </div>
@@ -114,7 +113,6 @@
   </div>
 </template>
 <script>
-// import VDistpicker from 'v-distpicker'
 import VDistpicker from "v-distpicker";
 import Totop from "../../components/Totop.vue";
 import fixedNav from "../../components/fixedNav.vue";
@@ -123,8 +121,8 @@ export default {
   data() {
     return {
       shopobj: "",
-      count: 0,
-      num: 1,
+      count: 0, //大图
+      num: 1, //商品数
       coloractive: 0,
       shopobj_urlArr: [],
       shopobj_url: ""
@@ -134,19 +132,7 @@ export default {
     this.getShopExplain(this.$router.currentRoute.query.itemld);
   },
   methods: {
-    addCart() {
-      // if (getStore({ name: "userInfo" })) {
-      //   let goodsItem = {
-      //     cover: this.shopobj.url[0],
-      //     name: this.shopobj.title,
-      //     attr: `颜色：${this.shopobj.color[this.coloractive]}`,
-      //     price: this.shopobj.newprice,
-      //     num: this.num
-      //   };
-      //   this.$store.commit("addCart", goodsItem);
-      // }else{
-      //   this.$router.push("/login")
-      // }
+      addCart() {
       let goodsItem = {
           cover: this.shopobj.url[0],
           name: this.shopobj.title,
@@ -165,50 +151,36 @@ export default {
         this.shopobj_url = this.shopobj_urlArr[0];
       });
     },
+    // 设置大图片
     setcurr(val) {
-      console.log(val);
-      let a = 10;
-      a = a > 2 ? a-- : a++;
-      this.count = val;
-      console.log(this.shopobj_urlArr[val]);
-      this.shopobj_url = this.shopobj_urlArr[val];
+      this.ceshi = this.shopobj.url[val];
     }
   },
-  components: {
-    VDistpicker,
+  components: {     VDistpicker,
     Totop,
-    fixedNav
-  }
+    fixedNav}
 };
 </script>
-<style scoped lang='less'>
+<style  lang='less'>
 .futto {
   width: 100%;
-
   background: #f0f0f0;
-
   img {
     margin-top: 30px;
   }
 }
-
 * {
   margin: 0;
   padding: 0;
 }
-
 .data_content {
   display: flex;
-
   .detail_left {
     padding-left: 20px;
     width: 100px;
-    // background: skyblue;
     color: #666666;
-
     .details_title {
       width: 80%;
-      //   background: pink;
       display: inline-block;
       text-align-last: justify;
       text-align: justify;
@@ -216,6 +188,7 @@ export default {
       margin-right: 5px;
     }
   }
+<<<<<<< HEAD
 }
 
 #main-info {
@@ -492,41 +465,40 @@ export default {
       text-justify: distribute-all-lines;
       margin-right: 5px;
     }
+=======
+  .detail_right {
+    flex: 1;
+>>>>>>> 924bcb323db336f771710e1af90e27469060c268
   }
 }
 #main-info {
   width: 100%;
-  // height: 560px;
   background: #ffffff;
-  margin: 10px 0;
+
+  margin: 15px 0;
   .w {
     width: 1200px;
     margin: 0 auto;
-
     .detail {
       display: flex;
-      padding-top: 20px;
+      padding-bottom: 80px;
       .details_left {
         display: flex;
         .preview_big {
           width: 460px;
           height: 460px;
           border: 1px solid #cccccc;
-
-          //   background: pink;
         }
         .preview_small {
           width: 80px;
           height: 100%;
-          //   background: skyblue
           img {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             border: 1px solid #cccccc;
           }
           img:hover {
             border: 1px solid red;
           }
-
           margin-left: 20px;
         }
       }
@@ -592,19 +564,19 @@ export default {
             }
           }
           .content_distpicker {
-            // background: pink;
             margin-bottom: 30px;
             .detail_left {
-              padding-top: 12px;
+              padding-top: 5px;
             }
             .detail_right {
               .distpicker-address-wrapper {
                 margin-bottom: 10px;
                 select {
-                  height: 10px !important  ;
+                  height: 25px;
                 }
               }
               p {
+                color: #666666;
                 span {
                   color: red;
                 }
@@ -612,22 +584,21 @@ export default {
             }
           }
           .content_btn {
-            // box-sizing: border-box;
             .detail_left {
               .btn {
                 border: 1px solid #c0c0c0;
-                width: 60px;
+                width: 50px;
                 height: 50px;
                 display: flex;
                 input {
-                  width: 35px;
+                  width: 32px;
                   // flex:auto;
                   height: 100%;
                   border: 0;
                   text-align: center;
                 }
                 p {
-                  width: 25px;
+                  width: 18px;
                   span {
                     display: block;
                     width: 100%;
@@ -663,6 +634,8 @@ export default {
               .car {
                 border: 1px solid #f55053;
                 color: #f55053;
+                font-size: 18px;
+                padding: 0 20px;
               }
               .enshrine {
                 border: 1px solid #c0c0c0;
@@ -678,5 +651,9 @@ export default {
     }
   }
 }
+<<<<<<< HEAD
 </style>
 
+=======
+</style>
+>>>>>>> 924bcb323db336f771710e1af90e27469060c268

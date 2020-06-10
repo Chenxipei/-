@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="shang11" unicode="&#58945;" d="M256.32 256l256 256 256-256z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="shang1" unicode="&#58963;" d="M233.6 278.4c-12.8-12.8-12.8-32 0-44.8s28.8-12.8 41.6-3.2l3.2 3.2 233.6 233.6 233.6-233.6c12.8-12.8 28.8-12.8 41.6-3.2l3.2 3.2c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2-256 256c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-256-256z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="xia1" unicode="&#58970;" d="M233.6 489.6c-12.8 12.8-12.8 32 0 44.8 12.8 12.8 28.8 12.8 41.6 3.2l3.2-3.2 233.6-233.6 233.6 233.6c12.8 12.8 28.8 12.8 41.6 3.2l3.2-3.2c12.8-12.8 12.8-28.8 3.2-41.6l-3.2-3.2-256-256c-12.8-12.8-28.8-12.8-41.6-3.2l-3.2 3.2-256 256z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="xia11" unicode="&#58948;" d="M768 512L512 256 256 512z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

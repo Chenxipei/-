@@ -63,11 +63,15 @@
       <img src="../../assets/imgsrc/details/1589262526_28974.png" alt />
     </div>
     <!-- 右侧导航 -->
+<<<<<<< HEAD
     <div class="nav-float-l" v-show="showNav">
 <<<<<<< HEAD
 
 =======
 >>>>>>> 25354f30effb42d462493c8a21802baa7c06bdb4
+=======
+    <!-- <div class="nav-float-l" v-show="showNav"> -->
+>>>>>>> 924bcb323db336f771710e1af90e27469060c268
 	<div class="content">
 		<!-- 轮播图区域 -->
 		<div class="banner-wrap">

@@ -3,11 +3,14 @@
     <div class="header w">
       <zwhead :mylist="routerlist">
         <div slot="pricefrom" class="price">
-          价格区间：
+           <!-- <div class="shop-item"  v-for="(i,j) in  mylist.shop" :key="j">
+            <a href="#">{{i}}</a> 
+          </div> -->
+         <a href="#"> 价格区间：</a>
           <input type="text" @input="inp" v-model="cmin" />
           <span>-</span>
           <input type="text" @input="inp" v-model="cmax" />
-          <span class="btn" @click="setlist">
+          <span class="btn" @click="setlist" >
             <a href="#">确定</a>
           </span>
         </div>
@@ -16,17 +19,6 @@
     <div class="content w">
       <item :list="classifyjson"></item>
     </div>
-    <!-- <div class="sidebar">
-      <ul>
-        <li v-for="(i,j) in sidebar" :key="j">
-          <p @mouseover="sidebarshow=j"  @mouseout="sidebarshow=-1">
-            {{i.txt}}
-            回去
-          </p>
-          <div v-show="sidebarshow==j&&j!=0">{{i.num}}</div>
-        </li>
-      </ul>
-    </div> -->
 		<Totop></Totop>
 		<fixedNav></fixedNav>
   </div>
@@ -270,21 +262,8 @@ export default {
       },
 
       classifyjson: "",
-      sidebarshow: 0,
-      sidebar: [
-        {
-          txt: "a",
-          num: "1"
-        },
-        {
-          txt: "b",
-          num: "2"
-        },
-        {
-          txt: "c",
-          num: "3"
-        }
-      ]
+      classifyjsontw: "",
+      sidebarshow: 0
     };
   },
   mounted() {
@@ -294,7 +273,7 @@ export default {
   // 监控路由
   computed: {
     aaa() {
-      //  console.log('wo',this.$store.state.price.classtou.oneclass+''+this.$store.state.price.classtou.twoclass)
+
       return (
         this.$store.state.price.classtou.oneclass +
         "" +
@@ -305,7 +284,9 @@ export default {
   // 监控路由
   watch: {
     aaa: function(newval, oldval) {
-      // console.log('he',newval,oldval);
+    this.cmin = ''
+    this.cmax = ''
+
       if (newval == "00") {
         // console.log('换家纺')
         this.$store.state.price.count = 0;
@@ -322,6 +303,8 @@ export default {
       this.$axios.get("./data/classify.json").then(res => {
         let num = this.$store.state.price.count;
         this.classifyjson = res.data.recmmend[num].list;
+        this.classifyjsontw =  this.classifyjson;
+
       });
     },
     // 搜索功能
@@ -330,9 +313,9 @@ export default {
       if (this.cmin != "" && this.cmax != "") {
         this.$store.state.price.min = +this.cmin;
         this.$store.state.price.max = +this.cmam;
-        this.classifyjson.forEach(i => {
+        this.classifyjsontw.forEach(i => {
           if (+this.cmin <= i.score && +this.cmax >= i.score) {
-            console.log(i.score);
+            // console.log(i.score);
             arr.push(i);
           }
         });
