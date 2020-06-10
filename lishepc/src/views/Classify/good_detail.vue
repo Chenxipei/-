@@ -56,13 +56,18 @@
                 <span class="details_title">颜色</span>:
               </div>
               <div class="detail_right">
-                <span @click="coloractive=j" :class="{active:coloractive==j}" v-for="(i,j) in shopobj.color" :key="j">{{i}}</span>
+                <span
+                  @click="coloractive=j"
+                  :class="{active:coloractive==j}"
+                  v-for="(i,j) in shopobj.color"
+                  :key="j"
+                >{{i}}</span>
               </div>
             </div>
             <div class="data_content content_btn">
               <div class="detail_left">
                 <div class="btn">
-                  <input type="text" readonly  v-model="num" />
+                  <input type="text" readonly v-model="num" />
                   <p>
                     <span class="hasbor" @click="num++">+</span>
                     <span @click="num>1?(num--):num">-</span>
@@ -71,22 +76,18 @@
               </div>
               <div class="detail_right">
                 <div>
-                <button class="buy">立即购买</button>
-
+                  <button class="buy">立即购买</button>
                 </div>
                 <div>
-                <button class="car">加入购物车</button>
-
+                  <button class="car" @click="addCart()">加入购物车</button>
                 </div>
                 <div>
-                     <button class="enshrine">
-                  <p>☆</p>
+                  <button class="enshrine">
+                    <p>☆</p>
 
-                  <span>收藏</span>
-                </button>
-
+                    <span>收藏</span>
+                  </button>
                 </div>
-             
               </div>
             </div>
             <div class="data_content content_tishi">
@@ -100,54 +101,71 @@
           </div>
         </div>
       </div>
-
     </div>
     <div class="futto">
       <div class="w">
-         <img src="../../assets/imgs/index/shopbigpro.png" alt="">
+        <img src="../../assets/imgs/index/shopbigpro.png" alt />
       </div>
     </div>
-		<!-- 回到顶部 -->
-		<Totop></Totop>
+    <!-- 回到顶部 -->
+    <Totop></Totop>
+    <fixedNav></fixedNav>
   </div>
 </template>
 <script>
-// import VDistpicker from 'v-distpicker'
 import VDistpicker from "v-distpicker";
-import Totop from '../../components/Totop.vue'
+import Totop from "../../components/Totop.vue";
+import fixedNav from "../../components/fixedNav.vue";
+import { getStore } from "@/lib/store";
 export default {
   data() {
     return {
       shopobj: "",
-      count: 0,//大图
-      num: 1,//商品数
-      coloractive:0,
-      ceshi:''
+      count: 0, //大图
+      num: 1, //商品数
+      coloractive: 0,
+      shopobj_urlArr: [],
+      shopobj_url: ""
     };
   },
   mounted() {
     this.getShopExplain(this.$router.currentRoute.query.itemld);
   },
   methods: {
+      addCart() {
+      let goodsItem = {
+          cover: this.shopobj.url[0],
+          name: this.shopobj.title,
+          attr: `颜色：${this.shopobj.color[this.coloractive]}`,
+          price: this.shopobj.newprice,
+          num: this.num
+      };
+      
+        this.$store.commit("addCart", goodsItem);
+    },
     getShopExplain(id) {
       this.$axios.get("./data/shopExplain.json").then(res => {
         this.shopobj = res.data.shoplist[id];
-        this.ceshi = res.data.shoplist[id].url[0]
+        this.shopobj_urlArr = this.shopobj.url;
+        console.log(this.shopobj_urlArr[2]);
+        this.shopobj_url = this.shopobj_urlArr[0];
       });
     },
-// 设置大图片
+    // 设置大图片
     setcurr(val) {
-     this.ceshi = this.shopobj.url[val]
+      this.ceshi = this.shopobj.url[val];
     }
   },
-  components: { VDistpicker ,Totop}
+  components: {     VDistpicker,
+    Totop,
+    fixedNav}
 };
 </script>
 <style  lang='less'>
-.futto{
+.futto {
   width: 100%;
   background: #f0f0f0;
-  img{
+  img {
     margin-top: 30px;
   }
 }
@@ -162,7 +180,7 @@ export default {
     width: 100px;
     color: #666666;
     .details_title {
-      width: 80%;    
+      width: 80%;
       display: inline-block;
       text-align-last: justify;
       text-align: justify;
@@ -170,7 +188,7 @@ export default {
       margin-right: 5px;
     }
   }
-  .detail_right{  
+  .detail_right {
     flex: 1;
   }
 }
@@ -184,7 +202,7 @@ export default {
     margin: 0 auto;
     .detail {
       display: flex;
-    padding-bottom: 80px;
+      padding-bottom: 80px;
       .details_left {
         display: flex;
         .preview_big {
@@ -251,27 +269,22 @@ export default {
             margin-bottom: 20px;
             .detail_right {
               span {
-          
-                border:1px solid #7f667f;
+                border: 1px solid #7f667f;
                 color: #7f667f;
                 padding: 2px 10px;
                 margin-right: 10px;
               }
-              span:hover{
+              span:hover {
                 border: 2px solid #ff3737;
                 color: #ff3737;
-
-
               }
-              .active{
-                 border: 2px solid #ff3737;
+              .active {
+                border: 2px solid #ff3737;
                 color: #ff3737;
               }
-
             }
           }
           .content_distpicker {
-          
             margin-bottom: 30px;
             .detail_left {
               padding-top: 5px;
@@ -280,7 +293,7 @@ export default {
               .distpicker-address-wrapper {
                 margin-bottom: 10px;
                 select {
-                  height:25px ;
+                  height: 25px;
                 }
               }
               p {
@@ -315,7 +328,7 @@ export default {
                     line-height: 25px;
                     border-left: 1px solid #c0c0c0;
                     background: #f3f3f3;
-                     cursor:pointer;
+                    cursor: pointer;
                   }
                   .hasbor {
                     border-bottom: 1px solid #c0c0c0;
@@ -344,7 +357,6 @@ export default {
                 color: #f55053;
                 font-size: 18px;
                 padding: 0 20px;
-
               }
               .enshrine {
                 border: 1px solid #c0c0c0;
@@ -352,8 +364,8 @@ export default {
               }
             }
           }
-          .content_tishi{
-            color: #666666; 
+          .content_tishi {
+            color: #666666;
           }
         }
       }

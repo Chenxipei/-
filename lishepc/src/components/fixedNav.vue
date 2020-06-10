@@ -1,33 +1,47 @@
 <template>
-  <div class="headNav-wrap">
-    <div class="headNav">
-      <div class="nav-list">
-        <nav
-          class="n-l-item"
-          v-for="(item,i) in navList"
-          :key="i"
-          @mouseover="curr = i"
-          @mouseout="curr=-1"
-        >
-          <div class="n-l-name">
-            <div
-              class="n-l-n-item"
-              :class="{'active':item.path==$route.path}"
-              @click="toShopList(item.path,i)"
-            >{{item.title}}</div>
-          </div>
-          <div
-            class="n-l-list"
-            v-show="curr==i&&item.list.length>0"
+  <div class="fixedNav-wrap" v-show="btnFlag">
+    <div class="fixedNav">
+      <div class="logo_nav">
+        <a href="#" class="logo">
+          <img src="../assets/imgs/icon/logo_two.png" alt />
+        </a>
+        <div class="nav-list">
+          <nav
+            class="n-l-item"
+            v-for="(item,i) in navList"
+            :key="i"
             @mouseover="curr = i"
             @mouseout="curr=-1"
           >
-            <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
-              <img :src="l.imgSrc" alt />
-              <a href="#" @click="zwget(i,j)">{{l.name}}</a>
+            <div class="n-l-name">
+              <div
+                class="n-l-n-item"
+                :class="{'active':item.path==$route.path}"
+                @click="toShopList(item.path,i)"
+              >{{item.title}}</div>
             </div>
-          </div>
-        </nav>
+            <div
+              class="n-l-list"
+              v-show="curr==i&&item.list.length>0"
+              @mouseover="curr = i"
+              @mouseout="curr=-1"
+            >
+              <div class="n-l-l-item" v-for="(l,j) in item.list" :key="j">
+                <img :src="l.imgSrc" alt />
+                <a href="#" @click="zwget(i,j)">{{l.name}}</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="fixedNav_right">
+        <a href="#">
+          <img src="../assets/imgs/icon_suosou.png" alt />
+        </a>
+        <a href="#" @click.prevent="goCart()">
+          <img src="../assets/imgs/icon_cart.png" alt />
+          <span class="num">{{$store.state.cartData.length}}</span>
+        </a>
       </div>
     </div>
   </div>
@@ -35,9 +49,10 @@
 
 <script>
 export default {
-  name: "headNav",
+  name: "fixedNav",
   data() {
     return {
+      btnFlag: false,
       curr: 0,
       navList: [
         {
@@ -146,21 +161,6 @@ export default {
           title: "运动旅行",
           path: "",
           list: []
-        },
-        {
-          title: "农友精选",
-          path: "",
-          list: []
-        },
-        {
-          title: "为您精选",
-          path: "",
-          list: []
-        },
-        {
-          title: "扶贫专区",
-          path: "",
-          list: []
         }
       ]
     };
@@ -178,6 +178,10 @@ export default {
         }
       });
     },
+    goCart() {
+		console.log(1)
+      this.$router.push("/cart");
+    },
     toShopList(path) {
       if (!path) return;
       this.$router.push(path);
@@ -188,35 +192,102 @@ export default {
       if (this.$route.path == path) {
         this.curr = i;
       }
+    },
+    scrollToTop() {
+      const that = this;
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      that.scrollTop = scrollTop;
+      if (that.scrollTop > 200) {
+        that.btnFlag = true;
+      } else {
+        that.btnFlag = false;
+      }
     }
+  },
+  mounted() {
+    window.addEventListener("scroll", this.scrollToTop);
   }
 };
 </script>
 
 <style scope lang='less'>
-.headNav-wrap {
-  background: rgb(240, 240, 240);
+.fixedNav-wrap {
+  background: #fff;
+  padding: 15px 0 !important;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  position: fixed;
 }
-.headNav {
+
+.fixedNav {
+  justify-content: space-between;
+  align-items: center;
   width: 1200px;
   margin: 0 auto;
   position: relative;
+  display: flex;
+
+  .logo {
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+  }
+
+  .logo_nav {
+    display: flex;
+  }
+
+  .fixedNav_right {
+    a {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 20px;
+      position: relative;
+    }
+
+    .num {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 12px;
+      border-radius: 50%;
+      background-color: #ff4138;
+      box-sizing: border-box;
+      color: #fff;
+    }
+  }
+
   .nav-list {
     display: flex;
     padding-top: 15px;
+    margin-left: 45px;
+
     .n-l-item {
       margin: 0 6px;
+
       .n-l-name {
-        padding: 0 20px;
+        padding: 0 15px;
+
         .n-l-n-item {
           padding-bottom: 5px;
-          font-weight: bold;
           font-size: 14px;
           cursor: pointer;
+
           &:hover {
             box-shadow: inset 0px -2px 0px rgb(255, 78, 76);
             color: rgb(255, 78, 76);
           }
+
           &.active {
             box-shadow: inset 0px -2px 0px rgb(255, 78, 76);
             color: rgb(255, 78, 76);
@@ -224,6 +295,7 @@ export default {
         }
       }
     }
+
     .n-l-list {
       background: #fff;
       position: absolute;
@@ -239,14 +311,17 @@ export default {
       z-index: 999;
       padding: 15px;
       z-index: 999;
+
       .n-l-l-item {
         float: left;
         margin-right: 15px;
+
         img {
           vertical-align: middle;
           width: 50px;
           height: 50px;
         }
+
         a {
           font-size: 14px;
           color: #333;

@@ -133,8 +133,6 @@
 
 		</div>
 	</div>
-	</div>
-	</div>
 </template>
 
 <script>
@@ -143,7 +141,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scope>
 	.myorder {
 		font-size: 12px;
 		color: black;
@@ -154,9 +152,9 @@
 			}
 		}
 	}
-a{
-	color: black;
-}
+	a{
+		color: black;
+	}
 
 	input {
 		outline: none;

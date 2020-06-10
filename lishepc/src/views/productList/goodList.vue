@@ -1,4 +1,69 @@
 <template>
+  <div class="content">
+    <!-- 轮播图区域 -->
+    <div class="banner-wrap">
+      <el-carousel height="480px">
+        <el-carousel-item v-for="(item,i) in carousel" :key="i">
+          <img style="height:480px" :src="item.img" alt srcset />
+        </el-carousel-item>
+      </el-carousel>
+    </div>
+    <!--  详情列表1-->
+    <div class="brand_title" v-for="(i,index) in good_list" :key="index">
+      <h3 :class="{'cnxh-title':i.title=='猜您喜欢'}" ref="title">{{i.title}}</h3>
+      <ul
+        v-if="i.title!='精选店铺'"
+        class="component-item"
+        :class="{'yxyl':i.title=='优选有礼','cnxh':i.title=='猜您喜欢'}"
+      >
+        <li v-for="(item,index) in i.group_list" :key="index">
+          <img :src="item.img_url" class="component_r_img" />
+          <!-- 详情列表2 -->
+          <div class="component_box" v-if="i.title=='优选有礼'">
+            <p class="titel">{{item.txt_title}}</p>
+            <p class="introduce">{{item.introduce}}</p>
+            <p class="price">
+              {{item.price}}
+              <span>积分</span>
+              <s>154.8分</s>
+            </p>
+            <div class="list_btn">
+              <p class="RedeemNow">立即兑换 ></p>
+              <img src="../../assets/imgsrc/details/cart_26.png" alt />
+            </div>
+          </div>
+          <!-- 详情列表3 -->
+          <div class="content_list" v-if="i.title=='猜您喜欢'">
+            <p class="txt_title">{{item.txt_title}}</p>
+            <p class="introduce">{{item.introduce}}</p>
+            <p class="integral">
+              {{item.integral}}
+              <span>积分</span>
+              <img src="../../assets/imgsrc/details/user_cart.png" alt />
+            </p>
+          </div>
+        </li>
+      </ul>
+      <!-- 轮播图区域 -->
+      <div v-else id="jxdp">
+        <div class="swiper-container" ref="banner">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="(banner,i) in i.group_list" :key="i">
+              <img :src="banner.imgSrc" alt />
+            </div>
+          </div>
+          <!-- 如果需要导航按钮 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 底部 -->
+    <div class="banner1">
+      <img src="../../assets/imgsrc/details/1589262526_28974.png" alt />
+    </div>
+    <!-- 右侧导航 -->
+    <!-- <div class="nav-float-l" v-show="showNav"> -->
 	<div class="content">
 		<!-- 轮播图区域 -->
 		<div class="banner-wrap">
@@ -66,16 +131,19 @@
 				</div>
 			</div>
 		</Totop>
+		<fixedNav></fixedNav>
 	</div>
 </template>
 <script>
 	import Swiper from "swiper";
 	import "swiper/css/swiper.css";
 	import Totop from '../../components/Totop.vue'
+	import fixedNav from '../../components/fixedNav.vue'
 	export default {
 		name: "goodList",
 		components: {
-			Totop
+			Totop,
+			fixedNav
 		},
 		data() {
 			return {

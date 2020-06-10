@@ -20,17 +20,20 @@
       <item :list="classifyjson"></item>
     </div>
 		<Totop></Totop>
+		<fixedNav></fixedNav>
   </div>
 </template>
 <script>
 import item from "../../components/item.vue";
 import zwhead from "../../components/zwhead.vue";
 import Totop from '../../components/Totop.vue'
+import fixedNav from '../../components/fixedNav.vue'
 export default {
   components: {
     item,
     zwhead,
-		Totop
+		Totop,
+		fixedNav
   },
   data() {
     return {
