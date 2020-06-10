@@ -17,11 +17,12 @@
       <div class="right myborder" @click="brandshow=!brandshow">
         <span v-show="!brandshow">
           更多
-          <i>_</i>
+          <!-- <i>_</i> -->
+          <i class="icon iconfont icon-xia1 "></i>
         </span>
         <span v-show="brandshow">
           更多
-          <i>^</i>
+          <i class="icon iconfont icon-shang1 "></i>
         </span>
       </div>
     </div>
@@ -44,11 +45,12 @@
             <div class="nav-two-right myborder" @click="navtwoshow=!navtwoshow" >
               <span v-show="!navtwoshow">
                 更多
-                <i>_</i>
+                  <i class="icon iconfont icon-xia1 "></i>
               </span>
               <span v-show="navtwoshow">
                 更多
-                <i>^</i>
+                         <i class="icon iconfont icon-shang1 "></i>
+
               </span>
             </div>
           </div>
@@ -57,11 +59,12 @@
       <div class="right myborder" @click="navoneshow=!navoneshow">
         <span v-show="!navoneshow">
           更多
-          <i>_</i>
+            <i class="icon iconfont icon-xia1 "></i>
         </span>
         <span v-show="navoneshow">
           更多
-          <i>^</i>
+             <i class="icon iconfont icon-shang1 "></i>
+
         </span>
       </div>
     </div>
@@ -71,7 +74,7 @@
       </div>
       <div class="shop-conten">
           <div class="shop-item"  v-for="(i,j) in  mylist.shop" :key="j">
-            <a href="#">{{i}}</a>
+            <a href="#">{{i}}</a> 
           </div>
           <slot name="pricefrom"></slot>
           
@@ -99,22 +102,19 @@ export default {
    this.$store.state.price.classtou.oneclass=i;
   this.$store.state.price.classtou.twoclass=0;   this.oneacttive=i
   this.twoacttive=0
-  //  console.log( this.$store.state.price.classtou.oneclass,this.$store.state.price.classtou.twoclass)
-
    },
       //设置二级分类路由
 
    setlist(i,j){
    this.$store.state.price.classtou.oneclass=i;
   this.$store.state.price.classtou.twoclass=j; 
- 
-  // console.log( this.$store.state.price.classtou.oneclass,this.$store.state.price.classtou.twoclass)
    }
    
   }
 };
 </script>
 <style scoped lang='less'>
+@import url('../assets/zwicon/iconfont.css');
 .myborder{
   span{
     border: 1px solid #cccccc;
@@ -198,7 +198,6 @@ a{
         width: 1160px;
         left: 0px;
         top: 60px;
-        border-bottom: 1px solid #cccccc;
         border-top: 1px solid #cccccc;
         padding: 20px 0;
         display: flex;
@@ -229,9 +228,15 @@ a{
   }
   .shop-conten{
     display: flex;
+    position: relative;
     .price{
+    position: absolute;
+    width: 300px;
+    top: -2px;
+    left: 300px;
       input{
         width: 70px;
+        // height: 15px;
         border-radius: 2px;
        
         margin: 0 3px;
@@ -239,6 +244,7 @@ a{
         outline:none; 
       }
       .btn{
+        height: 15px;
         border: 1px solid red;
         border-radius: 2px;
         color: red;

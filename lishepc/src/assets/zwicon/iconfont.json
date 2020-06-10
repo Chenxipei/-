@@ -1,0 +1,37 @@
+{
+  "id": "1871745",
+  "name": "lishe",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14112863",
+      "name": "上",
+      "font_class": "shang11",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "13409740",
+      "name": "上",
+      "font_class": "shang1",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "13409784",
+      "name": "下",
+      "font_class": "xia1",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "14112880",
+      "name": "下",
+      "font_class": "xia11",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    }
+  ]
+}
