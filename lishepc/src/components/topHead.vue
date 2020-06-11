@@ -4,12 +4,17 @@
       <div class="nav-top">
         <ul class="navList">
           <li>
-            <span>
+            <span v-show="user==null" >
               <!-- <a href="#" class="line">登录</a> -->
-              <router-link to="/login">登录</router-link>
+              <router-link  to="/login">登录</router-link>
               <span class="xiegang">/</span>
               <!-- <a href="#">注册</a> -->
               <router-link to="/register">注册</router-link>
+            </span>
+            <span v-show="user!=null">
+              <router-link to="/member">{{this.user}}</router-link>
+              <span class="xiegang">/</span>
+              <a href="" @click="clearLg">退出登录</a>
             </span>
           </li>
           <li class="liShe">
@@ -63,8 +68,20 @@
 <script>
 export default {
   name: "topHead",
- 
+  data:function(){
+    return{
+      user:null,
+    }
+  },
+  mounted(){
+    this.user = sessionStorage.getItem('phone')
+   console.log(this.user)
+  },
   methods: {
+    clearLg(){
+      this.user=null
+      sessionStorage.clear()
+    },
     showFollow() {
       this.$refs.follow.style.height = 480 + "px";
       this.$refs.follow.style.width = 280 + "px";
@@ -134,7 +151,7 @@ export default {
           .arrow {
             width: 8px;
             height: 8px;
-            display:inline-block;
+            display: inline-block;
             vertical-align: baseline;
             transform: rotate(180deg);
             background-image: url(../assets/imgs/index/top_ic_fold.png);

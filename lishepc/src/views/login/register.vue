@@ -193,7 +193,9 @@ export default {
         this.$refs.error_M.innerHTML =
           "*请勾选“我已阅读并同意 《礼舍网服务协议》”！";
       }
+      
       sessionStorage.setItem('phone',this.phone)
+      
     }
   }
 };

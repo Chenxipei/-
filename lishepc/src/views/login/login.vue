@@ -218,6 +218,7 @@ export default {
         // return true
       }
       if (this.Cphone && this.Cpass) {
+         sessionStorage.setItem('phone',this.phone)
         this.$router.push({ path: "/home" });
       }
     },
@@ -262,6 +263,7 @@ export default {
     // 判断验证码是否输入准确
     checkCode() {
       if (this.Cphone && this.ccode == this.isCode) {
+        sessionStorage.setItem('phone',this.phone)
         this.$router.push({ path: "/home" });
       } else {
         this.$refs.error_T.innerHTML = "*手机号或者验证码不正确";

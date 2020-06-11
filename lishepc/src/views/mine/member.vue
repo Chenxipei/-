@@ -8,10 +8,10 @@
           <li>
             <span>
               <!-- <a href="#" class="line">登录</a> -->
-              <router-link to="/login">15220102222</router-link>
+              <router-link to="/login">{{this.phone}}</router-link>
               <span class="xiegang">/</span>
               <!-- <a href="#">注册</a> -->
-              <router-link to="/register">退出登录</router-link>
+              <a href="#" @click="clearLg">退出登录</a>
             </span>
           </li><span class="shu">|</span>
           <li>
@@ -41,7 +41,7 @@
       <div class="search">
         <div class="logo">
           <a href="#">
-            <img src="../../assets/img/index/logo_two.png" alt />
+            <img src="../../assets/imgs/index/logo_two.png" alt />
           </a>
         </div>
         <div class="search-box">
@@ -52,7 +52,7 @@
         </div>
         <div class="cart">
           <a href="#">
-            <img src="../../assets/img/index/cart.png" alt />
+            <img src="../../assets/imgs/index/cart.png" alt />
           </a>
           <p class="ShoppingCart">我的购物车</p>
           <span class="ling">0</span>
@@ -159,7 +159,7 @@
           <!-- 欢迎 -->
           <div class="welcome">
             您好,
-            <span class="user_name">15220102322,</span> 欢迎进入会员中心
+            <span class="user_name">{{this.phone}},</span> 欢迎进入会员中心
             <div class="user_level level1">普通会员</div>
           </div>
           <!-- 我的信息 -->
@@ -171,9 +171,9 @@
                   <img src="../../assets/imgs/login/user_head.png" alt />
                 </div>
                 <div class="three_info">
-                  <p>15220102432</p>
+                  <p>{{this.phone}}</p>
                   <p class="company_name">心意商城</p>
-                  <p>15220102432</p>
+                  <p>{{this.phone}}</p>
                 </div>
               </div>
             </div>
@@ -349,13 +349,15 @@ export default {
       defaultImg:
         'this.src="' + require("../../assets/imgs/icon/err.jpg") + '"',
       btnFlag: false,
-      memberGoods: []
+      memberGoods: [],
+      phone:''
     };
   },
   mounted() {
     this.drawChart();
     window.addEventListener("scroll", this.scrollToTop);
     this.getHomeData();
+    this.phone=sessionStorage.getItem('phone')
   },
   destroyed() {
     window.removeEventListener("scroll", this.scrollToTop);
@@ -419,6 +421,11 @@ export default {
         ]
       };
       myChart.setOption(option);
+    },
+    clearLg(){
+      console.log(11112)
+      sessionStorage.clear()
+       this.$router.push({ path: "/login" });
     },
     getHomeData() {
       //   console.log("请求member商品");
@@ -622,7 +629,7 @@ export default {
             transform: translate(-50%, -50%);
             width: 16px;
             height: 16px;
-            background-image: url(../../assets/img/index/search.png);
+            background-image: url(../../assets/imgs/index/search.png);
             background-size: cover;
             background-repeat: no-repeat;
             display: inline-block;
