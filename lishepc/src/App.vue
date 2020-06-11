@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <top-Head v-if="$route.path!='/login'&&$route.path!='/register'"></top-Head>
+    <top-Head v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/member'&&$route.path !='/member/myorder'"></top-Head>
     <head-search
-      v-if="$route.path!='/total'&&$route.path!='/login'&&$route.path!='/register'&&$route.path!='/cart'"
+      v-if="$route.path!='/total'&&$route.path!='/login'&&$route.path!='/register'&&$route.path!='/cart'&&$route.path!='/member'&&$route.path !='/member/myorder'"
     ></head-search>
     <head-nav
-      v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/total'&&$route.path!='/cart'"
+      v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/total'&&$route.path!='/cart'&&$route.path!='/member'&&$route.path !='/member/myorder'"
     ></head-nav>
     <router-view></router-view>
-    <foot v-if="$route.path!='/login'&&$route.path!='/register'"></foot>
+    <foot v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/member'&&$route.path !='/member/myorder'"></foot>
   </div>
 </template>
 

@@ -75,7 +75,6 @@ export default {
   },
   mounted(){
     this.user = sessionStorage.getItem('phone')
-   console.log(this.user)
   },
   methods: {
     clearLg(){

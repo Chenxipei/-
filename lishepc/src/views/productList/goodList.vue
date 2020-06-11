@@ -29,7 +29,7 @@
             </p>
             <div class="list_btn">
               <p class="RedeemNow">立即兑换 ></p>
-              <img src="../../assets/imgsrc/details/cart_26.png" alt />
+              <img src="../../assets/imgs/details/cart_26.png" alt />
             </div>
           </div>
           <!-- 详情列表3 -->
@@ -39,7 +39,7 @@
             <p class="integral">
               {{item.integral}}
               <span>积分</span>
-              <img src="../../assets/imgsrc/details/user_cart.png" alt />
+              <img src="../../assets/imgs/details/user_cart.png" alt />
             </p>
           </div>
         </li>
@@ -58,9 +58,10 @@
         </div>
       </div>
     </div>
+
     <!-- 底部 -->
     <div class="banner1">
-      <img src="../../assets/imgsrc/details/1589262526_28974.png" alt />
+      <img src="../../assets/imgs/details/1589262526_28974.png" alt />
     </div>
     <!-- 右侧导航 -->
     <!-- <div class="nav-float-l" v-show="showNav"> -->
@@ -90,7 +91,7 @@
 						</p>
 						<div class="list_btn">
 							<p class="RedeemNow">立即兑换 ></p>
-							<img src="../../assets/imgsrc/details/cart_26.png" alt />
+							<img src="../../assets/imgs/details/cart_26.png" alt />
 						</div>
 					</div>
 					<!-- 详情列表3 -->
@@ -100,7 +101,7 @@
 						<p class="integral">
 							{{item.integral}}
 							<span>积分</span>
-							<img src="../../assets/imgsrc/details/user_cart.png" alt />
+							<img src="../../assets/imgs/details/user_cart.png" alt />
 						</p>
 					</div>
 				</li>
@@ -108,13 +109,13 @@
 		</div>
 		<!-- 底部banner -->
 		<div class="banner1">
-			<img src="../../assets/imgsrc/details/1589262526_28974.png" alt />
+			<img src="../../assets/imgs/details/1589262526_28974.png" alt />
 		</div>
 		<!-- 右侧导航 -->
 		<!--  <div class="nav-float-l">
       <div class="nav-float-l-top">
         <p>居家生活</p>
-        <img src="../../assets/imgsrc/details/1591327317.jpg" alt />
+        <img src="../../assets/imgs/details/1591327317.jpg" alt />
       </div>
       <div class="nav_link" v-for="(item,i) in navTitle" :key="i">
         <p :class="{'active':i===navActive}">{{item}}</p>
@@ -124,7 +125,7 @@
 			<div class="nav-float-l" slot="nav-float-l">
 				<div class="nav-float-l-top">
 					<p>居家生活</p>
-					<img src="../../assets/imgsrc/details/1591327317.jpg" alt />
+					<img src="../../assets/imgs/details/1591327317.jpg" alt />
 				</div>
 				<div class="nav_link" v-for="(item,i) in navTitle" :key="i">
 					<p :class="{'active':i===navActive}">{{item}}</p>
@@ -133,6 +134,7 @@
 		</Totop>
 		<fixedNav></fixedNav>
 	</div>
+</div>
 </template>
 <script>
 	import Swiper from "swiper";

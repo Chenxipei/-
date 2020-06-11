@@ -15,7 +15,7 @@
             </span>
           </li><span class="shu">|</span>
           <li>
-            <a href="#">我的订单</a>
+            <router-link to="/member/myorder">我的订单</router-link>
           </li><span class="shu">|</span>
           <li>
             <a href="#">积分卡兑换</a>
@@ -50,13 +50,11 @@
             <i class="searchIput"></i>
           </a>
         </div>
-        <div class="cart">
-          <a href="#">
-            <img src="../../assets/imgs/index/cart.png" alt />
-          </a>
+        <router-link to="/cart" class="cart">
+          <span> <img src="../../assets/imgs/index/cart.png" alt /></span>
           <p class="ShoppingCart">我的购物车</p>
           <span class="ling">0</span>
-        </div>
+        </router-link>
       </div>
     </div>
     <div class="header_nav">
@@ -68,16 +66,17 @@
     <div class="wrap content">
       <!-- 左侧导航 -->
       <div class="user_center">
-        <a href>
+        <router-link to="/member"> <div class="user_center_head">会员中心</div></router-link>
+        <!-- <a href>
           <div class="user_center_head">会员中心</div>
-        </a>
+        </a> -->
         <div class="left_nav">
           <ul>
             <li class="left_nav_title">
               <span>我的交易</span>
             </li>
             <li>
-              <a href>我的订单</a>
+               <router-link to="/member/myorder">我的订单</router-link>
             </li>
             <li>
               <a href>活动订单</a>
@@ -155,7 +154,8 @@
 
       <!-- 右侧订单 -->
       <div class="order_info">
-        <div class="right_wrap">
+        <router-view v-show="$route.path=='/member/myorder'"></router-view>
+        <div class="right_wrap" v-show="$route.path !='/member/myorder'">
           <!-- 欢迎 -->
           <div class="welcome">
             您好,

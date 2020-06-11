@@ -131,7 +131,18 @@ export default {
         // console.log("进入倒计时");
         this.$refs.error_M.innerHTML = "<span>1</span>";
         this.generatedCode();
-        console.log(this.ccode);
+        // console.log(this.ccode);
+        //
+         let params = new URLSearchParams()
+        params.append('phone',this.phone)
+        params.append('code',this.ccode)
+        this.$axios.post('http://localhost:3001/sedsms',params)
+        .then(res=>{
+          // console.log(res)
+        })
+        .catch(err=>{
+          console.log(err)
+        })
         this.Dphone = true;
         //点击已发送，当正在已发送的时候不需要再启动定时器
         if (this.computedTime == 0) {

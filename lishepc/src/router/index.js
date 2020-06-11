@@ -32,7 +32,11 @@ const routes = [
 	},
 	{
 		path: '/member',
-		component: () => import('../views/mine/member.vue')
+		component: () => import('../views/mine/member.vue'),
+		children:[
+			{path: 'myorder',
+			component: () => import('../views/mine/myorder.vue')}
+		]
 	},
 	{
 		path: "/login",
