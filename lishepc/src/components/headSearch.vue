@@ -2,9 +2,7 @@
     <div class="head-search">
       <div class="search">
         <div class="logo">
-          <a href="#">
-            <img src="../assets/imgs/index/logo_two.png" alt />
-          </a>
+          <router-link to="/home"><img src="../assets/imgs/index/logo_two.png" alt /></router-link>
         </div>
         <div class="search-box">
           <input type="text" placeholder="八马茶叶" />

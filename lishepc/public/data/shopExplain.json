@@ -1,6 +1,7 @@
 {
     "shoplist": [
         {
+            "itemld": 0,
             "url": [
                 "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-09-02/1567406838_34604.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
                 "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-09-02/1567406841_52279.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
@@ -10,8 +11,9 @@
             "title": "富安娜 逸享暖芯被203*229",
             "oldprice": "1080积分",
             "newprice": "600积分",
-            "shopname":"富安娜家纺旗舰店",
-            "discount":"99",
+            "shopname": "富安娜家纺旗舰店",
+            "discount": "99",
+            "specification": "颜色",
             "color": [
                 "珍珠白",
                 "天空蓝"
@@ -24,12 +26,13 @@
                 "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/0a/24/9f/8ff6ce48e1b7d1d505d23f89a112eebe.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
                 "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/a7/5a/80/0c462a4aa06572c51cd59f64efb2da16.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
             ],
+            "itemld": 1,
             "title": "赛诺（SINOMAX）美梦小童调节慢回弹记忆儿童枕头双层调节枕芯（1个）",
             "oldprice": "368积分",
             "newprice": "226积分",
-            "shopname":"品质家纺馆",
-            "discount":"99",
-
+            "shopname": "品质家纺馆",
+            "discount": "99",
+            "specification": "颜色",
             "color": [
                 "粉蓝色",
                 "粉红色"
@@ -43,20 +46,124 @@
                 "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-01-07/1546843651_66722.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
                 "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-01-07/1546843654_32030.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
             ],
+            "itemld": 2,
             "title": "洁丽雅 毛巾纯棉洗脸吸水加厚毛巾全棉成人洗脸面巾家用纯棉 7174单条装 红灰绿蓝四色可选  74*34",
             "oldprice": "27.60积分",
             "newprice": "23积分",
-            "shopname":"洁丽雅旗舰店",
-            "discount":"1",
-
+            "shopname": "洁丽雅旗舰店",
+            "discount": "1",
+            "specification": "颜色",
             "color": [
                 "红色",
                 "灰色",
                 "绿色",
                 "深蓝"
             ]
+        },
+        {
+            "url": [
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/16/69/c6/d8b09723343ab24e2c789154e23a41ba.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/08/ed/cd/1796922aa6032611d2bdfa711e5829bd.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/20/79/1b/16b7e98313319c55e5e29db8b56d1752.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/5a/1b/c1/ed614caa019ff25b01ebc2020f340790.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/b3/56/2a/01e7f3b82d54d8b30732ffc6a80f34f7.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
+            ],
+            "title": "家味康腊味 广东公明广式腊肠2斤装广味香肠甜味深圳特产礼盒",
+            "itemld": 10,
+            "oldprice": "275",
+            "newprice": "175",
+            "shopname": "五谷粮油坊",
+            "discount": "1",
+            "specification": "销售规格",
+            "color": [
+                "1500g"
+          
+            ]
+        },
+        {
+            "url": [
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762742_32493.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762749_57489.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762749_76999.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762749_87059.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762749_83577.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
+            ],
+          
+            "title": "伊利安慕希草莓燕麦酸奶 200g*10",
+            "itemld": 11,
+            "oldprice": "275",
+            "newprice": "175",
+            "shopname": "五谷粮油坊",
+            "discount": "1",
+            "specification": "包装",
+            "color": [
+                "整箱"
+            ]
+        },
+        {
+            "url": [
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258738_23384.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258738_23384.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258753_1167.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258756_47440.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258759_47539.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
+            ],
+          
+            "title": "灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）",
+            "itemld": 12,
+            "oldprice": "275",
+            "newprice": "175",
+            "shopname": "",
+            "discount": "1",
+            "specification": "包装",
+            "color": [
+                "整箱"
+            ]
+        },
+        {
+            "url": [
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-07-16/1563255413_45223.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-07-16/1563255738_50751.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-07-16/1563255743_36845.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-07-16/1563255747_9705.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
+            ],
+      
+            "title": "【礼】国瓷永丰源 先生瓷 海上明珠 350ml陶瓷马克杯办公室会议水杯带盖 茶杯",
+            "itemld": 13,
+            "oldprice": "275",
+            "newprice": "175",
+            "shopname": "",
+            "discount": "1",
+            "specification": "海上明珠",
+            "color": [
+                "黄金会议杯"
+             
+            ]
+        },
+        {
+            "url": [
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-05-09/1557398117_57206.jpg?x-oss-process=png/resize,w_190/quality,q_80",
+                "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-05-09/1557398117_57206.jpg?x-oss-process=png/resize,w_190/quality,q_80"
+            ],
+         
+            "title": "海底捞 自煮自热小火锅（脆爽牛肚/麻辣嫩牛/番茄牛腩/番茄小酥肉/香辣素食）单盒",
+            "itemld": 14,
+            "oldprice": "59.9",
+            "newprice": "29.8",
+            "shopname": "猫诚旗舰店",
+            "discount": "68",
+            "specification": "口味",
+            "color": [
+                "（香辣素食味）400g/盒",
+                "（番茄小肉酥味）415g/盒",
+                "（麻辣嫩牛味）435g/盒",
+                "（番茄牛腩味）400g/盒"
+              
+
+          
+            ]
         }
-    
-       
+        
+
     ]
 }

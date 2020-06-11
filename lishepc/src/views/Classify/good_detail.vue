@@ -4,7 +4,7 @@
       <div class="detail">
         <div class="details_left">
           <div class="preview_big">
-            <img :src="shopobj_url" alt />
+            <img :src="count" alt />
           </div>
           <div class="preview_small">
             <img @mouseover="setcurr(j)" v-for="(i,j) in shopobj.url" :key="j" :src="i" alt />
@@ -53,7 +53,7 @@
             </div>
             <div class="data_content content_color">
               <div class="detail_left">
-                <span class="details_title">颜色</span>:
+                <span class="details_title">{{shopobj.specification}}</span>:
               </div>
               <div class="detail_right">
                 <span
@@ -70,7 +70,6 @@
                   <input type="text" readonly v-model="num" />
                   <p>
                     <span class="hasbor" @click="num++">+</span>
-
                     <span @click="num>1?(num--):num">-</span>
                   </p>
                 </div>
@@ -114,7 +113,6 @@
   </div>
 </template>
 <script>
-// import VDistpicker from 'v-distpicker'
 import VDistpicker from "v-distpicker";
 import Totop from "../../components/Totop.vue";
 import fixedNav from "../../components/fixedNav.vue";
@@ -123,8 +121,8 @@ export default {
   data() {
     return {
       shopobj: "",
-      count: 0,
-      num: 1,
+      count: 0, //大图
+      num: 1, //商品数
       coloractive: 0,
       shopobj_urlArr: [],
       shopobj_url: ""
@@ -137,80 +135,59 @@ export default {
   },
   methods: {
     addCart() {
-      // if (getStore({ name: "userInfo" })) {
-      //   let goodsItem = {
-      //     cover: this.shopobj.url[0],
-      //     name: this.shopobj.title,
-      //     attr: `颜色：${this.shopobj.color[this.coloractive]}`,
-      //     price: this.shopobj.newprice,
-      //     num: this.num
-      //   };
-      //   this.$store.commit("addCart", goodsItem);
-      // }else{
-      //   this.$router.push("/login")
-      // }
       let goodsItem = {
-          cover: this.shopobj.url[0],
-          name: this.shopobj.title,
-          attr: `颜色：${this.shopobj.color[this.coloractive]}`,
-          price: this.shopobj.newprice,
-          num: this.num
+        cover: this.shopobj.url[0],
+        name: this.shopobj.title,
+        attr: `${this.shopobj.specification}：${
+          this.shopobj.color[this.coloractive]
+        }`,
+        price: this.shopobj.newprice,
+        num: this.num
       };
-      
-        this.$store.commit("addCart", goodsItem);
+
+      this.$store.commit("addCart", goodsItem);
     },
     getShopExplain(id) {
       this.$axios.get("./data/shopExplain.json").then(res => {
-        this.shopobj = res.data.shoplist[id];
-        this.shopobj_urlArr = this.shopobj.url;
-        console.log(this.shopobj_urlArr[2]);
-        this.shopobj_url = this.shopobj_urlArr[0];
+        res.data.shoplist.forEach(i => {
+          if (i.itemld == id) {
+            this.shopobj = i
+            this.count = this.shopobj.url[0];
+            this.shopobj_urlArr = this.shopobj.url;
+            console.log(this.shopobj_urlArr[2]);
+            this.shopobj_url = this.shopobj_urlArr[0];
+          }
+        });
       });
     },
+    // 设置大图片
     setcurr(val) {
-      console.log(val);
-      let a = 10;
-      a = a > 2 ? a-- : a++;
-      this.count = val;
-      console.log(this.shopobj_urlArr[val]);
-      this.shopobj_url = this.shopobj_urlArr[val];
+      this.count = this.shopobj.url[val];
     }
   },
-  components: {
-    VDistpicker,
-    Totop,
-    fixedNav
-  }
+  components: { VDistpicker, Totop, fixedNav }
 };
 </script>
-<style scoped lang='less'>
+<style  lang='less'>
 .futto {
   width: 100%;
-
   background: #f0f0f0;
-
   img {
     margin-top: 30px;
   }
 }
-
 * {
   margin: 0;
   padding: 0;
 }
-
 .data_content {
   display: flex;
-
   .detail_left {
     padding-left: 20px;
     width: 100px;
-    // background: skyblue;
     color: #666666;
-
     .details_title {
       width: 80%;
-      //   background: pink;
       display: inline-block;
       text-align-last: justify;
       text-align: justify;
@@ -218,94 +195,74 @@ export default {
       margin-right: 5px;
     }
   }
+  .detail_right {
+    flex: 1;
+  }
 }
-
 #main-info {
   width: 100%;
-  // height: 560px;
   background: #ffffff;
-  margin: 10px 0;
-
+  margin: 15px 0;
   .w {
     width: 1200px;
     margin: 0 auto;
-
     .detail {
       display: flex;
-      padding-top: 20px;
-
+      padding-bottom: 80px;
       .details_left {
         display: flex;
-
         .preview_big {
           width: 460px;
           height: 460px;
           border: 1px solid #cccccc;
-
-          //   background: pink;
         }
-
         .preview_small {
           width: 80px;
           height: 100%;
-
-          //   background: skyblue
           img {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             border: 1px solid #cccccc;
           }
-
           img:hover {
             border: 1px solid red;
           }
-
           margin-left: 20px;
         }
       }
-
       .details_middle {
         padding-left: 50px;
-
         .goods_name {
           font-size: 16px;
           font-weight: 700;
           margin-bottom: 30px;
         }
-
         .product_data_content {
           background: #f0f0f0;
           padding: 20px 0;
-
           .content_price {
             margin-bottom: 20px;
-
             .detail_right {
               span {
                 color: #ff3737;
                 font-size: 22px;
                 margin-right: 10px;
               }
-
               s {
                 color: #666666;
               }
             }
           }
-
           .content_discount {
             .detail_right {
               color: #ff3737;
             }
           }
         }
-
         .address_content_wrap {
           // background: pink;..
           margin-top: 30px;
-
           .content_shopname {
             margin-bottom: 10px;
-
             .detail_right {
               span {
                 border: 1px solid #ff3737;
@@ -314,66 +271,67 @@ export default {
               }
             }
           }
-
           .content_color {
             margin-bottom: 20px;
-
             .detail_right {
+              display: flex;
+              flex-wrap: wrap;
               span {
-                border: 2px solid #ff3737;
-                color: #ff3737;
+                border: 1px solid #7f667f;
+                color: #7f667f;
                 padding: 2px 10px;
                 margin-right: 10px;
+                margin-bottom: 10px;
+              }
+              span:hover {
+                border: 2px solid #ff3737;
+                color: #ff3737;
+                padding: 1px 9px;
+              }
+              .active {
+                 border: 2px solid #ff3737;
+                color: #ff3737;
+                padding: 1px 9px;
               }
             }
           }
-
           .content_distpicker {
-            // background: pink;
             margin-bottom: 30px;
-
             .detail_left {
-              padding-top: 12px;
+              padding-top: 5px;
             }
-
             .detail_right {
               .distpicker-address-wrapper {
                 margin-bottom: 10px;
-
                 select {
-                  height: 10px !important;
+                  height: 25px;
                 }
               }
-
               p {
+                color: #666666;
                 span {
                   color: red;
                 }
               }
             }
           }
-
           .content_btn {
-            // box-sizing: border-box;
             .detail_left {
               .btn {
                 border: 1px solid #c0c0c0;
-                width: 60px;
+                width: 50px;
                 height: 50px;
                 display: flex;
-
                 input {
-                  width: 35px;
+                  width: 32px;
                   // flex:auto;
                   height: 100%;
                   border: 0;
                   text-align: center;
                 }
-
                 p {
-                  width: 25px;
-
-                  a {
+                  width: 18px;
+                  span {
                     display: block;
                     width: 100%;
                     height: 50%;
@@ -381,19 +339,17 @@ export default {
                     line-height: 25px;
                     border-left: 1px solid #c0c0c0;
                     background: #f3f3f3;
+                    cursor: pointer;
                   }
-
                   .hasbor {
                     border-bottom: 1px solid #c0c0c0;
                   }
                 }
               }
             }
-
             .detail_right {
               margin-bottom: 20px;
               display: flex;
-
               button {
                 border: none;
                 background: transparent;
@@ -402,25 +358,23 @@ export default {
                 padding: 0 10px;
                 margin-right: 10px;
               }
-
               .buy {
                 background: #f55053;
                 color: #ffffff;
                 font-size: 18px;
               }
-
               .car {
                 border: 1px solid #f55053;
                 color: #f55053;
+                font-size: 18px;
+                padding: 0 20px;
               }
-
               .enshrine {
                 border: 1px solid #c0c0c0;
                 color: #b39999;
               }
             }
           }
-
           .content_tishi {
             color: #666666;
           }

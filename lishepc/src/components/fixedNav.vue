@@ -2,9 +2,10 @@
   <div class="fixedNav-wrap" v-show="btnFlag">
     <div class="fixedNav">
       <div class="logo_nav">
-        <a href="#" class="logo">
+        <!-- <a href="#" class="logo">
           <img src="../assets/imgs/icon/logo_two.png" alt />
-        </a>
+        </a> -->
+         <router-link class="logo" to="/home"><img src="../assets/imgs/index/logo_two.png" alt /></router-link>
         <div class="nav-list">
           <nav
             class="n-l-item"
