@@ -4,7 +4,7 @@
       <div class="detail">
         <div class="details_left">
           <div class="preview_big">
-            <img :src="ceshi" alt />
+            <img :src="count" alt />
           </div>
           <div class="preview_small">
             <img @mouseover="setcurr(j)" v-for="(i,j) in shopobj.url" :key="j" :src="i" alt />
@@ -53,7 +53,7 @@
             </div>
             <div class="data_content content_color">
               <div class="detail_left">
-                <span class="details_title">颜色</span>:
+                <span class="details_title">{{shopobj.specification}}</span>:
               </div>
               <div class="detail_right">
                 <span
@@ -136,7 +136,9 @@ export default {
       let goodsItem = {
         cover: this.shopobj.url[0],
         name: this.shopobj.title,
-        attr: `颜色：${this.shopobj.color[this.coloractive]}`,
+        attr: `${this.shopobj.specification}：${
+          this.shopobj.color[this.coloractive]
+        }`,
         price: this.shopobj.newprice,
         num: this.num
       };
@@ -145,15 +147,20 @@ export default {
     },
     getShopExplain(id) {
       this.$axios.get("./data/shopExplain.json").then(res => {
-        this.shopobj = res.data.shoplist[id];
-        this.shopobj_urlArr = this.shopobj.url;
-        console.log(this.shopobj_urlArr[2]);
-        this.shopobj_url = this.shopobj_urlArr[0];
+        res.data.shoplist.forEach(i => {
+          if (i.itemld == id) {
+            this.shopobj = i
+            this.count = this.shopobj.url[0];
+            this.shopobj_urlArr = this.shopobj.url;
+            console.log(this.shopobj_urlArr[2]);
+            this.shopobj_url = this.shopobj_urlArr[0];
+          }
+        });
       });
     },
     // 设置大图片
     setcurr(val) {
-      this.ceshi = this.shopobj.url[val];
+      this.count = this.shopobj.url[val];
     }
   },
   components: { VDistpicker, Totop, fixedNav }
@@ -265,19 +272,24 @@ export default {
           .content_color {
             margin-bottom: 20px;
             .detail_right {
+              display: flex;
+              flex-wrap: wrap;
               span {
                 border: 1px solid #7f667f;
                 color: #7f667f;
                 padding: 2px 10px;
                 margin-right: 10px;
+                margin-bottom: 10px;
               }
               span:hover {
                 border: 2px solid #ff3737;
                 color: #ff3737;
+                padding: 1px 9px;
               }
               .active {
-                border: 2px solid #ff3737;
+                 border: 2px solid #ff3737;
                 color: #ff3737;
+                padding: 1px 9px;
               }
             }
           }
