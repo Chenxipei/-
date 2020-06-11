@@ -25,7 +25,7 @@ const routes = [
 		path: "/shopList/familyLife",
 		component: () => import("../views/productList/goodList.vue")
 	},
-	
+
 	{
 		path: '/classify',
 		component: () => import('../views/Classify/classify.vue')
@@ -42,18 +42,28 @@ const routes = [
 		path: '/good_detail',
 		component: () => import('../views/Classify/good_detail.vue')
 	},
-	
+
 	{
 		path: "/myorder",
 		component: () => import("../views/mine/myorder.vue")
 	},
 	{
-		path:'/total',
-		component:()=>import("../views/settlement/settlement.vue")
+		path: '/total',
+		component: () => import("../views/settlement/settlement.vue")
 	},
 	{
 		path: "/payment",
 		component: () => import("../views/payment/payment.vue")
+	},
+	{
+		path: "/member",
+		component: () => import("../views/mine/member.vue"),
+		children:[
+			{
+				path:"myorder",
+				component: () => import("../views/mine/myorder.vue")
+			}
+		]
 	}
 ]
 const router = new VueRouter({
@@ -80,5 +90,7 @@ const router = new VueRouter({
 // 	  next()
 //   }
 // })
-
+router.afterEach(to => {
+	window.scrollTo(0, 0)
+})
 export default router

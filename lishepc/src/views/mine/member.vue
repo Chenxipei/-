@@ -1,7 +1,6 @@
 <template>
   <div class="member">
     <!-- 头部 -->
-    <headSearch></headSearch>
     <div class="header_nav">
       <div class="mauto">
         <a href>商城首页</a>
@@ -186,7 +185,7 @@
         <div class="footer_statement">
           <ul class="footer_statement_list">
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_1.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_1.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">消费保障</h3>
                 <p class="statement_text">严格品质把关</p>
@@ -194,7 +193,7 @@
               </div>
             </li>
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_2.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_2.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">品类齐全 正品行货</h3>
                 <p class="statement_text">大牌特价 多仓直发</p>
@@ -202,7 +201,7 @@
               </div>
             </li>
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_3.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_3.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">星级服务</h3>
                 <p class="statement_text">优质商品为您所选</p>
@@ -210,7 +209,7 @@
               </div>
             </li>
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_4.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_4.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">400-833-0288</h3>
                 <p class="statement_text">周一至周五</p>
@@ -260,7 +259,7 @@
           <div class="footer_text">
             <div class="wx_guanzhu">
               <p>扫码关注微信公众号</p>
-              <img src="../../assets/imgs/icon/footer_img_qrcode.png" alt />
+              <!-- <img src="../../assets/imgs/icon/footer_img_qrcode.png" alt /> -->
               <p>优惠咨询抢先知</p>
             </div>
           </div>
@@ -280,13 +279,10 @@
 </template>
 
 <script>
-import headSearch from "../../components/headSearch.vue";
 import footer from "../../components/footer.vue";
 export default {
   name: "member",
-  components: {
-    headSearch
-  },
+  
   data: function() {
     return {
       btnFlag: false,
@@ -443,7 +439,7 @@ export default {
         font-size: 18px;
         text-align: right;
         line-height: 49px;
-        background-image: url(../../assets/imgs/icon/user.png);
+        // background-image: url(../../assets/imgs/icon/user.png);
         background-repeat: no-repeat;
         background-position: 54px 15px;
       }
@@ -506,7 +502,7 @@ export default {
             line-height: 20px;
             padding-left: 25px;
             margin-left: 10px;
-            background: url(../../assets/imgs/icon/user_level.png) no-repeat;
+            // background: url(../../assets/imgs/icon/user_level.png) no-repeat;
           }
         }
         .my_wrap {
@@ -721,12 +717,12 @@ export default {
 
     .totopbox {
       &:hover i {
-        background: url(../../assets/imgs/icon/sidebar_ic_top_hover.png) 1px 0
-          no-repeat;
+        // background: url(../../assets/imgs/icon/sidebar_ic_top_hover.png) 1px 0
+        //   no-repeat;
       }
       .totop {
-        background: url(../../assets/imgs/icon/sidebar_ic_top_default.png) 1px 0
-          no-repeat;
+        // background: url(../../assets/imgs/icon/sidebar_ic_top_default.png) 1px 0
+          // no-repeat;
       }
     }
 

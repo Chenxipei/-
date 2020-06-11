@@ -5,10 +5,8 @@
         <ul class="navList">
           <li>
             <span>
-              <!-- <a href="#" class="line">登录</a> -->
               <router-link to="/login">登录</router-link>
               <span class="xiegang">/</span>
-              <!-- <a href="#">注册</a> -->
               <router-link to="/register">注册</router-link>
             </span>
           </li>
@@ -19,7 +17,7 @@
               <div class="lisheTerm">
                 <ul class="liseUl">
                   <li>
-                    <a href="#">我的订单</a>
+                    <a href="#" @click.prevent="goMyOrder">我的订单</a>
                   </li>
                   <li>
                     <a href="#">我的消息</a>
@@ -63,7 +61,6 @@
 <script>
 export default {
   name: "topHead",
- 
   methods: {
     showFollow() {
       this.$refs.follow.style.height = 480 + "px";
@@ -75,6 +72,9 @@ export default {
       this.$refs.follow.style.height = 0;
       this.$refs.follow.style.width = 280 + "px";
       this.$refs.follow.style.transition = "0.2s";
+    },
+    goMyOrder(){
+      this.$router.push("/myorder")
     }
   }
 };

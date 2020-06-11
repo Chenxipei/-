@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <top-Head v-if="$route.path!='/login'&&$route.path!='/register'"></top-Head>
+    <top-Head v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/payment'"></top-Head>
     <head-search
-      v-if="$route.path!='/total'&&$route.path!='/login'&&$route.path!='/register'&&$route.path!='/cart'"
+      v-if="$route.path!='/total'&&$route.path!='/login'&&$route.path!='/register'&&$route.path!='/cart'&&$route.path!='/payment'"
     ></head-search>
     <head-nav
-      v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/total'&&$route.path!='/cart'"
+      v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/total'&&$route.path!='/cart'&&$route.path!='/payment'&&$route.path!='/member'"
     ></head-nav>
     <router-view></router-view>
     <foot v-if="$route.path!='/login'&&$route.path!='/register'"></foot>
