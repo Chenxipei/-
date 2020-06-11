@@ -1,6 +1,65 @@
 <template>
   <div class="member">
     <!-- 头部 -->
+<<<<<<< HEAD
+=======
+    <div class="top-head">
+    <div class="head-nav">
+      <div class="nav-top">
+        <ul class="navList">
+          <li>
+            <span>
+              <!-- <a href="#" class="line">登录</a> -->
+              <router-link to="/login">{{this.phone}}</router-link>
+              <span class="xiegang">/</span>
+              <!-- <a href="#">注册</a> -->
+              <a href="#" @click="clearLg">退出登录</a>
+            </span>
+          </li><span class="shu">|</span>
+          <li>
+            <router-link to="/member/myorder">我的订单</router-link>
+          </li><span class="shu">|</span>
+          <li>
+            <a href="#">积分卡兑换</a>
+          </li><span class="shu">|</span>
+          <li>
+            <a href="#">在线客服</a>
+          </li><span class="shu">|</span>
+          <li>
+            <a href="#">礼舍官网</a>
+          </li><span class="shu">|</span>
+          <li>
+            <a href="#">礼舍企采</a>
+          </li><span class="shu">|</span>
+          <li class="focus" >
+            <a href="#">关注我们</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <!-- 搜索框部分 -->
+    <div class="head-search">
+      <div class="search">
+        <div class="logo">
+          <a href="#">
+            <img src="../../assets/imgs/index/logo_two.png" alt />
+          </a>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="八马茶叶" />
+          <a href="#">
+            <i class="searchIput"></i>
+          </a>
+        </div>
+        <router-link to="/cart" class="cart">
+          <span> <img src="../../assets/imgs/index/cart.png" alt /></span>
+          <p class="ShoppingCart">我的购物车</p>
+          <span class="ling">0</span>
+        </router-link>
+      </div>
+    </div>
+>>>>>>> 429ecc28dba902828bdfc701b457fbafd97c85dc
     <div class="header_nav">
       <div class="mauto">
         <a href>商城首页</a>
@@ -10,17 +69,17 @@
     <div class="wrap content">
       <!-- 左侧导航 -->
       <div class="user_center">
-        <a href>
+        <router-link to="/member"> <div class="user_center_head">会员中心</div></router-link>
+        <!-- <a href>
           <div class="user_center_head">会员中心</div>
-        </a>
+        </a> -->
         <div class="left_nav">
           <ul>
             <li class="left_nav_title">
               <span>我的交易</span>
             </li>
             <li>
-              <!-- <a href>我的订单</a> -->
-							<router-link to="/member/myorder">我的订单</router-link>
+               <router-link to="/member/myorder">我的订单</router-link>
             </li>
             <li>
               <a href>活动订单</a>
@@ -97,13 +156,13 @@
       </div>
 
       <!-- 右侧订单 -->
-			<router-view></router-view>
-      <div class="order_info" v-show="$route.path!=='/member/myorder'">
-        <div class="right_wrap">
+      <div class="order_info">
+        <router-view v-show="$route.path=='/member/myorder'"></router-view>
+        <div class="right_wrap" v-show="$route.path !='/member/myorder'">
           <!-- 欢迎 -->
           <div class="welcome">
             您好,
-            <span class="user_name">15220102322,</span> 欢迎进入会员中心
+            <span class="user_name">{{this.phone}},</span> 欢迎进入会员中心
             <div class="user_level level1">普通会员</div>
           </div>
           <!-- 我的信息 -->
@@ -112,12 +171,12 @@
               <p class="right_line">我的信息</p>
               <div class="head_and_info">
                 <div class="user_head">
-                  <!-- <img src="..user_head" alt /> -->
+                  <img src="../../assets/imgs/login/user_head.png" alt />
                 </div>
                 <div class="three_info">
-                  <p>15220102432</p>
+                  <p>{{this.phone}}</p>
                   <p class="company_name">心意商城</p>
-                  <p>15220102432</p>
+                  <p>{{this.phone}}</p>
                 </div>
               </div>
             </div>
@@ -159,7 +218,9 @@
           <ul class="collected-goods">
             <li class="favorite-goods" v-for="(item,index) in memberGoods" :key="index">
               <a href class="goods-link">
-                <img :src="item.url" class="fs-goodspic" alt />
+                <div class="fs-goodspic">
+                  <img :src="item.url" :οnerrοr="defaultImg" alt />
+                </div>
                 <p class="fs-goodsname">{{item.title}}</p>
                 <p class="fs-goodsprice">{{item.price}}</p>
               </a>
@@ -285,14 +346,18 @@ export default {
   
   data: function() {
     return {
+      defaultImg:
+        'this.src="' + require("../../assets/imgs/icon/err.jpg") + '"',
       btnFlag: false,
       memberGoods: [],
+      phone:''
     };
   },
   mounted() {
     this.drawChart();
     window.addEventListener("scroll", this.scrollToTop);
     this.getHomeData();
+    this.phone=sessionStorage.getItem('phone')
   },
   destroyed() {
     window.removeEventListener("scroll", this.scrollToTop);
@@ -357,6 +422,11 @@ export default {
       };
       myChart.setOption(option);
     },
+    clearLg(){
+      console.log(11112)
+      sessionStorage.clear()
+       this.$router.push({ path: "/login" });
+    },
     getHomeData() {
       //   console.log("请求member商品");
       this.$axios
@@ -400,6 +470,204 @@ export default {
 <style lang='less'>
 .member {
   background: #f0f0f0;
+  .head-nav {
+  height: 30px;
+  background: #f5f5f5;
+
+  .nav-top {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+
+    .navList {
+      display: flex;
+      line-height: 30px;
+      height: 30px;
+      .shu{
+        color: #c9c9c9;
+      }
+      > li {
+        font-size: 12px;
+        padding: 0 18px;
+
+        a {
+          color: #898989;
+
+          &:hover {
+            color: rgb(255, 78, 76);
+          }
+        }
+
+        .xiegang {
+          color: rgb(204, 204, 204);
+          margin: 0 15px;
+        }
+
+        &.liShe {
+          position: relative;
+
+          &:hover {
+            background: #fff;
+
+            .arrow {
+              transform: rotate(360deg);
+              transition: 0.3s;
+            }
+
+            .lisheTerm {
+              display: block;
+            }
+          }
+
+        
+
+          .lisheTerm {
+            position: absolute;
+            width: 83px;
+            top: 30px;
+            display: none;
+            left: 0;
+            text-align: center;
+            border: 1px solid #eee;
+            background: #fff;
+            z-index: 999;
+
+            a {
+              color: #333;
+            }
+
+            .liseUl a:hover {
+              color: rgb(255, 78, 76);
+            }
+          }
+        }
+
+        &.focus {
+          position: relative;
+
+          .follow {
+            position: absolute;
+
+            left: -84px;
+            display: none;
+            overflow: hidden;
+            z-index: 99;
+
+            img {
+              width: 250px;
+              height: 350px;
+
+              margin-left: -120px;
+              height: 0;
+              overflow: hidden;
+              z-index: 999;
+
+              img {
+                border-radius: 6px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  // 搜索框部分
+  .head-search {
+    background: rgb(240, 240, 240);
+    .search {
+      width: 1200px;
+      height: 120px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .logo {
+        width: 188px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        float: left;
+      }
+
+      .search-box {
+        width: 520px;
+        height: 40px;
+        border: 1px solid #c9c9c9;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-left: 100px;
+        position: relative;
+
+        input {
+          width: 520px;
+          height: 40px;
+          padding: 0 15px;
+          font-size: 12px;
+          border: none;
+          outline: none;
+          line-height: 40px;
+        }
+
+        a {
+          width: 80px;
+          height: 40px;
+          display: inline-block;
+          position: absolute;
+          right: 0;
+          top: -2px;
+          border-radius: 5px;
+          z-index: 999;
+          background: rgb(255, 78, 76);
+
+          .searchIput {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background-image: url(../../assets/imgs/index/search.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+          }
+        }
+      }
+    }
+    .cart {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid #f3d6d6;
+      border-radius: 5px;
+      height: 40px;
+      padding: 0 15px;
+      margin-left: 20px;
+      position: relative;
+      cursor: pointer;
+
+      .ShoppingCart {
+        font-size: 12px;
+        color: rgb(255, 78, 76);
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      .ling {
+        border: 1px solid #f3d6d6;
+        border-radius: 50%;
+        background: rgb(255, 78, 76);
+        color: #fff;
+        width: 20px;
+        height: 20px;
+        line-height: 1.4;
+        text-align: center;
+        font-size: 13px;
+      }
+    }
+  }
   .header_nav {
     width: 100%;
     height: 40px;

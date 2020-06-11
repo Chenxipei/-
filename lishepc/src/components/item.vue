@@ -5,13 +5,13 @@
       <img :src="i.url" alt />
       <div class="details">
         <h3>{{i.score}}积分</h3>
-        <div>
+        <div class="title">
           <p>{{i.title}}</p>
         </div>
-        <span>
-          <i>图片</i>
+        <div class="icon">
+          <!-- <img src="" alt=""> -->
           {{i.store}}
-        </span>
+        </div>
       </div>
     </div>
     
@@ -22,14 +22,18 @@ export default {
   props: ["list"],
   methods:{
     togoodDetail(i){
-      console.log(i)
+  
       this.$router.push({
         path:'/good_detail',
         query:{
           itemld:i
         }
       })
+    },
+    abc(){
+      console.log('hahahah')
     }
+
   }
 };
 </script>
@@ -68,15 +72,28 @@ export default {
         font-weight: 400;
         margin-bottom: 20px;
       }
-      div {
+      .title {
         height: 80px;
+        font-size: 13px;
         p {
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
+    
+
         }
+      }
+      .icon{
+        font-size: 13px;
+        color: #7f6666;
+        // border: 1px solid pink;
+        height: 20px;
+        padding-left: 30px;
+        background: url(../assets/imgs/icon/zw_shop.png)no-repeat;
+        background-size: 16px 15px;
+        background-position: 0 1px;
       }
      
     }

@@ -1,8 +1,10 @@
 {
-	"group": [{
+	"group": [
+		{
 			"title": "限时秒杀",
 			"title_img": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-18/1589772286_2460.png?x-oss-process=png/resize,w_314/quality,q_80",
-			"group_list": [{
+			"group_list": [
+				{
 					"img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/2020-06-01/1591006928_5803.jpg?x-oss-process=png/resize,w_170/quality,q_80",
 					"price": 118.00,
 					"txt_title": "柴火大院   财火大院福财系列五常稻花香大米5kg东北粳米10斤黑龙江新米 新品上市 财米",
@@ -35,7 +37,8 @@
 		{
 			"title": "礼从心意来",
 			"title_img": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362717_47474.png?x-oss-process=png/resize,w_275/quality,q_80",
-			"group_list": [{
+			"group_list": [
+				{
 					"img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362731_81979.png?x-oss-process=png/resize,w_275/quality,q_80"
 				},
 				{
@@ -57,7 +60,8 @@
 		},
 		{
 			"title": "抖音好物榜",
-			"group_list": [{
+			"group_list": [
+				{
 					"img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-28/1590659478_53603.png?x-oss-process=png/resize,w_824/quality,q_80",
 					"txt_title": "SKG 按摩仪",
 					"icon_img": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/icon/2020-05-28/1590659478_98242.png?x-oss-process=png/resize,w_60/quality,q_80"
@@ -82,7 +86,8 @@
 		{
 			"title": "礼享清单",
 			"title_img": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362869_58487.png?x-oss-process=png/resize,w_275/quality,q_80",
-			"group_list": [{
+			"group_list": [
+				{
 					"img_url": "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-13/1589362879_29881.png?x-oss-process=png/resize,w_275/quality,q_80"
 				},
 				{
@@ -98,7 +103,9 @@
 		},
 		{
 			"title": "猜您喜欢",
-			"group_list": [{
+			"group_list": [
+				{
+					"id": 10,
 					"img_url": [
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/16/69/c6/d8b09723343ab24e2c789154e23a41ba.jpg?x-oss-process=png/resize,w_190/quality,q_80",
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/08/ed/cd/1796922aa6032611d2bdfa711e5829bd.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
@@ -118,6 +125,8 @@
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762749_87059.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-04-13/1586762749_83577.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
 					],
+					"id": 11,
+
 					"integral": 175,
 					"txt_title": "伊利安慕希草莓燕麦酸奶 200g*10",
 					"introduce": "希腊风味一口浓郁"
@@ -130,11 +139,15 @@
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258756_47440.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2020-05-12/1589258759_47539.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg"
 					],
+					"id": 12,
+
 					"integral": 175,
 					"txt_title": "灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）",
 					"introduce": "灵犀十八洞村食用植物调和油（高油酸茶籽橄榄油）5L"
 				},
 				{
+					"id": 13,
+
 					"img_url": [
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-07-16/1563255413_45223.jpg?x-oss-process=png/resize,w_190/quality,q_80",
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-07-16/1563255738_50751.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",
@@ -146,6 +159,8 @@
 					"introduce": "金砖五国 国宴新品"
 				},
 				{
+					"id": 14,
+
 					"img_url": [
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-05-09/1557398117_57206.jpg?x-oss-process=png/resize,w_190/quality,q_80",
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/itemPic/2019-05-09/1557398117_57206.jpg?x-oss-process=png/resize,w_190/quality,q_80"
@@ -155,6 +170,8 @@
 					"introduce": ""
 				},
 				{
+
+
 					"img_url": [
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/4f/85/77/8a2ce6879b45aa7cab201570ab22711c.jpg?x-oss-process=png/resize,w_190/quality,q_80",
 						"https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/45/3b/bb/e79af68b1779ab64fb264c44abf3fc80.jpg?x-oss-process=png/resize,w_540/quality,q_100/format,jpg",

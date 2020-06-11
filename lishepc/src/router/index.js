@@ -31,6 +31,14 @@ const routes = [
 		component: () => import('../views/Classify/classify.vue')
 	},
 	{
+		path: '/member',
+		component: () => import('../views/mine/member.vue'),
+		children:[
+			{path: 'myorder',
+			component: () => import('../views/mine/myorder.vue')}
+		]
+	},
+	{
 		path: "/login",
 		component: () => import("../views/login/login.vue")
 	},

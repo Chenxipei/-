@@ -1,7 +1,8 @@
 <template>
   <div class="register">
     <!-- 头部 -->
-    <div class="register_header_wrap">
+    <headerwrap></headerwrap>
+    <!-- <div class="register_header_wrap">
       <div class="register_header mauto clearfix">
         <div class="ls_vip_logo fl">
           <router-link to="/home">
@@ -16,7 +17,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="main_wrap">
       <div class="mides">
         <div class="inp_wrap_pt clearfix">
@@ -80,21 +81,22 @@
     <copyright>
       
     </copyright>
-    <!-- <div class="copyright mauto">
+    <div class="copyright mauto">
       <div class="footer_text">
         <p>© 2005-2020 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
         <p>ICP备案证书号:粤ICP备15033641号-1</p>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script>
 import copyright from '../../components/copyright'
+import headerwrap from '../../components/header_wrap'
 export default {
   name: "register",
   components:{  
-    copyright
+    copyright,headerwrap
   },  
   data() {
     return {
@@ -129,7 +131,18 @@ export default {
         // console.log("进入倒计时");
         this.$refs.error_M.innerHTML = "<span>1</span>";
         this.generatedCode();
-        console.log(this.ccode);
+        // console.log(this.ccode);
+        //
+         let params = new URLSearchParams()
+        params.append('phone',this.phone)
+        params.append('code',this.ccode)
+        this.$axios.post('http://localhost:3001/sedsms',params)
+        .then(res=>{
+          // console.log(res)
+        })
+        .catch(err=>{
+          console.log(err)
+        })
         this.Dphone = true;
         //点击已发送，当正在已发送的时候不需要再启动定时器
         if (this.computedTime == 0) {
@@ -191,6 +204,9 @@ export default {
         this.$refs.error_M.innerHTML =
           "*请勾选“我已阅读并同意 《礼舍网服务协议》”！";
       }
+      
+      sessionStorage.setItem('phone',this.phone)
+      
     }
   }
 };
