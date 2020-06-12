@@ -1,8 +1,6 @@
 <template>
   <div class="member">
     <!-- 头部 -->
-<<<<<<< HEAD
-=======
     <div class="top-head">
     <div class="head-nav">
       <div class="nav-top">
@@ -10,7 +8,7 @@
           <li>
             <span>
               <!-- <a href="#" class="line">登录</a> -->
-              <router-link to="/login">{{this.phone}}</router-link>
+              <router-link to="/member">{{this.phone}}</router-link>
               <span class="xiegang">/</span>
               <!-- <a href="#">注册</a> -->
               <a href="#" @click="clearLg">退出登录</a>
@@ -59,7 +57,6 @@
         </router-link>
       </div>
     </div>
->>>>>>> 429ecc28dba902828bdfc701b457fbafd97c85dc
     <div class="header_nav">
       <div class="mauto">
         <a href>商城首页</a>

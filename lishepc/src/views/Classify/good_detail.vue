@@ -142,11 +142,7 @@ export default {
         price: this.shopobj.newprice,
         num: this.num
       };
-<<<<<<< HEAD
       this.$message.success("添加购物车成功")
-=======
-
->>>>>>> 429ecc28dba902828bdfc701b457fbafd97c85dc
       this.$store.commit("addCart", goodsItem);
     },
     getShopExplain(id) {

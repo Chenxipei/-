@@ -49,7 +49,7 @@ export default {
       effect: this.effectType
     });
     for (let i = 0; i < mySwiper.pagination.bullets.length; i++) {
-      console.log(mySwiper.pagination.bullets);
+      // console.log(mySwiper.pagination.bullets);
       mySwiper.pagination.bullets[i].onmouseover = function() {
         this.click();
       };
