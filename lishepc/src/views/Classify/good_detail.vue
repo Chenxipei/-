@@ -133,27 +133,28 @@ export default {
   },
   methods: {
     addCart() {
-      let goodsItem = {
-        cover: this.shopobj.url[0],
-        name: this.shopobj.title,
-        attr: `${this.shopobj.specification}：${
-          this.shopobj.color[this.coloractive]
-        }`,
-        price: this.shopobj.newprice,
-        num: this.num
-      };
-<<<<<<< HEAD
-      this.$message.success("添加购物车成功")
-=======
+      let userInfo = getStore({ name: "userInfo" });
+      if (!userInfo) {
+        this.$router.push("/login");
+      } else {
+        let goodsItem = {
+          cover: this.shopobj.url[0],
+          name: this.shopobj.title,
+          attr: `${this.shopobj.specification}：${
+            this.shopobj.color[this.coloractive]
+          }`,
+          price: this.shopobj.newprice,
+          num: this.num
+        };
 
->>>>>>> 429ecc28dba902828bdfc701b457fbafd97c85dc
-      this.$store.commit("addCart", goodsItem);
+        this.$store.commit("addCart", goodsItem);
+      }
     },
     getShopExplain(id) {
       this.$axios.get("./data/shopExplain.json").then(res => {
         res.data.shoplist.forEach(i => {
           if (i.itemld == id) {
-            this.shopobj = i
+            this.shopobj = i;
             this.count = this.shopobj.url[0];
             this.shopobj_urlArr = this.shopobj.url;
             console.log(this.shopobj_urlArr[2]);
@@ -291,7 +292,7 @@ export default {
                 padding: 1px 9px;
               }
               .active {
-                 border: 2px solid #ff3737;
+                border: 2px solid #ff3737;
                 color: #ff3737;
                 padding: 1px 9px;
               }

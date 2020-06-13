@@ -1,8 +1,6 @@
 <template>
   <div class="member">
     <!-- 头部 -->
-<<<<<<< HEAD
-=======
     <div class="top-head">
     <div class="head-nav">
       <div class="nav-top">
@@ -59,7 +57,6 @@
         </router-link>
       </div>
     </div>
->>>>>>> 429ecc28dba902828bdfc701b457fbafd97c85dc
     <div class="header_nav">
       <div class="mauto">
         <a href>商城首页</a>

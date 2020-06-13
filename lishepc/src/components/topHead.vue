@@ -4,14 +4,9 @@
       <div class="nav-top">
         <ul class="navList">
           <li>
-<<<<<<< HEAD
-            <span>
-              <router-link to="/login">登录</router-link>
-=======
             <span v-show="user==null" >
               <!-- <a href="#" class="line">登录</a> -->
               <router-link  to="/login">登录</router-link>
->>>>>>> 429ecc28dba902828bdfc701b457fbafd97c85dc
               <span class="xiegang">/</span>
               <router-link to="/register">注册</router-link>
             </span>
@@ -72,8 +67,6 @@
 <script>
 export default {
   name: "topHead",
-<<<<<<< HEAD
-=======
   data:function(){
     return{
       user:null,
@@ -82,7 +75,6 @@ export default {
   mounted(){
     this.user = sessionStorage.getItem('phone')
   },
->>>>>>> 429ecc28dba902828bdfc701b457fbafd97c85dc
   methods: {
     clearLg(){
       this.user=null

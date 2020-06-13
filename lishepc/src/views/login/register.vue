@@ -81,18 +81,15 @@
     <copyright>
       
     </copyright>
-    <div class="copyright mauto">
-      <div class="footer_text">
-        <p>© 2005-2020 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
-        <p>ICP备案证书号:粤ICP备15033641号-1</p>
-      </div>
-    </div>
+   
   </div>
 </template>
 
 <script>
-import copyright from '../../components/copyright'
-import headerwrap from '../../components/header_wrap'
+import copyright from '@/components/copyright'
+import headerwrap from '@/components/header_wrap'
+
+import { setStore } from '@/lib/store';
 export default {
   name: "register",
   components:{  
@@ -205,7 +202,7 @@ export default {
           "*请勾选“我已阅读并同意 《礼舍网服务协议》”！";
       }
       
-      sessionStorage.setItem('phone',this.phone)
+      setStore('phone',this.phone)
       
     }
   }

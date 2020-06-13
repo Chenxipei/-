@@ -165,6 +165,7 @@
 
 <script>
 import banner from "../../components/Banner";
+import { setStore } from "@/lib/store";
 export default {
   name: "login",
   data() {
@@ -218,7 +219,7 @@ export default {
         // return true
       }
       if (this.Cphone && this.Cpass) {
-         sessionStorage.setItem('phone',this.phone)
+        setStore("phone", this.phone);
         this.$router.push({ path: "/home" });
       }
     },
@@ -238,16 +239,17 @@ export default {
         // console.log(this.ccode);
 
         //请求验证码
-        let params = new URLSearchParams()
-        params.append('phone',this.phone)
-        params.append('code',this.ccode)
-        this.$axios.post('http://localhost:3001/sedsms',params)
-        .then(res=>{
-          // console.log(res)
-        })
-        .catch(err=>{
-          console.log(err)
-        })
+        let params = new URLSearchParams();
+        params.append("phone", this.phone);
+        params.append("code", this.ccode);
+        this.$axios
+          .post("http://localhost:3001/sedsms", params)
+          .then(res => {
+            // console.log(res)
+          })
+          .catch(err => {
+            console.log(err);
+          });
         this.Dphone = true;
         //点击已发送，当正在已发送的时候不需要再启动定时器
         if (this.computedTime == 0) {
@@ -274,12 +276,13 @@ export default {
     },
     // 判断验证码是否输入准确
     checkCode() {
-      if (this.Cphone && this.ccode == this.isCode) {
-        sessionStorage.setItem('phone',this.phone)
-        this.$router.push({ path: "/home" });
-      } else {
-        this.$refs.error_T.innerHTML = "*手机号或者验证码不正确";
-      }
+      console.log(this.isCode,this.ccode)
+      // if (this.Cphone && !this.isCode && this.ccode == this.isCode) {
+      //   setStore("phone", this.phone);
+      //   this.$router.push({ path: "/home" });
+      // } else {
+      //   this.$refs.error_T.innerHTML = "*手机号或者验证码不正确";
+      // }
     }
   },
   components: {

@@ -79,25 +79,25 @@ const router = new VueRouter({
 	routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   const userInfo = getStore({name:"userInfo"})
-//   if (!userInfo && (to.path === "/cart"||to.path === "/myorder"||to.path === "/total"||to.path==="/payment")) {
-//     // 未登录且要跳转的页面是购物车页
-//     next({
-//       path: "/login" // 跳转到登录页
-//     })
-//   } else if (!userInfo && to.path === "/login") {
-//     // 未登陆且要跳转的页面是登录页
-//     next() // 跳转
-//   } else if (userInfo && to.path === "/login") {
-//     // 已登录且要跳转的页面是登录页
-//     next({
-//       path:"/home" // 跳转到homeName页
-//     })
-//   }else{
-// 	  next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  const userInfo = getStore({name:"userInfo"})
+  if (!userInfo && (to.path === "/cart"||to.path === "/myorder"||to.path === "/total"||to.path==="/payment"||to.path==="/member"||to.path==="/member/myorder")) {
+    // 未登录且要跳转的页面是购物车页
+    next({
+      path: "/login" // 跳转到登录页
+    })
+  } else if (!userInfo && to.path === "/login") {
+    // 未登陆且要跳转的页面是登录页
+    next() // 跳转
+  } else if (userInfo && to.path === "/login") {
+    // 已登录且要跳转的页面是登录页
+    next({
+      path:"/home" // 跳转到homeName页
+    })
+  }else{
+	  next()
+  }
+})
 router.afterEach(to => {
 	window.scrollTo(0, 0)
 })

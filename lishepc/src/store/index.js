@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { setStore, getStore ,validatenull } from '@/lib/store'
+import { setStore, getStore, validatenull } from '@/lib/store'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -14,8 +14,8 @@ export default new Vuex.Store({
         twoclass: ''
       }
     },
-    cartData: getStore({name:"cartData"})||[],
-    addressData: getStore({name:"addressData"})||[]
+    cartData: getStore({ name: "cartData" }) || [],
+    addressData: getStore({ name: "addressData" }) || []
   },
   getters: {
     cartData: state => state.cartData,
@@ -38,30 +38,30 @@ export default new Vuex.Store({
         state.cartData.push(goodsItem)
       }
       setStore({
-        name:"cartData",
-        content:state.cartData,
-        type:""
+        name: "cartData",
+        content: state.cartData,
+        type: ""
       })
     },
-    addAddress(state,addressItem){
-      if(!validatenull(addressItem)){
+    addAddress(state, addressItem) {
+      if (!validatenull(addressItem)) {
         state.addressData = [
           ...addressItem
         ]
         setStore({
-          name:"addressData",
-          content:state.addressData,
-          type:""
+          name: "addressData",
+          content: state.addressData,
+          type: ""
         })
-      } 
-      
+      }
+
     },
     delCartData(state) {
       state.cartData = []
       setStore({
-        name:"cartData",
-        content:state.cartData,
-        type:""
+        name: "cartData",
+        content: state.cartData,
+        type: ""
       })
     }
 
