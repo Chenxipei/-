@@ -6,6 +6,10 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
+		path:'/ditu',
+		component: () => import("../views/cart/ditu.vue")
+	},
+	{
 		path: '',
 		redirect: "/home"
 	},

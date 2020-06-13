@@ -7,6 +7,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Element from 'element-ui'
 import echarts from "echarts";
 
+import BaiduMap from 'vue-baidu-map'
+Vue.use(BaiduMap, {
+  ak: 'UHKVAilAjLHhsxSIa90csAA2biSi15FU'
+})
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios=axios
 
