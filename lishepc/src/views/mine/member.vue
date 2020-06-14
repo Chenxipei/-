@@ -8,7 +8,7 @@
           <li>
             <span>
               <!-- <a href="#" class="line">登录</a> -->
-              <router-link to="/login">{{this.phone}}</router-link>
+              <router-link to="/member">{{this.phone}}</router-link>
               <span class="xiegang">/</span>
               <!-- <a href="#">注册</a> -->
               <a href="#" @click="clearLg">退出登录</a>
@@ -40,9 +40,9 @@
     <div class="head-search">
       <div class="search">
         <div class="logo">
-          <a href="#">
+          <router-link to="/home">
             <img src="../../assets/imgs/index/logo_two.png" alt />
-          </a>
+          </router-link>
         </div>
         <div class="search-box">
           <input type="text" placeholder="八马茶叶" />
@@ -234,7 +234,7 @@
       </div>
 
       <div @click="backTop" class="totopbox">
-        <i class="totop"></i>
+        <i class="totop el-icon-arrow-up"></i>
       </div>
     </div>
     <!-- 底部 -->
@@ -337,6 +337,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { getStore } from '@/lib/store';
 import footer from "../../components/footer.vue";
 export default {
   name: "member",
@@ -354,7 +356,7 @@ export default {
     this.drawChart();
     window.addEventListener("scroll", this.scrollToTop);
     this.getHomeData();
-    this.phone=sessionStorage.getItem('phone')
+    this.phone=getStore({name:'phone'})
   },
   destroyed() {
     window.removeEventListener("scroll", this.scrollToTop);
@@ -464,7 +466,7 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .member {
   background: #f0f0f0;
   .head-nav {
@@ -952,6 +954,7 @@ export default {
     background: #fff;
     display: flex;
     text-align: center;
+    overflow: hidden;
     flex-direction: column;
     font-size: 12px;
     color: #666;
@@ -993,8 +996,9 @@ export default {
 
     i {
       display: inline-block;
-      width: 35px;
-      height: 35px;
+      width: 100%;
+      height: 100%;
+      font-size: 20px;
     }
   }
   //   底部

@@ -52,10 +52,6 @@ const routes = [
 	},
 
 	{
-		path: "/myorder",
-		component: () => import("../views/mine/myorder.vue")
-	},
-	{
 		path: '/total',
 		component: () => import("../views/settlement/settlement.vue")
 	},
@@ -72,6 +68,10 @@ const routes = [
 				component: () => import("../views/mine/myorder.vue")
 			}
 		]
+	},
+	{
+		path:"*",
+		component: () => import("@/components/404.vue")
 	}
 ]
 const router = new VueRouter({
@@ -80,9 +80,10 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const userInfo = getStore({name:"userInfo"})
+  const userInfo = getStore({name:"phone"})
+  console.log(userInfo)
   if (!userInfo && (to.path === "/cart"||to.path === "/myorder"||to.path === "/total"||to.path==="/payment"||to.path==="/member"||to.path==="/member/myorder")) {
-    // 未登录且要跳转的页面是购物车页
+    // 未登录且要跳转的页面是要登陆才能操作的页面
     next({
       path: "/login" // 跳转到登录页
     })

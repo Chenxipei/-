@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="shop_list_wrap">
-        <div class="group_item" v-for="(item,i) in cartData" :key="i">
+        <div class="group_item" v-for="(item,i) in totalData" :key="i">
           <ul class="shopping_ul">
             <li>
               <a href="#">
@@ -149,10 +149,10 @@ export default {
 	addAddress
   },
   computed: {
-    ...mapGetters(["addressData", "cartData"]),
+    ...mapGetters(["addressData", "totalData"]),
     allPrice() {
       let all_price = 0;
-      this.cartData.forEach(item => {
+      this.totalData.forEach(item => {
         if (item.selected) {
           let price = parseFloat(item.price) * item.num;
           all_price += price;
@@ -166,12 +166,13 @@ export default {
       this.$router.push("/cart");
     },
     topayment() {
+      this.$store.commit("toPay")
       this.$router.push("/payment");
     }
   }
 };
 </script>
-<style lang="less" scope>
+<style lang="less" scoped>
 .sellementHead {
   width: 1000px;
   margin: 0 auto;

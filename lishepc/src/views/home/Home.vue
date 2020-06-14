@@ -233,12 +233,7 @@ export default {
 };
 </script>
 
-<style lang="less">
-* {
-  margin: 0;
-  padding: 0;
-}
-
+<style scoped lang="less">
 .contenter {
   width: 1200px;
   margin: 0 auto;

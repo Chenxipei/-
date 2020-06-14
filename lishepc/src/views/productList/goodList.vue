@@ -79,63 +79,59 @@
   </div>
 </template>
 <script>
-import Swiper from "swiper";
-import "swiper/css/swiper.css";
-import Totop from "../../components/Totop.vue";
-import fixedNav from "../../components/fixedNav.vue";
-export default {
-  name: "goodList",
-  components: {
-    Totop,
-    fixedNav
-  },
-  data() {
-    return {
-      showNav: true,
-      // 存在对象里面
-      navActive: "",
-      navTitle: ["精选大牌", "优选有礼", "猜您喜欢"],
-      carousel: [
-        {
-          img:
-            "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884552_88364.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
-        },
-        {
-          img:
-            "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884586_34327.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
-        }
-      ],
-      good_list: [],
-      banner_list: [],
-      yxyl: []
-    };
-  },
-  mounted() {
-    this.getlist();
-    window.onscroll = e => {
-      let scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      let titleEl = Array.from(this.$refs.title);
-      titleEl.forEach((item, i) => {
-        if (scrollTop >= item.offsetTop) {
-          this.navActive = i;
-        }
-      });
-    };
-  },
-  methods: {
-    getlist() {
-      this.$axios.get("/data/goodsList.json").then(res => {
-        // console.log("美女", res.data.group);
-        this.good_list = res.data.group;
-        this.banner_list = res.data.banner;
-      });
-    }
-  },
-  watch: {}
-};
+	import Swiper from "swiper";
+	import "swiper/css/swiper.css";
+	import Totop from '../../components/Totop.vue'
+	import fixedNav from '../../components/fixedNav.vue'
+	export default {
+		name: "goodList",
+		components: {
+			Totop,
+			fixedNav
+		},
+		data() {
+			return {
+				// 存在对象里面
+				navActive: "",
+				navTitle: ["精选大牌", "优选有礼", "猜您喜欢"],
+				carousel: [{
+						img: "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884552_88364.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
+					},
+					{
+						img: "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884586_34327.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
+					}
+				],
+				good_list: [],
+				banner_list: [],
+				yxyl: []
+			};
+		},
+		mounted() {
+			this.getlist();
+			window.onscroll = e => {
+				let scrollTop =
+					document.documentElement.scrollTop || document.body.scrollTop;
+				let titleEl = Array.from(this.$refs.title);
+				titleEl.forEach((item, i) => {
+					if (scrollTop >= item.offsetTop) {
+						this.navActive = i;
+					}
+				});
+			};
+		},
+		methods: {
+			getlist() {
+				this.$axios.get("/data/goodsList.json").then(res => {
+					// console.log("美女", res.data.group);
+					this.good_list = res.data.group;
+					this.banner_list = res.data.banner;
+				});
+			}
+		},
+		watch: {}
+	};
 </script>
-<style lang="less" scope>
+<style lang="less" scoped>
 	.content {
 		background: rgb(245, 245, 245);
 		.brand_title {

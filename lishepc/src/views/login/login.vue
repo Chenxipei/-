@@ -54,8 +54,9 @@
                   <input class="ls_input" v-model="pass" type="password" placeholder="请输入密码" />
                 </div>
                 <div class="text_con1">
-                  <label class="fl autoLogin" for>
-                    <input type="checkbox" />自动登录
+                  <label @click="checkSta"  class="fl autoLogin" for>
+                    <input type="checkbox" v-model="checkStatus" />
+                    自动登录
                   </label>
                   <span class="fr backPassword">忘记密码？</span>
                 </div>
@@ -102,9 +103,9 @@
                   >获取验证码</button>
                 </div>
                 <div class="text_con1">
-                  <label class="fl autoLogin" for>
-                    <input type="checkbox" />
-                    <span>自动登录</span>
+                  <label @click="checkSta"  class="fl autoLogin" for>
+                    <input  v-model="checkStatus" type="checkbox" />
+                    自动登录
                   </label>
                   <span class="fr backPassword">忘记密码？</span>
                 </div>
@@ -177,6 +178,7 @@ export default {
       computedTime: 0, //倒计时
       ccode: "",
       isCode: "",
+      checkStatus: true,
       loginArr: [
         { url: require("../../assets/imgs/login/login2.jpg") },
         { url: require("../../assets/imgs/login/login3.jpg") }
@@ -185,7 +187,7 @@ export default {
   },
   computed: {
     Cphone() {
-      return /^1\d{10}$/.test(this.phone);
+      return /^1[3456789]\d{9}$/.test(this.phone);
     },
     Cpass() {
       return /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,20}$/.test(this.pass);
@@ -197,6 +199,14 @@ export default {
     },
     tabMm() {
       (this.loginWay = false), (this.$refs.red_step.style.left = "175px");
+    },
+    // 自动登录
+    checkSta() {
+      if (this.checkStatus) {
+        this.checkStatus = false;
+      } else {
+        this.checkStatus = true;
+      }
     },
     // 密码登录
     logins() {
@@ -219,7 +229,11 @@ export default {
         // return true
       }
       if (this.Cphone && this.Cpass) {
-        setStore("phone", this.phone);
+        setStore({
+          name:"phone",
+          content:this.phone,
+          content:""
+        })
         this.$router.push({ path: "/home" });
       }
     },
@@ -276,13 +290,16 @@ export default {
     },
     // 判断验证码是否输入准确
     checkCode() {
-      console.log(this.isCode,this.ccode)
-      // if (this.Cphone && !this.isCode && this.ccode == this.isCode) {
-      //   setStore("phone", this.phone);
-      //   this.$router.push({ path: "/home" });
-      // } else {
-      //   this.$refs.error_T.innerHTML = "*手机号或者验证码不正确";
-      // }
+      if (this.Cphone && this.ccode != "" && this.ccode == this.isCode) {
+        setStore({
+          name:"phone",
+          content:this.phone,
+          type:""
+        })
+        this.$router.push({ path: "/home" });
+      } else {
+        this.$refs.error_T.innerHTML = "*手机号或者验证码不正确";
+      }
     }
   },
   components: {
@@ -292,7 +309,7 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .active {
   color: red;
 }

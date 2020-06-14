@@ -1,7 +1,7 @@
 <template>
   <div class="cartIndex">
     <header class="head">
-      <div class="logo">
+      <div class="logo" @click="$router.puah('/home')">
         <img
           src="https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/2020-05-27/1590561641_90344.png"
           alt
@@ -34,25 +34,25 @@
           <router-link to="/home">快去选点东西吧</router-link>
         </div>
         <div class="tab-container" v-for="(item,i) in cartData" :key="i">
-          <div class="selectAll">
-            <i
-              :class="item.selected?'el-icon-success':'el-icon-circle-check'"
-              @click="changeSelectedStatus(i)"
-            ></i>
-          </div>
-          <div class="goods-info">
-            <img :src="item.cover" />
-            <p>{{item.name}}</p>
-          </div>
-          <div class="goods-attr">{{item.attr}}</div>
-          <div class="goods-price">{{item.price}}</div>
-          <div class="goods-num">
-            <el-input-number size="mini" :min="1" v-model="item.num"></el-input-number>
-          </div>
-          <div class="all-price">{{parseInt(item.price)*item.num}}</div>
-          <div class="del">
-            <a href="#" @click.prevent="delCartItem(i)">删除</a>
-          </div>
+            <div class="selectAll">
+              <i
+                :class="item.selected?'el-icon-success':'el-icon-circle-check'"
+                @click="changeSelectedStatus(i)"
+              ></i>
+            </div>
+            <div class="goods-info">
+              <img :src="item.cover" />
+              <p>{{item.name}}</p>
+            </div>
+            <div class="goods-attr">{{item.attr}}</div>
+            <div class="goods-price">{{item.price}}</div>
+            <div class="goods-num">
+              <el-input-number size="mini" :min="1" v-model="item.num"></el-input-number>
+            </div>
+            <div class="all-price">{{parseInt(item.price)*item.num}}</div>
+            <div class="del">
+              <a href="#" @click.prevent="delCartItem(i)">删除</a>
+            </div>
         </div>
       </div>
 
@@ -77,18 +77,16 @@
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
-import addAddress from './addAddress.vue'
+import addAddress from "./addAddress.vue";
 import { mapGetters } from "vuex";
 import { setStore } from "@/lib/store";
 export default {
   data() {
-    
-    return { 
+    return {
       // selectedAll: true,
       // cartData: [
       //   {
@@ -110,16 +108,15 @@ export default {
       // ]
     };
   },
-  components:{
+  components: {
     addAddress
   },
   created() {
     // 初始化选中状态
     this.init_cart_data();
-    console.log(this.cartData);
   },
   computed: {
-    ...mapGetters(["cartData","addressData"]),
+    ...mapGetters(["cartData", "addressData"]),
     allPrice() {
       let all_price = 0;
       this.cartData.forEach(item => {
@@ -202,10 +199,15 @@ export default {
         console.log(this.selectedAll);
         this.$message.warning("商品空空如也，快去选购吧");
         return false;
-      } else if (!this.selectedAll) {
+      } else if (parseInt(this.allPrice) == 0) {
         this.$message.warning("购物车还没有选择商品呢");
         return false;
       } else {
+        let totalData = this.cartData.filter(item => {
+          return item.selected;
+        });
+        // console.log(totalData)
+        this.$store.commit("total", totalData);
         this.$router.push("/total");
       }
     }
@@ -213,7 +215,7 @@ export default {
 };
 </script>
 
-<style scope lang='less'>
+<style scoped lang='less'>
 .my-address {
   font-size: 14px;
 }
@@ -278,7 +280,7 @@ export default {
       }
     }
   }
-  
+
   .cart {
     .c-title {
       font-weight: 600;

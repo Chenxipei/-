@@ -225,7 +225,7 @@ export default {
 };
 </script>
 
-<style lang='less' scope>
+<style lang='less' scoped>
 .my-address {
     .address-list {
       border: 1px dashed #ddd;
@@ -233,6 +233,7 @@ export default {
       .item {
         display: flex;
         font-size: 13px;
+        justify-content:flex-start;
         margin: 15px 0;
         &:hover {
           background: rgb(255, 243, 243);

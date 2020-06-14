@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     addCart() {
-      let userInfo = getStore({ name: "userInfo" });
+      let userInfo = getStore({ name: "phone" });
       if (!userInfo) {
         this.$router.push("/login");
       } else {
@@ -144,9 +144,9 @@ export default {
             this.shopobj.color[this.coloractive]
           }`,
           price: this.shopobj.newprice,
-          num: this.num
+          num: this.num,
         };
-
+        this.$message.success("添加购物车成功")
         this.$store.commit("addCart", goodsItem);
       }
     },
@@ -171,7 +171,7 @@ export default {
   components: { VDistpicker, Totop, fixedNav }
 };
 </script>
-<style  lang='less'>
+<style scoped lang='less'>
 .futto {
   width: 100%;
   background: #f0f0f0;

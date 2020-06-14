@@ -209,7 +209,7 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 /* 头部 */
 .register {
   background: #fff;

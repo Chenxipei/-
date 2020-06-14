@@ -4,13 +4,13 @@
       <div class="nav-top">
         <ul class="navList">
           <li>
-            <span v-show="user==null" >
+            <span v-show="!user" >
               <!-- <a href="#" class="line">登录</a> -->
               <router-link  to="/login">登录</router-link>
               <span class="xiegang">/</span>
               <router-link to="/register">注册</router-link>
             </span>
-            <span v-show="user!=null">
+            <span v-show="user">
               <router-link to="/member">{{this.user}}</router-link>
               <span class="xiegang">/</span>
               <a href="" @click="clearLg">退出登录</a>
@@ -65,20 +65,21 @@
   </div>
 </template>
 <script>
+import { getStore,removeStore } from '@/lib/store'
 export default {
   name: "topHead",
   data:function(){
     return{
-      user:null,
+      user:'',
     }
   },
   mounted(){
-    this.user = sessionStorage.getItem('phone')
+    this.user = getStore({name:'phone'})
   },
   methods: {
     clearLg(){
-      this.user=null
-      sessionStorage.clear()
+      this.user=''
+      removeStore({name:"phone"})
     },
     showFollow() {
       this.$refs.follow.style.height = 480 + "px";
@@ -92,7 +93,7 @@ export default {
       this.$refs.follow.style.transition = "0.2s";
     },
     goMyOrder(){
-      this.$router.push("/myorder")
+      this.$router.push("/member/myorder")
     }
   }
 };

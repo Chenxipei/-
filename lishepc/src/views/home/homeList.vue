@@ -36,7 +36,7 @@
 	}
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 	.homelist {
 		margin: 30px 0;
 	}

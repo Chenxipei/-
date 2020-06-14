@@ -5,7 +5,7 @@
         <div class="ls_vip_logo fl">
           <router-link to="/home">
             <img src="../../assets/imgs/login/logo_two.png" alt />
-			<span>收银台</span>
+            <span>收银台</span>
           </router-link>
         </div>
 
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 export default {
   name: "payment",
   data() {
@@ -92,11 +92,11 @@ export default {
       radio4: "1"
     };
   },
-  computed:{
-    ...mapGetters(['cartData']),
+  computed: {
+    ...mapGetters(["totalData", "cartData"]),
     allPrice() {
       let all_price = 0;
-      this.cartData.forEach(item => {
+      this.totalData.forEach(item => {
         if (item.selected) {
           let price = parseFloat(item.price) * item.num;
           all_price += price;
@@ -106,14 +106,17 @@ export default {
     }
   },
   methods: {
-    pay(){
-      this.$message.error("臣妾做不到啊！！！")
+    pay() {
+      this.$store.commit("pay")
+      // console.log(this.cartData)
+      this.$message.success("支付成功");
+      this.$router.push("/member/myorder")
     }
   }
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .login_header_wrap {
   background: #fff;
   margin-bottom: 20px;
@@ -123,10 +126,10 @@ export default {
     .ls_vip_logo {
       height: 100px;
       a {
-		color: #000;
-		font-size: 24px;
-		img {
-			margin-right: 10px;
+        color: #000;
+        font-size: 24px;
+        img {
+          margin-right: 10px;
           vertical-align: middle;
         }
       }

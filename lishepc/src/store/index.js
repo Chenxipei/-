@@ -14,12 +14,20 @@ export default new Vuex.Store({
         twoclass: ''
       }
     },
+    // 购物车数据
     cartData: getStore({ name: "cartData" }) || [],
-    addressData: getStore({ name: "addressData" }) || []
+    // 地址数据
+    addressData: getStore({ name: "addressData" }) || [],
+    // 结算数据
+    totalData: getStore({ name: "totalData" }) || [],
+    // 订单数据
+    orderData:getStore({name:"orderData"}) || []
   },
   getters: {
     cartData: state => state.cartData,
-    addressData: state => state.addressData
+    addressData: state => state.addressData,
+    totalData: state => state.totalData,
+    orderData:state => state.orderData
   },
   mutations: {
     addCart(state, goodsItem) {
@@ -34,6 +42,7 @@ export default new Vuex.Store({
         } else {
           state.cartData.push(goodsItem)
         }
+
       } else {
         state.cartData.push(goodsItem)
       }
@@ -56,6 +65,57 @@ export default new Vuex.Store({
       }
 
     },
+    total(state, totalData) {
+      // console.log(totalData)
+      state.totalData = [
+        ...totalData
+      ]
+    },
+    toPay(state) {
+      
+      state.totalData.map(item => item.payStatus = 0)
+      state.totalData = [
+        ...state.totalData
+      ]
+      let oldTotalData = getStore({ name: "totalData" }) || []
+      state.orderData = [
+        ...oldTotalData,
+        ...state.totalData
+      ]
+      state.cartData = state.cartData.filter(item => {
+        return item.selected != true
+      })
+      setStore({
+        name: "totalData",
+        content: state.totalData,
+        type: ""
+      })
+      setStore({
+        name: "orderData",
+        content: state.orderData,
+        type: ""
+      })
+      setStore({
+        name: "cartData",
+        content: state.cartData,
+        type: ""
+      })
+    },
+    pay(state) {
+      // let oldTotalData = getStore({ name: "totalData" }) || []
+
+      state.totalData.map(item => item.payStatus = 1)
+      state.totalData = [
+        // ...oldTotalData,
+        ...state.totalData
+      ]
+      setStore({
+        name: "totalData",
+        content: state.totalData,
+        type: ""
+      })
+    },
+    
     delCartData(state) {
       state.cartData = []
       setStore({
