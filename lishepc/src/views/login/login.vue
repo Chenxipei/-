@@ -54,13 +54,14 @@
                   <input class="ls_input" v-model="pass" type="password" placeholder="请输入密码" />
                 </div>
                 <div class="text_con1">
-                  <label class="fl autoLogin" for>
-                    <input type="checkbox" />自动登录
+                  <label @click="checkSta"  class="fl autoLogin" for>
+                    <input type="checkbox" v-model="checkStatus" />
+                    自动登录
                   </label>
                   <span class="fr backPassword">忘记密码？</span>
                 </div>
                 <p ref="error_M" class="error_text">
-                  <span>1</span>
+                  <span></span>
                 </p>
                 <div class="user_btn" @click="logins">登录</div>
                 <div class="jihuo">
@@ -102,14 +103,14 @@
                   >获取验证码</button>
                 </div>
                 <div class="text_con1">
-                  <label class="fl autoLogin" for>
-                    <input type="checkbox" />
-                    <span>自动登录</span>
+                  <label @click="checkSta"  class="fl autoLogin" for>
+                    <input  v-model="checkStatus" type="checkbox" />
+                    自动登录
                   </label>
                   <span class="fr backPassword">忘记密码？</span>
                 </div>
                 <p ref="error_T" class="error_text">
-                  <span>1</span>
+                  <span></span>
                 </p>
                 <div class="user_btn" @click="checkCode">登录</div>
                 <div class="jihuo">
@@ -165,6 +166,7 @@
 
 <script>
 import banner from "../../components/Banner";
+import { setStore } from "@/lib/store";
 export default {
   name: "login",
   data() {
@@ -176,6 +178,7 @@ export default {
       computedTime: 0, //倒计时
       ccode: "",
       isCode: "",
+      checkStatus: true,
       loginArr: [
         { url: require("../../assets/imgs/login/login2.jpg") },
         { url: require("../../assets/imgs/login/login3.jpg") }
@@ -184,7 +187,7 @@ export default {
   },
   computed: {
     Cphone() {
-      return /^1\d{10}$/.test(this.phone);
+      return /^1[3456789]\d{9}$/.test(this.phone);
     },
     Cpass() {
       return /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,20}$/.test(this.pass);
@@ -197,6 +200,14 @@ export default {
     tabMm() {
       (this.loginWay = false), (this.$refs.red_step.style.left = "175px");
     },
+    // 自动登录
+    checkSta() {
+      if (this.checkStatus) {
+        this.checkStatus = false;
+      } else {
+        this.checkStatus = true;
+      }
+    },
     // 密码登录
     logins() {
       if (this.phone == "") {
@@ -206,7 +217,7 @@ export default {
         this.$refs.error_M.innerHTML = "*手机号码格式不正确！";
         return;
       } else {
-        this.$refs.error_M.innerHTML = "<span>1</span>";
+        this.$refs.error_M.innerHTML = "<span></span>";
         // return true
       }
       if (this.pass == "") {
@@ -214,16 +225,21 @@ export default {
       } else if (this.Cpass == false) {
         this.$refs.error_M.innerHTML = "*密码需6~20位字母,数字和符号的组成";
       } else {
-        this.$refs.error_M.innerHTML = " <span>1</span>";
+        // this.$refs.error_M.innerHTML = " <span></span>";
         // return true
       }
       if (this.Cphone && this.Cpass) {
+        setStore({
+          name:"phone",
+          content:this.phone,
+          content:""
+        })
         this.$router.push({ path: "/home" });
       }
     },
     // 验证码登录
     getCode() {
-      console.log("进入getcode");
+      // console.log("进入getcode");
       if (this.phone == "") {
         this.$refs.error_T.innerHTML = "*请输入您的手机号！";
         return;
@@ -232,9 +248,22 @@ export default {
         return;
       } else {
         // console.log('进入倒计时')
-        this.$refs.error_T.innerHTML = "<span>1</span>";
+        this.$refs.error_T.innerHTML = "<span></span>";
         this.generatedCode();
-        console.log(this.ccode);
+        // console.log(this.ccode);
+
+        //请求验证码
+        let params = new URLSearchParams();
+        params.append("phone", this.phone);
+        params.append("code", this.ccode);
+        this.$axios
+          .post("http://localhost:3001/sedsms", params)
+          .then(res => {
+            // console.log(res)
+          })
+          .catch(err => {
+            console.log(err);
+          });
         this.Dphone = true;
         //点击已发送，当正在已发送的时候不需要再启动定时器
         if (this.computedTime == 0) {
@@ -261,7 +290,12 @@ export default {
     },
     // 判断验证码是否输入准确
     checkCode() {
-      if (this.Cphone && this.ccode == this.isCode) {
+      if (this.Cphone && this.ccode != "" && this.ccode == this.isCode) {
+        setStore({
+          name:"phone",
+          content:this.phone,
+          type:""
+        })
         this.$router.push({ path: "/home" });
       } else {
         this.$refs.error_T.innerHTML = "*手机号或者验证码不正确";
@@ -275,7 +309,7 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .active {
   color: red;
 }

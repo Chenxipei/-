@@ -6,6 +6,10 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
+		path:'/ditu',
+		component: () => import("../views/cart/ditu.vue")
+	},
+	{
 		path: '',
 		redirect: "/home"
 	},
@@ -30,6 +34,14 @@ const routes = [
 		component: () => import('../views/Classify/classify.vue')
 	},
 	{
+		path: '/member',
+		component: () => import('../views/mine/member.vue'),
+		children:[
+			{path: 'myorder',
+			component: () => import('../views/mine/myorder.vue')}
+		]
+	},
+	{
 		path: "/login",
 		component: () => import("../views/login/login.vue")
 	},
@@ -37,28 +49,32 @@ const routes = [
 		path: "/register",
 		component: () => import("../views/login/register.vue")
 	},
-	
 	{
-		path: "/myorder",
-		component: () => import("../views/mine/myorder.vue")
+		path: '/good_detail',
+		component: () => import('../views/Classify/good_detail.vue')
+	},
+
+	{
+		path: '/total',
+		component: () => import("../views/settlement/settlement.vue")
 	},
 	{
 		path: "/payment",
 		component: () => import("../views/payment/payment.vue")
 	},
 	{
-		path: "/settlement",
-		component: () => import("../views/settlement/settlement.vue")
-	},
-	{
 		path: "/member",
 		component: () => import("../views/mine/member.vue"),
 		children:[
 			{
-				path: "myorder",
-			component: () => import("../views/mine/myorder.vue")
+				path:"myorder",
+				component: () => import("../views/mine/myorder.vue")
 			}
 		]
+	},
+	{
+		path:"*",
+		component: () => import("@/components/404.vue")
 	}
 ]
 const router = new VueRouter({
@@ -66,24 +82,27 @@ const router = new VueRouter({
 	routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   const userInfo = getStore({name:"userInfo"})
-//   if (!userInfo && (to.path === "/cart"||to.path === "/myorder"||to.path === "/total"||to.path==="/payment")) {
-//     // 未登录且要跳转的页面是购物车页
-//     next({
-//       path: "/login" // 跳转到登录页
-//     })
-//   } else if (!userInfo && to.path === "/login") {
-//     // 未登陆且要跳转的页面是登录页
-//     next() // 跳转
-//   } else if (userInfo && to.path === "/login") {
-//     // 已登录且要跳转的页面是登录页
-//     next({
-//       path:"/home" // 跳转到homeName页
-//     })
-//   }else{
-// 	  next()
-//   }
-// })
-
+router.beforeEach((to, from, next) => {
+  const userInfo = getStore({name:"phone"})
+  console.log(userInfo)
+  if (!userInfo && (to.path === "/cart"||to.path === "/myorder"||to.path === "/total"||to.path==="/payment"||to.path==="/member"||to.path==="/member/myorder")) {
+    // 未登录且要跳转的页面是要登陆才能操作的页面
+    next({
+      path: "/login" // 跳转到登录页
+    })
+  } else if (!userInfo && to.path === "/login") {
+    // 未登陆且要跳转的页面是登录页
+    next() // 跳转
+  } else if (userInfo && to.path === "/login") {
+    // 已登录且要跳转的页面是登录页
+    next({
+      path:"/home" // 跳转到homeName页
+    })
+  }else{
+	  next()
+  }
+})
+router.afterEach(to => {
+	window.scrollTo(0, 0)
+})
 export default router

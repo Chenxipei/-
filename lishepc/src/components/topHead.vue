@@ -4,12 +4,16 @@
       <div class="nav-top">
         <ul class="navList">
           <li>
-            <span>
+            <span v-show="!user" >
               <!-- <a href="#" class="line">登录</a> -->
-              <router-link to="/login">登录</router-link>
+              <router-link  to="/login">登录</router-link>
               <span class="xiegang">/</span>
-              <!-- <a href="#">注册</a> -->
               <router-link to="/register">注册</router-link>
+            </span>
+            <span v-show="user">
+              <router-link to="/member">{{this.user}}</router-link>
+              <span class="xiegang">/</span>
+              <a href="" @click="clearLg">退出登录</a>
             </span>
           </li>
           <li class="liShe">
@@ -19,7 +23,7 @@
               <div class="lisheTerm">
                 <ul class="liseUl">
                   <li>
-                    <a href="#">我的订单</a>
+                    <a href="#" @click.prevent="goMyOrder">我的订单</a>
                   </li>
                   <li>
                     <a href="#">我的消息</a>
@@ -61,10 +65,22 @@
   </div>
 </template>
 <script>
+import { getStore,removeStore } from '@/lib/store'
 export default {
   name: "topHead",
- 
+  data:function(){
+    return{
+      user:'',
+    }
+  },
+  mounted(){
+    this.user = getStore({name:'phone'})
+  },
   methods: {
+    clearLg(){
+      this.user=''
+      removeStore({name:"phone"})
+    },
     showFollow() {
       this.$refs.follow.style.height = 480 + "px";
       this.$refs.follow.style.width = 280 + "px";
@@ -75,6 +91,9 @@ export default {
       this.$refs.follow.style.height = 0;
       this.$refs.follow.style.width = 280 + "px";
       this.$refs.follow.style.transition = "0.2s";
+    },
+    goMyOrder(){
+      this.$router.push("/member/myorder")
     }
   }
 };
@@ -134,7 +153,7 @@ export default {
           .arrow {
             width: 8px;
             height: 8px;
-            display:inline-block;
+            display: inline-block;
             vertical-align: baseline;
             transform: rotate(180deg);
             background-image: url(../assets/imgs/index/top_ic_fold.png);

@@ -45,7 +45,7 @@
                 <span class="details_title">配送至</span>:
               </div>
               <div class="detail_right">
-                <v-distpicker></v-distpicker>
+                <v-distpicker :province="province" :city="city" :area="area"></v-distpicker>
                 <p>
                   <span>23:59前下单</span>，预计48小时内发货， 受全国道路交通影响，您的订单以快递实际派送为准，请您耐心等待
                 </p>
@@ -76,7 +76,7 @@
               </div>
               <div class="detail_right">
                 <div>
-                  <button class="buy">立即购买</button>
+                  <button class="buy" @click="toby()">立即购买</button>
                 </div>
                 <div>
                   <button class="car" @click="addCart()">加入购物车</button>
@@ -117,6 +117,8 @@ import VDistpicker from "v-distpicker";
 import Totop from "../../components/Totop.vue";
 import fixedNav from "../../components/fixedNav.vue";
 import { getStore } from "@/lib/store";
+
+let that;
 export default {
   data() {
     return {
@@ -125,33 +127,46 @@ export default {
       num: 1, //商品数
       coloractive: 0,
       shopobj_urlArr: [],
-      shopobj_url: ""
+      shopobj_url: "",
+      province: "",
+      city: "",
+      area: ""
     };
   },
   mounted() {
+    that = this;
     this.getShopExplain(this.$router.currentRoute.query.itemld);
-    let homeGoods = sessionStorage.getItem('homeGoods')
-    console.log(homeGoods)
+    let homeGoods = sessionStorage.getItem("homeGoods");
+    // console.log(homeGoods)
+    this.getMap();
   },
   methods: {
     addCart() {
-      let goodsItem = {
-        cover: this.shopobj.url[0],
-        name: this.shopobj.title,
-        attr: `${this.shopobj.specification}：${
-          this.shopobj.color[this.coloractive]
-        }`,
-        price: this.shopobj.newprice,
-        num: this.num
-      };
-
-      this.$store.commit("addCart", goodsItem);
+      let userInfo = getStore({ name: "phone" });
+      if (!userInfo) {
+        this.$router.push("/login");
+      } else {
+        let goodsItem = {
+          cover: this.shopobj.url[0],
+          name: this.shopobj.title,
+          attr: `${this.shopobj.specification}：${
+            this.shopobj.color[this.coloractive]
+          }`,
+          price: this.shopobj.newprice,
+          num: this.num
+        };
+        this.$message.success("添加购物车成功");
+        this.$store.commit("addCart", goodsItem);
+      }
+    },
+    toby(){
+      this.$router.push('/total')
     },
     getShopExplain(id) {
       this.$axios.get("./data/shopExplain.json").then(res => {
         res.data.shoplist.forEach(i => {
           if (i.itemld == id) {
-            this.shopobj = i
+            this.shopobj = i;
             this.count = this.shopobj.url[0];
             this.shopobj_urlArr = this.shopobj.url;
             console.log(this.shopobj_urlArr[2]);
@@ -163,12 +178,49 @@ export default {
     // 设置大图片
     setcurr(val) {
       this.count = this.shopobj.url[val];
+    },
+    getMap() {
+      let _this = this;
+      var geolocation = new BMap.Geolocation();
+      geolocation.getCurrentPosition(function(r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+          // alert("您的位置：" + r.point.lng + "," + r.point.lat);
+          const myGeo = new BMap.Geocoder();
+          myGeo.getLocation(new BMap.Point(r.point.lng, r.point.lat), data => {
+            if (data.addressComponents) {
+              const result = data.addressComponents;
+              const location = {
+                creditLongitude: r.point.lat, // 经度
+                creditLatitude: r.point.lng, // 纬度
+                creditProvince: result.province || "", // 省
+                creditCity: result.city || "", // 市
+                creditArea: result.district || "", // 区
+                creditStreet:
+                  (result.street || "") + (result.streetNumber || "") // 街道
+              };
+
+              _this.creditLongitude = location.creditLongitude;
+              _this.creditLatitude = location.creditLatitude;
+              _this.creditCity = location.creditCity;
+              _this.location = location;
+              this.location = _this.location;
+
+              // console.log(_this.location);
+              that.province = _this.location.creditProvince;
+              that.city = _this.location.creditCity;
+              that.area = _this.location.creditArea;
+            }
+          });
+        } else {
+          alert("failed" + this.getStatus());
+        }
+      });
     }
   },
   components: { VDistpicker, Totop, fixedNav }
 };
 </script>
-<style  lang='less'>
+<style scoped lang='less'>
 .futto {
   width: 100%;
   background: #f0f0f0;
@@ -289,7 +341,7 @@ export default {
                 padding: 1px 9px;
               }
               .active {
-                 border: 2px solid #ff3737;
+                border: 2px solid #ff3737;
                 color: #ff3737;
                 padding: 1px 9px;
               }

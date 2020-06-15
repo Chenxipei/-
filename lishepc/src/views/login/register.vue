@@ -81,18 +81,15 @@
     <copyright>
       
     </copyright>
-    <div class="copyright mauto">
-      <div class="footer_text">
-        <p>© 2005-2020 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
-        <p>ICP备案证书号:粤ICP备15033641号-1</p>
-      </div>
-    </div>
+   
   </div>
 </template>
 
 <script>
-import copyright from '../../components/copyright'
-import headerwrap from '../../components/header_wrap'
+import copyright from '@/components/copyright'
+import headerwrap from '@/components/header_wrap'
+
+import { setStore } from '@/lib/store';
 export default {
   name: "register",
   components:{  
@@ -131,7 +128,18 @@ export default {
         // console.log("进入倒计时");
         this.$refs.error_M.innerHTML = "<span>1</span>";
         this.generatedCode();
-        console.log(this.ccode);
+        // console.log(this.ccode);
+        //
+         let params = new URLSearchParams()
+        params.append('phone',this.phone)
+        params.append('code',this.ccode)
+        this.$axios.post('http://localhost:3001/sedsms',params)
+        .then(res=>{
+          // console.log(res)
+        })
+        .catch(err=>{
+          console.log(err)
+        })
         this.Dphone = true;
         //点击已发送，当正在已发送的时候不需要再启动定时器
         if (this.computedTime == 0) {
@@ -193,13 +201,15 @@ export default {
         this.$refs.error_M.innerHTML =
           "*请勾选“我已阅读并同意 《礼舍网服务协议》”！";
       }
-      sessionStorage.setItem('phone',this.phone)
+      
+      setStore('phone',this.phone)
+      
     }
   }
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 /* 头部 */
 .register {
   background: #fff;

@@ -3,14 +3,14 @@
     <div class="header w">
       <zwhead :mylist="routerlist">
         <div slot="pricefrom" class="price">
-           <!-- <div class="shop-item"  v-for="(i,j) in  mylist.shop" :key="j">
+          <!-- <div class="shop-item"  v-for="(i,j) in  mylist.shop" :key="j">
             <a href="#">{{i}}</a> 
-          </div> -->
-         <a href="#"> 价格区间：</a>
-          <input type="text" @input="inp" v-model="cmin" />
+          </div>-->
+          <a href="#">价格区间：</a>
+          <input type="text" v-model="cmin" />
           <span>-</span>
-          <input type="text" @input="inp" v-model="cmax" />
-          <span class="btn" @click="setlist" >
+          <input type="text" v-model="cmax" />
+          <span class="btn" @click="setlist">
             <a href="#">确定</a>
           </span>
         </div>
@@ -19,21 +19,21 @@
     <div class="content w">
       <item :list="classifyjson"></item>
     </div>
-		<Totop></Totop>
-		<fixedNav></fixedNav>
+    <Totop></Totop>
+    <fixedNav></fixedNav>
   </div>
 </template>
 <script>
 import item from "../../components/item.vue";
 import zwhead from "../../components/zwhead.vue";
-import Totop from '../../components/Totop.vue'
-import fixedNav from '../../components/fixedNav.vue'
+import Totop from "../../components/Totop.vue";
+import fixedNav from "../../components/fixedNav.vue";
 export default {
   components: {
     item,
     zwhead,
-		Totop,
-		fixedNav
+    Totop,
+    fixedNav
   },
   data() {
     return {
@@ -268,12 +268,11 @@ export default {
   },
   mounted() {
     this.getclassify();
-     window.addEventListener("scroll",this.showbtn,true);
+    window.addEventListener("scroll", this.showbtn, true);
   },
   // 监控路由
   computed: {
     aaa() {
-
       return (
         this.$store.state.price.classtou.oneclass +
         "" +
@@ -284,8 +283,8 @@ export default {
   // 监控路由
   watch: {
     aaa: function(newval, oldval) {
-    this.cmin = ''
-    this.cmax = ''
+      this.cmin = "";
+      this.cmax = "";
 
       if (newval == "00") {
         // console.log('换家纺')
@@ -303,8 +302,7 @@ export default {
       this.$axios.get("./data/classify.json").then(res => {
         let num = this.$store.state.price.count;
         this.classifyjson = res.data.recmmend[num].list;
-        this.classifyjsontw =  this.classifyjson;
-
+        this.classifyjsontw = this.classifyjson;
       });
     },
     // 搜索功能
@@ -319,6 +317,12 @@ export default {
             arr.push(i);
           }
         });
+        if (arr == "") {
+          this.$message.error("没有找到相应的商品");
+          return;
+        }
+        this.cmin = "";
+        this.cmax = "";
         this.classifyjson = arr;
       }
     },
@@ -333,11 +337,13 @@ export default {
     // 回到顶部
     backtop() {
       var timer = setInterval(function() {
-        let osTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let osTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
         let ispeed = Math.floor(-osTop / 5);
-        document.documentElement.scrollTop = document.body.scrollTop =osTop + ispeed;
-        console.log('os',osTop)
-        console.log('is',osTop)
+        document.documentElement.scrollTop = document.body.scrollTop =
+          osTop + ispeed;
+        console.log("os", osTop);
+        console.log("is", osTop);
 
         this.isTop = true;
         if (osTop === 0) {
@@ -347,15 +353,18 @@ export default {
     },
     showbtn() {
       let that = this;
-      let scrollTop =window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop;
-     
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+
       that.scrollTop = scrollTop;
     }
   }
 };
 </script>
 <style scoped lang='less' >
-.classify{
+.classify {
   background: #f0f0f0;
 }
 * {

@@ -8,14 +8,14 @@
           <li>
             <span>
               <!-- <a href="#" class="line">登录</a> -->
-              <router-link to="/login">15220102222</router-link>
+              <router-link to="/member">{{this.phone}}</router-link>
               <span class="xiegang">/</span>
               <!-- <a href="#">注册</a> -->
-              <router-link to="/register">退出登录</router-link>
+              <a href="#" @click="clearLg">退出登录</a>
             </span>
           </li><span class="shu">|</span>
           <li>
-            <a href="#">我的订单</a>
+            <router-link to="/member/myorder">我的订单</router-link>
           </li><span class="shu">|</span>
           <li>
             <a href="#">积分卡兑换</a>
@@ -40,9 +40,9 @@
     <div class="head-search">
       <div class="search">
         <div class="logo">
-          <a href="#">
+          <router-link to="/home">
             <img src="../../assets/imgs/index/logo_two.png" alt />
-          </a>
+          </router-link>
         </div>
         <div class="search-box">
           <input type="text" placeholder="八马茶叶" />
@@ -50,13 +50,11 @@
             <i class="searchIput"></i>
           </a>
         </div>
-        <div class="cart">
-          <a href="#">
-            <img src="../../assets/imgs/index/cart.png" alt />
-          </a>
+        <router-link to="/cart" class="cart">
+          <span> <img src="../../assets/imgs/index/cart.png" alt /></span>
           <p class="ShoppingCart">我的购物车</p>
           <span class="ling">0</span>
-        </div>
+        </router-link>
       </div>
     </div>
     <div class="header_nav">
@@ -68,16 +66,17 @@
     <div class="wrap content">
       <!-- 左侧导航 -->
       <div class="user_center">
-        <a href>
+        <router-link to="/member"> <div class="user_center_head">会员中心</div></router-link>
+        <!-- <a href>
           <div class="user_center_head">会员中心</div>
-        </a>
+        </a> -->
         <div class="left_nav">
           <ul>
             <li class="left_nav_title">
               <span>我的交易</span>
             </li>
             <li>
-              <a href>我的订单</a>
+               <router-link to="/member/myorder">我的订单</router-link>
             </li>
             <li>
               <a href>活动订单</a>
@@ -155,11 +154,12 @@
 
       <!-- 右侧订单 -->
       <div class="order_info">
-        <div class="right_wrap">
+        <router-view v-show="$route.path=='/member/myorder'"></router-view>
+        <div class="right_wrap" v-show="$route.path !='/member/myorder'">
           <!-- 欢迎 -->
           <div class="welcome">
             您好,
-            <span class="user_name">15220102322,</span> 欢迎进入会员中心
+            <span class="user_name">{{this.phone}},</span> 欢迎进入会员中心
             <div class="user_level level1">普通会员</div>
           </div>
           <!-- 我的信息 -->
@@ -171,9 +171,9 @@
                   <img src="../../assets/imgs/login/user_head.png" alt />
                 </div>
                 <div class="three_info">
-                  <p>15220102432</p>
+                  <p>{{this.phone}}</p>
                   <p class="company_name">心意商城</p>
-                  <p>15220102432</p>
+                  <p>{{this.phone}}</p>
                 </div>
               </div>
             </div>
@@ -234,7 +234,7 @@
       </div>
 
       <div @click="backTop" class="totopbox">
-        <i class="totop"></i>
+        <i class="totop el-icon-arrow-up"></i>
       </div>
     </div>
     <!-- 底部 -->
@@ -243,7 +243,7 @@
         <div class="footer_statement">
           <ul class="footer_statement_list">
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_1.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_1.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">消费保障</h3>
                 <p class="statement_text">严格品质把关</p>
@@ -251,7 +251,7 @@
               </div>
             </li>
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_2.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_2.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">品类齐全 正品行货</h3>
                 <p class="statement_text">大牌特价 多仓直发</p>
@@ -259,7 +259,7 @@
               </div>
             </li>
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_3.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_3.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">星级服务</h3>
                 <p class="statement_text">优质商品为您所选</p>
@@ -267,7 +267,7 @@
               </div>
             </li>
             <li>
-              <img class="fl" src="../../assets/imgs/login/statement_4.png" alt />
+              <!-- <img class="fl" src="../../assets/imgs/login/statement_4.png" alt /> -->
               <div class="fl statement_text_pr">
                 <h3 class="statement_title">400-833-0288</h3>
                 <p class="statement_text">周一至周五</p>
@@ -317,7 +317,7 @@
           <div class="footer_text">
             <div class="wx_guanzhu">
               <p>扫码关注微信公众号</p>
-              <img src="../../assets/imgs/icon/footer_img_qrcode.png" alt />
+              <!-- <img src="../../assets/imgs/icon/footer_img_qrcode.png" alt /> -->
               <p>优惠咨询抢先知</p>
             </div>
           </div>
@@ -337,25 +337,26 @@
 </template>
 
 <script>
-import headSearch from "../../components/headSearch.vue";
+import { mapGetters } from 'vuex';
+import { getStore } from '@/lib/store';
 import footer from "../../components/footer.vue";
 export default {
   name: "member",
-  components: {
-    headSearch
-  },
+  
   data: function() {
     return {
       defaultImg:
         'this.src="' + require("../../assets/imgs/icon/err.jpg") + '"',
       btnFlag: false,
-      memberGoods: []
+      memberGoods: [],
+      phone:''
     };
   },
   mounted() {
     this.drawChart();
     window.addEventListener("scroll", this.scrollToTop);
     this.getHomeData();
+    this.phone=getStore({name:'phone'})
   },
   destroyed() {
     window.removeEventListener("scroll", this.scrollToTop);
@@ -420,6 +421,11 @@ export default {
       };
       myChart.setOption(option);
     },
+    clearLg(){
+      console.log(11112)
+      sessionStorage.clear()
+       this.$router.push({ path: "/login" });
+    },
     getHomeData() {
       //   console.log("请求member商品");
       this.$axios
@@ -460,7 +466,7 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .member {
   background: #f0f0f0;
   .head-nav {
@@ -700,7 +706,7 @@ export default {
         font-size: 18px;
         text-align: right;
         line-height: 49px;
-        background-image: url(../../assets/imgs/icon/user.png);
+        // background-image: url(../../assets/imgs/icon/user.png);
         background-repeat: no-repeat;
         background-position: 54px 15px;
       }
@@ -763,7 +769,7 @@ export default {
             line-height: 20px;
             padding-left: 25px;
             margin-left: 10px;
-            background: url(../../assets/imgs/icon/user_level.png) no-repeat;
+            // background: url(../../assets/imgs/icon/user_level.png) no-repeat;
           }
         }
         .my_wrap {
@@ -948,6 +954,7 @@ export default {
     background: #fff;
     display: flex;
     text-align: center;
+    overflow: hidden;
     flex-direction: column;
     font-size: 12px;
     color: #666;
@@ -978,19 +985,20 @@ export default {
 
     .totopbox {
       &:hover i {
-        background: url(../../assets/imgs/icon/sidebar_ic_top_hover.png) 1px 0
-          no-repeat;
+        // background: url(../../assets/imgs/icon/sidebar_ic_top_hover.png) 1px 0
+        //   no-repeat;
       }
       .totop {
-        background: url(../../assets/imgs/icon/sidebar_ic_top_default.png) 1px 0
-          no-repeat;
+        // background: url(../../assets/imgs/icon/sidebar_ic_top_default.png) 1px 0
+          // no-repeat;
       }
     }
 
     i {
       display: inline-block;
-      width: 35px;
-      height: 35px;
+      width: 100%;
+      height: 100%;
+      font-size: 20px;
     }
   }
   //   底部

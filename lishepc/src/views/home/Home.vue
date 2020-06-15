@@ -182,7 +182,6 @@ export default {
           this.tiktok = res.data.group[2];
           this.qingdan = res.data.group[3];
           this.likeArr = res.data.group[4];
-          console.log(res);
         })
         .catch(err => {
           console.log(err);
@@ -194,7 +193,7 @@ export default {
           this.bannerArr = res.data.banner;
         })
         .catch(err => {
-          console.log(errr);
+          console.log(err);
         });
     },
     tab(index) {
@@ -234,12 +233,7 @@ export default {
 };
 </script>
 
-<style lang="less">
-* {
-  margin: 0;
-  padding: 0;
-}
-
+<style scoped lang="less">
 .contenter {
   width: 1200px;
   margin: 0 auto;

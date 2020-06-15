@@ -7,30 +7,30 @@
           <div class="order_status">
             <div>
               <ul class="all_orders">
-                <a href="#" @click="orderStatus=1">
-                  <li id="all" class="statusCheck " :class="{current:orderStatus==1}">全部订单</li>
+                <a href>
+                  <li id="all" class="statusCheck current">全部订单</li>
                 </a>
-                <a href="#" @click="orderStatus=2">
-                  <li id="topay" class="statusCheckWAIT_BUYER_PAY" :class="{current:orderStatus==2}">待付款</li>
+                <a href>
+                  <li id="topay" class="statusCheckWAIT_BUYER_PAY">待付款</li>
                 </a>
-                <a href="#" @click="orderStatus=3">
-                  <li id="waitsend" class="statusCheckWAIT_SELLER_SEND_GOODS" :class="{current:orderStatus==3}">待发货</li>
+                <a href>
+                  <li id="waitsend" class="statusCheckWAIT_SELLER_SEND_GOODS">待发货</li>
                 </a>
-                <a href="#" @click="orderStatus=4">
-                  <li id="tosign" class="statusCheckWAIT_BUYER_CONFIRM_GOODS" :class="{current:orderStatus==4}">待收货</li>
+                <a href>
+                  <li id="tosign" class="statusCheckWAIT_BUYER_CONFIRM_GOODS">待收货</li>
                 </a>
                 <!--<a href="/userAPI.php/Order/orderList/status/WAIT_COMMENT.html">-->
                 <!--<li id="write_review" class="statusCheckWAIT_COMMENT">待评价</li>-->
                 <!--</a>-->
-                <a href="#" @click="orderStatus=5">
-                  <li id="write_review" class="statusCheckNO_APPLY" :class="{current:orderStatus==5}">退换货</li>
+                <a href>
+                  <li id="write_review" class="statusCheckNO_APPLY">退换货</li>
                 </a>
               </ul>
             </div>
             <div class="order_search">
               <div class="order_num">
                 共
-                <span>6</span>条订单
+                <span>{{$store.state.cartData.length}}</span>条订单
               </div>
               <input type="text" placeholder="请输入订单号/商品名称" name="tid" value />
               <!--<a href="" class="order_search_btn">搜索订单</a>-->
@@ -58,22 +58,13 @@
             <div class="operation">订单操作</div>
           </div>
           <!-- 订单1 -->
-          <div v-show="orderStatus==1">
+          <div class="my_order" v-for="(item,i) in orderData" :key="i">
             <div class="orders closed">
               <!-- 订单号 -->
               <div class="orderid">
-                <div>
-                  <input type="checkbox" />
-                </div>
-                <div class="time">2020-06-06 14:16:34</div>
+                <div class="time">2020-06-06 14:16:34&nbsp;&nbsp;&nbsp;&nbsp;</div>
                 <div>订单编号：200606141634079586</div>
-                <div class="store_name">
-                  <a href="https://shop.lishe.cn/shop/list.html?shopId=16">数码家电馆</a>
-                  <span>
-                    <a target="_blank" href="https://shop.lishe.cn/customer/dialogpc.html"></a>
-                  </span>
-                </div>
-                <!-- <div class="delete"><a href="/userAPI.php/Order/emptyHint"></a></div> -->
+                
               </div>
               <!-- 订单详情 -->
               <div class="order_list">
@@ -82,37 +73,37 @@
                     <!-- <a href="https://shop.lishe.cn/Info/index/itemId/136444" target="_balck"> -->
                     <a href="javascript:void(0)" onclick="gotoItemInfo('136444');">
                       <img
-                        onerror="onerror=null;src='/userAPI/Home/View/Public/images/shopDefult.png'"
-                        src="http://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/0b/9f/62/0de2d9526aca83bf2263167d86bcc840.jpg?x-oss-process=image/resize,w_120/quality,q_80/format,jpg"
+                        :src="item.cover"
                         width="78px"
                         height="78px"
                       />
                     </a>
                   </div>
                   <div class="goods_name">
-                    <p>宜阁（EDEI） 碰碰果汁机 E-2016</p>
+                    <p>{{item.name}}</p>
                     <p class="category"></p>
                   </div>
                   <div class="perprice">
-                    <br />189积分
+                    <br />{{item.price}}
                   </div>
-                  <div class="ammount">&times;1</div>
+                  <div class="ammount">&times;{{item.num}}</div>
                   <div class="ammount" style="margin-left: 50px;">
                     <a href="/userAPI.php/Order/applyAfterSaleTwo/aftersales_bn/">无售后</a>
                   </div>
                 </div>
                 <div class="paid_money">
-                  <span>189积分</span>
+                  <span>{{parseInt(item.price)*item.num}}元</span>
                   <br />(含运费：&nbsp;0积分)
                 </div>
 
                 <div class="order_progress">
-                  待付款
+                  <span v-if="item.payStatus==0">待付款</span>
+                  <span v-if="item.payStatus==1">待发货</span>
                   <br />
-                  <a href="javascript:showGoodsDetails('200606141634079586',16);">订单详情</a>
+                  <a href="#">订单详情</a>
                 </div>
-                <div class="order_operation">等待付款</div>
-
+                <div class="order_operation" v-if="item.payStatus==0">等待付款</div>
+                <div class="order_operation" v-if="item.payStatus==1">付款成功</div>
                 <!--用户操作状态-->
               </div>
             </div>
@@ -120,7 +111,7 @@
               <div class="order_left">
                 <div class="payment_id">支付单号：P200606141634795861</div>
               </div>
-              <div class="order_btns">
+              <div class="order_btns" v-if="item.payStatus==0">
                 <a
                   href="javascript:void(0);"
                   class="paynow userOp userSubmit"
@@ -136,345 +127,10 @@
                   data-status="CANCEL"
                 >取消订单</a>
               </div>
+
             </div>
           </div>
 
-          <div v-show="orderStatus==2">
-            <div class="orders closed">
-              <!-- 订单号 -->
-              <div class="orderid">
-                <div>
-                  <input type="checkbox" />
-                </div>
-                <div class="time">2020-06-06 14:16:34</div>
-                <div>订单编号：200606141634079586</div>
-                <div class="store_name">
-                  <a href="https://shop.lishe.cn/shop/list.html?shopId=16">数码家电馆</a>
-                  <span>
-                    <a target="_blank" href="https://shop.lishe.cn/customer/dialogpc.html"></a>
-                  </span>
-                </div>
-                <!-- <div class="delete"><a href="/userAPI.php/Order/emptyHint"></a></div> -->
-              </div>
-              <!-- 订单详情 -->
-              <div class="order_list">
-                <div class="order_preview">
-                  <div class="pics">
-                    <!-- <a href="https://shop.lishe.cn/Info/index/itemId/136444" target="_balck"> -->
-                    <a href="javascript:void(0)" onclick="gotoItemInfo('136444');">
-                      <img
-                        onerror="onerror=null;src='/userAPI/Home/View/Public/images/shopDefult.png'"
-                        src="http://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/0b/9f/62/0de2d9526aca83bf2263167d86bcc840.jpg?x-oss-process=image/resize,w_120/quality,q_80/format,jpg"
-                        width="78px"
-                        height="78px"
-                      />
-                    </a>
-                  </div>
-                  <div class="goods_name">
-                    <p>宜阁（EDEI） 碰碰果汁机 E-2016</p>
-                    <p class="category"></p>
-                  </div>
-                  <div class="perprice">
-                    <br />189积分
-                  </div>
-                  <div class="ammount">&times;2</div>
-                  <div class="ammount" style="margin-left: 50px;">
-                    <a href="/userAPI.php/Order/applyAfterSaleTwo/aftersales_bn/">无售后</a>
-                  </div>
-                </div>
-                <div class="paid_money">
-                  <span>189积分</span>
-                  <br />(含运费：&nbsp;0积分)
-                </div>
-
-                <div class="order_progress">
-                  待付款
-                  <br />
-                  <a href="javascript:showGoodsDetails('200606141634079586',16);">订单详情</a>
-                </div>
-                <div class="order_operation">等待付款</div>
-
-                <!--用户操作状态-->
-              </div>
-            </div>
-            <div class="order_details_btn">
-              <div class="order_left">
-                <div class="payment_id">支付单号：P200606141634795861</div>
-              </div>
-              <div class="order_btns">
-                <a
-                  href="javascript:void(0);"
-                  class="paynow userOp userSubmit"
-                  data-type="pay"
-                  data-order-id="P200606141634795861"
-                  data-status="PAY"
-                >立即付款</a>
-                <a
-                  href="javascript:void(0);"
-                  class="cancelOrd userOp userSubmit"
-                  data-type="cancel"
-                  data-order-id="P200606141634795861"
-                  data-status="CANCEL"
-                >取消订单</a>
-              </div>
-            </div>
-          </div>
-
-		   <div v-show="orderStatus==3">
-            <div class="orders closed">
-              <!-- 订单号 -->
-              <div class="orderid">
-                <div>
-                  <input type="checkbox" />
-                </div>
-                <div class="time">2020-06-06 14:16:34</div>
-                <div>订单编号：200606141634079586</div>
-                <div class="store_name">
-                  <a href="https://shop.lishe.cn/shop/list.html?shopId=16">数码家电馆</a>
-                  <span>
-                    <a target="_blank" href="https://shop.lishe.cn/customer/dialogpc.html"></a>
-                  </span>
-                </div>
-                <!-- <div class="delete"><a href="/userAPI.php/Order/emptyHint"></a></div> -->
-              </div>
-              <!-- 订单详情 -->
-              <div class="order_list">
-                <div class="order_preview">
-                  <div class="pics">
-                    <!-- <a href="https://shop.lishe.cn/Info/index/itemId/136444" target="_balck"> -->
-                    <a href="javascript:void(0)" onclick="gotoItemInfo('136444');">
-                      <img
-                        onerror="onerror=null;src='/userAPI/Home/View/Public/images/shopDefult.png'"
-                        src="http://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/0b/9f/62/0de2d9526aca83bf2263167d86bcc840.jpg?x-oss-process=image/resize,w_120/quality,q_80/format,jpg"
-                        width="78px"
-                        height="78px"
-                      />
-                    </a>
-                  </div>
-                  <div class="goods_name">
-                    <p>宜阁（EDEI） 碰碰果汁机 E-2016</p>
-                    <p class="category"></p>
-                  </div>
-                  <div class="perprice">
-                    <br />189积分
-                  </div>
-                  <div class="ammount">&times;3</div>
-                  <div class="ammount" style="margin-left: 50px;">
-                    <a href="/userAPI.php/Order/applyAfterSaleTwo/aftersales_bn/">无售后</a>
-                  </div>
-                </div>
-                <div class="paid_money">
-                  <span>189积分</span>
-                  <br />(含运费：&nbsp;0积分)
-                </div>
-
-                <div class="order_progress">
-                  待付款
-                  <br />
-                  <a href="javascript:showGoodsDetails('200606141634079586',16);">订单详情</a>
-                </div>
-                <div class="order_operation">等待付款</div>
-
-                <!--用户操作状态-->
-              </div>
-            </div>
-            <div class="order_details_btn">
-              <div class="order_left">
-                <div class="payment_id">支付单号：P200606141634795861</div>
-              </div>
-              <div class="order_btns">
-                <a
-                  href="javascript:void(0);"
-                  class="paynow userOp userSubmit"
-                  data-type="pay"
-                  data-order-id="P200606141634795861"
-                  data-status="PAY"
-                >立即付款</a>
-                <a
-                  href="javascript:void(0);"
-                  class="cancelOrd userOp userSubmit"
-                  data-type="cancel"
-                  data-order-id="P200606141634795861"
-                  data-status="CANCEL"
-                >取消订单</a>
-              </div>
-            </div>
-          </div>
-
-
-
-		   <div v-show="orderStatus==4">
-            <div class="orders closed">
-              <!-- 订单号 -->
-              <div class="orderid">
-                <div>
-                  <input type="checkbox" />
-                </div>
-                <div class="time">2020-06-06 14:16:34</div>
-                <div>订单编号：200606141634079586</div>
-                <div class="store_name">
-                  <a href="https://shop.lishe.cn/shop/list.html?shopId=16">数码家电馆</a>
-                  <span>
-                    <a target="_blank" href="https://shop.lishe.cn/customer/dialogpc.html"></a>
-                  </span>
-                </div>
-                <!-- <div class="delete"><a href="/userAPI.php/Order/emptyHint"></a></div> -->
-              </div>
-              <!-- 订单详情 -->
-              <div class="order_list">
-                <div class="order_preview">
-                  <div class="pics">
-                    <!-- <a href="https://shop.lishe.cn/Info/index/itemId/136444" target="_balck"> -->
-                    <a href="javascript:void(0)" onclick="gotoItemInfo('136444');">
-                      <img
-                        onerror="onerror=null;src='/userAPI/Home/View/Public/images/shopDefult.png'"
-                        src="http://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/0b/9f/62/0de2d9526aca83bf2263167d86bcc840.jpg?x-oss-process=image/resize,w_120/quality,q_80/format,jpg"
-                        width="78px"
-                        height="78px"
-                      />
-                    </a>
-                  </div>
-                  <div class="goods_name">
-                    <p>宜阁（EDEI） 碰碰果汁机 E-2016</p>
-                    <p class="category"></p>
-                  </div>
-                  <div class="perprice">
-                    <br />189积分
-                  </div>
-                  <div class="ammount">&times;4</div>
-                  <div class="ammount" style="margin-left: 50px;">
-                    <a href="/userAPI.php/Order/applyAfterSaleTwo/aftersales_bn/">无售后</a>
-                  </div>
-                </div>
-                <div class="paid_money">
-                  <span>189积分</span>
-                  <br />(含运费：&nbsp;0积分)
-                </div>
-
-                <div class="order_progress">
-                  待付款
-                  <br />
-                  <a href="javascript:showGoodsDetails('200606141634079586',16);">订单详情</a>
-                </div>
-                <div class="order_operation">等待付款</div>
-
-                <!--用户操作状态-->
-              </div>
-            </div>
-            <div class="order_details_btn">
-              <div class="order_left">
-                <div class="payment_id">支付单号：P200606141634795861</div>
-              </div>
-              <div class="order_btns">
-                <a
-                  href="javascript:void(0);"
-                  class="paynow userOp userSubmit"
-                  data-type="pay"
-                  data-order-id="P200606141634795861"
-                  data-status="PAY"
-                >立即付款</a>
-                <a
-                  href="javascript:void(0);"
-                  class="cancelOrd userOp userSubmit"
-                  data-type="cancel"
-                  data-order-id="P200606141634795861"
-                  data-status="CANCEL"
-                >取消订单</a>
-              </div>
-            </div>
-          </div>
-
-
-
-		   <div v-show="orderStatus==5">
-            <div class="orders closed">
-              <!-- 订单号 -->
-              <div class="orderid">
-                <div>
-                  <input type="checkbox" />
-                </div>
-                <div class="time">2020-06-06 14:16:34</div>
-                <div>订单编号：200606141634079586</div>
-                <div class="store_name">
-                  <a href="https://shop.lishe.cn/shop/list.html?shopId=16">数码家电馆</a>
-                  <span>
-                    <a target="_blank" href="https://shop.lishe.cn/customer/dialogpc.html"></a>
-                  </span>
-                </div>
-                <!-- <div class="delete"><a href="/userAPI.php/Order/emptyHint"></a></div> -->
-              </div>
-              <!-- 订单详情 -->
-              <div class="order_list">
-                <div class="order_preview">
-                  <div class="pics">
-                    <!-- <a href="https://shop.lishe.cn/Info/index/itemId/136444" target="_balck"> -->
-                    <a href="javascript:void(0)" onclick="gotoItemInfo('136444');">
-                      <img
-                        onerror="onerror=null;src='/userAPI/Home/View/Public/images/shopDefult.png'"
-                        src="http://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/images/0b/9f/62/0de2d9526aca83bf2263167d86bcc840.jpg?x-oss-process=image/resize,w_120/quality,q_80/format,jpg"
-                        width="78px"
-                        height="78px"
-                      />
-                    </a>
-                  </div>
-                  <div class="goods_name">
-                    <p>宜阁（EDEI） 碰碰果汁机 E-2016</p>
-                    <p class="category"></p>
-                  </div>
-                  <div class="perprice">
-                    <br />189积分
-                  </div>
-                  <div class="ammount">&times;5</div>
-                  <div class="ammount" style="margin-left: 50px;">
-                    <a href="/userAPI.php/Order/applyAfterSaleTwo/aftersales_bn/">无售后</a>
-                  </div>
-                </div>
-                <div class="paid_money">
-                  <span>189积分</span>
-                  <br />(含运费：&nbsp;0积分)
-                </div>
-
-                <div class="order_progress">
-                  待付款
-                  <br />
-                  <a href="javascript:showGoodsDetails('200606141634079586',16);">订单详情</a>
-                </div>
-                <div class="order_operation">等待付款</div>
-
-                <!--用户操作状态-->
-              </div>
-            </div>
-            <div class="order_details_btn">
-              <div class="order_left">
-                <div class="payment_id">支付单号：P200606141634795861</div>
-              </div>
-              <div class="order_btns">
-                <a
-                  href="javascript:void(0);"
-                  class="paynow userOp userSubmit"
-                  data-type="pay"
-                  data-order-id="P200606141634795861"
-                  data-status="PAY"
-                >立即付款</a>
-                <a
-                  href="javascript:void(0);"
-                  class="cancelOrd userOp userSubmit"
-                  data-type="cancel"
-                  data-order-id="P200606141634795861"
-                  data-status="CANCEL"
-                >取消订单</a>
-              </div>
-            </div>
-          </div>
-          <!-- 批量操作 -->
-          <!-- <div class="operation_all">
-							<div><input type="checkbox"></div>
-							<div>全选</div>
-							<div><a href="/userAPI.php/Order/emptyHint" class="payall">合并付款</a></div>
-							<div><a href="/userAPI.php/Order/emptyHint" class="deliveryall">批量确认收货</a></div>
-          </div>-->
-
-          <!-- 翻页 -->
           <div class="pages">
             <div class="page1"></div>
           </div>
@@ -485,18 +141,20 @@
 </template>
 
 <script>
-import LocalStorage from "../../lib/LocalStorage";
+import { mapGetters } from 'vuex'
 export default {
   name: "myorder",
-  data: function() {
-    return {
-      orderStatus: 1
-    };
-  }
+  computed: {
+	  ...mapGetters(["orderData"]),
+  },
+  methods: {
+	  buy(){
+	  }
+  },
 };
 </script>
 
-<style lang="less" scope>
+<style lang="less" scoped>
 .myorder {
   font-size: 12px;
   color: black;
@@ -631,10 +289,9 @@ input {
     text-align: center;
     float: left;
   }
-}
-
-.name {
-  width: 333px;
+  .name {
+    width: 333px;
+  }
 }
 
 .price,
@@ -669,6 +326,7 @@ input {
 .orderid {
   width: 100%;
   height: 33px;
+  padding-left: 15px;
   border-bottom: 1px solid #ccc;
   background-color: #f0f0f0;
 
