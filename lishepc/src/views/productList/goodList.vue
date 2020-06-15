@@ -49,7 +49,7 @@
         <div class="swiper-container" ref="banner">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(banner,i) in i.group_list" :key="i">
-              <img :src="banner.imgSrc" alt />
+              <img :src="banner.img_url" alt />
             </div>
           </div>
           <!-- 如果需要导航按钮 -->
@@ -70,7 +70,7 @@
           <p>居家生活</p>
           <img src="../../assets/imgs/details/1591327317.jpg" alt />
         </div>
-        <div class="nav_link" v-for="(item,i) in navTitle" :key="i">
+        <div class="nav_link" v-for="(item,i) in navTitle" :key="i" @click="goItem(i)">
           <p :class="{'active':i===navActive}">{{item}}</p>
         </div>
       </div>
@@ -79,248 +79,281 @@
   </div>
 </template>
 <script>
-	import Swiper from "swiper";
-	import "swiper/css/swiper.css";
-	import Totop from '../../components/Totop.vue'
-	import fixedNav from '../../components/fixedNav.vue'
-	export default {
-		name: "goodList",
-		components: {
-			Totop,
-			fixedNav
-		},
-		data() {
-			return {
-				// 存在对象里面
-				navActive: "",
-				navTitle: ["精选大牌", "优选有礼", "猜您喜欢"],
-				carousel: [{
-						img: "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884552_88364.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
-					},
-					{
-						img: "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884586_34327.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
-					}
-				],
-				good_list: [],
-				banner_list: [],
-				yxyl: []
-			};
-		},
-		mounted() {
-			this.getlist();
-			window.onscroll = e => {
-				let scrollTop =
-					document.documentElement.scrollTop || document.body.scrollTop;
-				let titleEl = Array.from(this.$refs.title);
-				titleEl.forEach((item, i) => {
-					if (scrollTop >= item.offsetTop) {
-						this.navActive = i;
-					}
-				});
-			};
-		},
-		methods: {
-			getlist() {
-				this.$axios.get("/data/goodsList.json").then(res => {
-					// console.log("美女", res.data.group);
-					this.good_list = res.data.group;
-					this.banner_list = res.data.banner;
-				});
-			}
-		},
-		watch: {}
-	};
+import Swiper from "swiper";
+import "swiper/css/swiper.css";
+import Totop from "../../components/Totop.vue";
+import fixedNav from "../../components/fixedNav.vue";
+export default {
+  name: "goodList",
+  components: {
+    Totop,
+    fixedNav
+  },
+  data() {
+    return {
+      // 存在对象里面
+      navActive: "",
+      navTitle: ["精选大牌", "精选店铺", "优选有礼", "猜您喜欢"],
+      carousel: [
+        {
+          img:
+            "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884552_88364.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
+        },
+        {
+          img:
+            "https://lishe-shop-images.oss-cn-shenzhen.aliyuncs.com/uploadFromAdmin/img/2020-05-19/1589884586_34327.jpg?x-oss-process=png/resize,w_1920/quality,q_80/format,jpg"
+        }
+      ],
+      good_list: [],
+      banner_list: [],
+      itemPosition: [],
+      yxyl: []
+    };
+  },
+  created() {
+    this.getlist();
+  },
+  mounted() {
+    setTimeout(() => {
+      let titleEl = Array.from(this.$refs.title);
+      titleEl.forEach(item => {
+        this.itemPosition.push(item.offsetTop);
+      });
+      var mySwiper = new Swiper(".swiper-container", {
+        loop: true, // 循环模式选项
+        // 如果需要前进后退按钮
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        slidesPerView: 4,
+        spaceBetween: 20,
+
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true //修改swiper的父元素时，自动初始化swiper
+      });
+    }, 100);
+
+    window.onscroll = e => {
+      let scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      let titleEl = Array.from(this.$refs.title);
+      titleEl.forEach((item, i) => {
+        if (scrollTop >= item.offsetTop) {
+          this.navActive = i;
+        }
+      });
+    };
+  },
+  methods: {
+    goItem(i) {
+		document.documentElement.scrollTop = document.body.scrollTop = this.itemPosition[i];
+	},
+    getlist() {
+      this.$axios.get("/data/goodsList.json").then(res => {
+        // console.log("美女", res.data.group);
+        this.good_list = res.data.group;
+        this.banner_list = res.data.banner;
+      });
+    }
+  },
+  watch: {}
+};
 </script>
 <style lang="less" scoped>
-	.content {
-		background: rgb(245, 245, 245);
-		.brand_title {
-			width: 1200px;
-			margin: 0 auto;
-			padding: 18px 0 0;
-			h3 {
-				font-size: 28px;
-				color: #333;
-				&.cnxh-title {
-					text-align: center;
-				}
-			}
-			.component-item {
-				box-sizing: border-box;
-				margin: 0 auto;
-				padding-top: 28px;
-				width: 1200px;
-				overflow: hidden;
-				.component_r_img {
-					width: 600px;
-					height: 379px;
-					float: left;
-					padding-bottom: 24px;
-					cursor: pointer;
-				}
-				&.yxyl {
-					display: flex;
-					justify-content: space-between;
-					flex-wrap: wrap;
-					cursor: pointer;
-					li {
-						width: 590px;
-						height: 100%;
-						padding: 13px 0 13px 13px;
-						display: flex;
-						justify-content: space-between;
-						background: #fff;
-						margin-bottom: 20px;
-						&:nth-of-type(even) {
-							margin-left: 20px;
-						}
-						.component_r_img {
-							width: 255px;
-							height: 255px;
-							float: none;
-						}
-					}
-				}
-				&.cnxh {
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					cursor: pointer;
-					li {
-						width: 19%;
-						padding: 15px 19px;
-						margin-bottom: 20px;
-						overflow: hidden;
-						display: flex;
-						flex-direction: column;
-						background: #fff;
-						img {
-							width: 190px;
-							height: 190px;
-						}
-					}
-				}
-				.component_box {
-					width: 293px;
-					height: 255px;
-					box-sizing: border-box;
-					background: #fff;
-					.titel {
-						font-size: 24px;
-						color: #2a2a2a;
-						font-weight: bold;
-						height: 56px;
-						line-height: 28px;
-						overflow: hidden;
-					}
-					.introduce {
-						font-size: 15px;
-						color: #686868;
-						height: 60px;
-						line-height: 20px;
-						overflow: hidden;
-						margin-top: 8px;
-					}
-					.price {
-						color: #be4754;
-						font-size: 42px;
-						font-weight: bold;
-						text-align: left;
-						span {
-							font-size: 18px;
-						}
-						s {
-							color: #828282;
-							font-size: 14px;
-						}
-					}
-					.list_btn {
-						display: flex;
-						margin-top: 15px;
-						.RedeemNow {
-							width: 146px;
-							height: 40px;
-							line-height: 40px;
-							text-align: center;
-							font-size: 24px;
-							background: #bd3b44;
-							color: #fff;
-							margin-right: 50px;
-						}
-					}
-				}
-				.content_list {
-					.txt_title {
-						font-size: 20px;
-						color: #555;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						overflow: hidden;
-						margin-bottom: 5px;
-					}
-					& .introduce {
-						font-size: 14px;
-						color: #666;
-						width: 190px;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						overflow: hidden;
-						margin-bottom: 16px;
-					}
-					& .integral {
-						font-size: 20px;
-						color: #ff4e4c;
-						line-height: 24px;
-					}
-					& .integral img {
-						width: 18px;
-						height: 18px;
-						float: right;
-						margin-top: 4px;
-					}
-				}
-			}
-		}
-		.nav-float-l {
-			// position: fixed;
-			// right: 5%;
-			// top: 200px;
-			// z-index: 999;
-			// width: 83px;
-			text-align: center;
-			background: white;
-			color: #666;
-			border-radius: 6px;
-			.nav-float-l-top {
-				color: #ff4c4e;
-				font-size: 15px;
-				padding: 10px;
-				box-sizing: border-box;
-				font-weight: bold;
-				height: 65px;
-			}
-			.nav_link {
-				p {
-					&.active {
-						background: rgb(255, 65, 56);
-						border-radius: 5px;
-						color: #fff;
-					}
-					color: #666;
-					// width: 62px;
-					height: 25px;
-					font-size: 12px;
-					line-height: 25px;
-					display: block;
-					text-align: center;
-					// float: left;
-					margin: 6px 0;
-					// margin-left: 10px;
-					// overflow: hidden;
-// 					white-space: nowrap;
-// 					text-overflow: ellipsis;
-				}
-			}
-		}
-	}
+.swiper-container {
+  --swiper-navigation-color: #fff; /* 单独设置按钮颜色 */
+  --swiper-navigation-size: 30px; /* 设置按钮大小 */
+}
+.content {
+  background: rgb(245, 245, 245);
+  .brand_title {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 18px 0 0;
+    h3 {
+      font-size: 28px;
+      color: #333;
+      padding-bottom: 28px;
+      &.cnxh-title {
+        text-align: center;
+      }
+    }
+    .component-item {
+      box-sizing: border-box;
+      margin: 0 auto;
+      width: 1200px;
+      overflow: hidden;
+      .component_r_img {
+        width: 600px;
+        height: 379px;
+        float: left;
+        padding-bottom: 24px;
+        cursor: pointer;
+      }
+      &.yxyl {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        cursor: pointer;
+        li {
+          width: 590px;
+          height: 100%;
+          padding: 13px 0 13px 13px;
+          display: flex;
+          justify-content: space-between;
+          background: #fff;
+          margin-bottom: 20px;
+          &:nth-of-type(even) {
+            margin-left: 20px;
+          }
+          .component_r_img {
+            width: 255px;
+            height: 255px;
+            float: none;
+          }
+        }
+      }
+      &.cnxh {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        cursor: pointer;
+        li {
+          width: 19%;
+          padding: 15px 19px;
+          margin-bottom: 20px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          background: #fff;
+          img {
+            width: 190px;
+            height: 190px;
+          }
+        }
+      }
+      .component_box {
+        width: 293px;
+        height: 255px;
+        box-sizing: border-box;
+        background: #fff;
+        .titel {
+          font-size: 24px;
+          color: #2a2a2a;
+          font-weight: bold;
+          height: 56px;
+          line-height: 28px;
+          overflow: hidden;
+        }
+        .introduce {
+          font-size: 15px;
+          color: #686868;
+          height: 60px;
+          line-height: 20px;
+          overflow: hidden;
+          margin-top: 8px;
+        }
+        .price {
+          color: #be4754;
+          font-size: 42px;
+          font-weight: bold;
+          text-align: left;
+          span {
+            font-size: 18px;
+          }
+          s {
+            color: #828282;
+            font-size: 14px;
+          }
+        }
+        .list_btn {
+          display: flex;
+          margin-top: 15px;
+          .RedeemNow {
+            width: 146px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            background: #bd3b44;
+            color: #fff;
+            margin-right: 50px;
+          }
+        }
+      }
+      .content_list {
+        .txt_title {
+          font-size: 20px;
+          color: #555;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          margin-bottom: 5px;
+        }
+        & .introduce {
+          font-size: 14px;
+          color: #666;
+          width: 190px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          margin-bottom: 16px;
+        }
+        & .integral {
+          font-size: 20px;
+          color: #ff4e4c;
+          line-height: 24px;
+        }
+        & .integral img {
+          width: 18px;
+          height: 18px;
+          float: right;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+  .nav-float-l {
+    // position: fixed;
+    // right: 5%;
+    // top: 200px;
+    // z-index: 999;
+    // width: 83px;
+    text-align: center;
+    background: white;
+    color: #666;
+    border-radius: 6px;
+    .nav-float-l-top {
+      color: #ff4c4e;
+      font-size: 15px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-weight: bold;
+      height: 65px;
+    }
+    .nav_link {
+      p {
+        &.active {
+          background: rgb(255, 65, 56);
+          border-radius: 5px;
+          color: #fff;
+        }
+        color: #666;
+        // width: 62px;
+        height: 25px;
+        font-size: 12px;
+        line-height: 25px;
+        display: block;
+        text-align: center;
+        // float: left;
+        margin: 6px 0;
+        // margin-left: 10px;
+        // overflow: hidden;
+        // 					white-space: nowrap;
+        // 					text-overflow: ellipsis;
+      }
+    }
+  }
+}
 </style>
