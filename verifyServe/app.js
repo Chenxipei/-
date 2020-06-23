@@ -36,7 +36,7 @@ app.post('/sedsms', function (req, res) {
     //发送短信
     smsClient.sendSMS({
         PhoneNumbers: req.body.phone, //必填:待发送手机号,支持以逗号分隔的形式进行批量调用，目前从前端获取手机号码
-        SignName: '礼舍科技', //必填:短信签名-可在短信控制台中找到
+        SignName: '里舍超市', //必填:短信签名-可在短信控制台中找到
         TemplateCode: 'SMS_192542522', //必填:短信模板-可在短信控制台中找到
         TemplateParam:JSON.stringify({"code":req.body.code})  //可选:模板中的变量替换JSON串,目前不用
     }).then(function (res) {
