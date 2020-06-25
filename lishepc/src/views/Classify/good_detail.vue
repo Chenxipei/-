@@ -118,7 +118,7 @@ import Totop from "../../components/Totop.vue";
 import fixedNav from "../../components/fixedNav.vue";
 import { getStore } from "@/lib/store";
 
-let that;
+
 export default {
   data() {
     return {
@@ -134,7 +134,6 @@ export default {
     };
   },
   mounted() {
-    that = this;
     this.getShopExplain(this.$router.currentRoute.query.itemld);
     let homeGoods = sessionStorage.getItem("homeGoods");
     // console.log(homeGoods)
@@ -142,10 +141,10 @@ export default {
   },
   methods: {
     addCart() {
-      let userInfo = getStore({ name: "phone" });
-      if (!userInfo) {
-        this.$router.push("/login");
-      } else {
+      // let userInfo = getStore({ name: "phone" });
+      // if (!userInfo) {
+      //   this.$router.push("/login");
+      // } else {
         let goodsItem = {
           cover: this.shopobj.url[0],
           name: this.shopobj.title,
@@ -157,7 +156,7 @@ export default {
         };
         this.$message.success("添加购物车成功");
         this.$store.commit("addCart", goodsItem);
-      }
+      // }
     },
     toby(){
       this.$router.push('/total')
@@ -206,9 +205,9 @@ export default {
               this.location = _this.location;
 
               // console.log(_this.location);
-              that.province = _this.location.creditProvince;
-              that.city = _this.location.creditCity;
-              that.area = _this.location.creditArea;
+              _this.province = _this.location.creditProvince;
+              _this.city = _this.location.creditCity;
+              _this.area = _this.location.creditArea;
             }
           });
         } else {

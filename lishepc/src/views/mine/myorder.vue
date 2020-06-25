@@ -175,7 +175,7 @@ input {
 
 .order_info {
   float: left;
-  width: 978px;
+  width: 918px;
   height: auto;
   background-color: #fff;
   margin-left: 10px;

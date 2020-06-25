@@ -63,7 +63,7 @@ export default {
         },
         {
           title: "居家生活",
-          path: "/shopList/familyLife",
+          path: "/goodlist",
           list: [
             {
               imgSrc:

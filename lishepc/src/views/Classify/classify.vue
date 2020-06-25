@@ -7,9 +7,9 @@
             <a href="#">{{i}}</a> 
           </div>-->
           <a href="#">价格区间：</a>
-          <input type="text" v-model="cmin" />
+          <input type="text" @input="inp" v-model="cmin" />
           <span>-</span>
-          <input type="text" v-model="cmax" />
+          <input type="text" @input="inp" v-model="cmax" />
           <span class="btn" @click="setlist">
             <a href="#">确定</a>
           </span>

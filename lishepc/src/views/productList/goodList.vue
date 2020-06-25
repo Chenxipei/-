@@ -49,7 +49,7 @@
         <div class="swiper-container" ref="banner">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(banner,i) in i.group_list" :key="i">
-              <img :src="banner.imgSrc" alt />
+              <img :src="banner.img_url" alt />
             </div>
           </div>
           <!-- 如果需要导航按钮 -->
@@ -70,7 +70,7 @@
           <p>居家生活</p>
           <img src="../../assets/imgs/details/1591327317.jpg" alt />
         </div>
-        <div class="nav_link" v-for="(item,i) in navTitle" :key="i" @click="goAssignBlock(i,50)">
+        <div class="nav_link" v-for="(item,i) in navTitle" :key="i" @click="goItem(i)">
           <p :class="{'active':i===navActive}">{{item}}</p>
         </div>
       </div>
@@ -93,7 +93,7 @@ export default {
     return {
       // 存在对象里面
       navActive: "",
-      navTitle: ["精选大牌", "优选有礼", "猜您喜欢"],
+      navTitle: ["精选大牌", "精选店铺", "优选有礼", "猜您喜欢"],
       carousel: [
         {
           img:
@@ -106,78 +106,65 @@ export default {
       ],
       good_list: [],
       banner_list: [],
+      itemPosition: [],
       yxyl: []
     };
   },
-  mounted() {
+  created() {
     this.getlist();
+  },
+  mounted() {
+    setTimeout(() => {
+      let titleEl = Array.from(this.$refs.title);
+      titleEl.forEach(item => {
+        this.itemPosition.push(item.offsetTop);
+      });
+      var mySwiper = new Swiper(".swiper-container", {
+        loop: true, // 循环模式选项
+        // 如果需要前进后退按钮
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        slidesPerView: 4,
+        spaceBetween: 20,
+
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true //修改swiper的父元素时，自动初始化swiper
+      });
+    }, 100);
+
     window.onscroll = e => {
-	  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-	//   console.log(scrollTop)
-	  let titleEl = Array.from(this.$refs.brand_title);
-	//   console.log(titleEl)
+      let scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      let titleEl = Array.from(this.$refs.title);
       titleEl.forEach((item, i) => {
-        if (scrollTop>= item.offsetTop) {
-			console.log(item.offsetTop,i)
+        if (scrollTop >= item.offsetTop) {
           this.navActive = i;
         }
       });
     };
   },
   methods: {
+    goItem(i) {
+		document.documentElement.scrollTop = document.body.scrollTop = this.itemPosition[i];
+	},
     getlist() {
       this.$axios.get("/data/goodsList.json").then(res => {
         // console.log("美女", res.data.group);
         this.good_list = res.data.group;
         this.banner_list = res.data.banner;
       });
-    },
-    goAssignBlock(el, speed) {
-		console.log(el)
-		console.log(this.$refs.brand_title[0].offsetHeight)
-      let _this = this;
-      let windowH = window.innerHeight; //浏览器窗口高度
-      let h = this.$refs.brand_title[el].offsetHeight; //模块内容高度
-      let t = this.$refs.brand_title[el].offsetTop; //模块相对于内容顶部的距离
-      let top = t - (windowH - h) / 2; //需要滚动到的位置，若改为 t 则滚动到模块顶部位置，此处是滚动到模块相对于窗口垂直居中的位置
-      let scrollTop =
-        window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop; //滚动条距离顶部高度
-      let currentTop = scrollTop; //默认滚动位置为当前滚动条位置，若改为0，则每次都会从顶部滚动到指定位置
-      let requestId;
-      //采用requestAnimationFrame，平滑动画
-      function step() {
-        //判断让滚动条向上滚还是向下滚
-        if (scrollTop < top) {
-          if (currentTop <= top) {
-            //   window.scrollTo(x,y) y为上下滚动位置
-            window.scrollTo(0, currentTop);
-            requestId = window.requestAnimationFrame(step);
-          } else {
-            window.cancelAnimationFrame(requestId);
-          }
-          //向下滚动
-          currentTop += speed;
-        } else {
-          if (top <= currentTop) {
-            //注：此处 - speed 是解决居中时存在的问题，可自行设置或去掉
-            window.scrollTo(0, currentTop - speed);
-            requestId = window.requestAnimationFrame(step);
-          } else {
-            window.cancelAnimationFrame(requestId);
-          }
-          //向上滚动
-          currentTop -= speed;
-        }
-      }
-      window.requestAnimationFrame(step);
     }
   },
   watch: {}
 };
 </script>
 <style lang="less" scoped>
+.swiper-container {
+  --swiper-navigation-color: #fff; /* 单独设置按钮颜色 */
+  --swiper-navigation-size: 30px; /* 设置按钮大小 */
+}
 .content {
   background: rgb(245, 245, 245);
   .brand_title {
@@ -187,6 +174,7 @@ export default {
     h3 {
       font-size: 28px;
       color: #333;
+      padding-bottom: 28px;
       &.cnxh-title {
         text-align: center;
       }
@@ -194,7 +182,6 @@ export default {
     .component-item {
       box-sizing: border-box;
       margin: 0 auto;
-      padding-top: 28px;
       width: 1200px;
       overflow: hidden;
       .component_r_img {

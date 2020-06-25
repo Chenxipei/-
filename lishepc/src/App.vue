@@ -7,9 +7,9 @@
     <head-nav
       v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/total'&&$route.path!='/payment'&&$route.path!='/cart'&&$route.path!='/member'&&$route.path !='/member/myorder'"
     ></head-nav>
-     <router-view></router-view>
+    <router-view></router-view>
+    
     <foot v-if="$route.path!='/login'&&$route.path!='/register'&&$route.path!='/member'&&$route.path !='/member/myorder'"></foot>
-   
   </div>
 </template>
 

@@ -422,7 +422,6 @@ export default {
       myChart.setOption(option);
     },
     clearLg(){
-      console.log(11112)
       sessionStorage.clear()
        this.$router.push({ path: "/login" });
     },

@@ -34,25 +34,25 @@
           <router-link to="/home">快去选点东西吧</router-link>
         </div>
         <div class="tab-container" v-for="(item,i) in cartData" :key="i">
-            <div class="selectAll">
-              <i
-                :class="item.selected?'el-icon-success':'el-icon-circle-check'"
-                @click="changeSelectedStatus(i)"
-              ></i>
-            </div>
-            <div class="goods-info">
-              <img :src="item.cover" />
-              <p>{{item.name}}</p>
-            </div>
-            <div class="goods-attr">{{item.attr}}</div>
-            <div class="goods-price">{{item.price}}</div>
-            <div class="goods-num">
-              <el-input-number size="mini" :min="1" v-model="item.num"></el-input-number>
-            </div>
-            <div class="all-price">{{parseInt(item.price)*item.num}}</div>
-            <div class="del">
-              <a href="#" @click.prevent="delCartItem(i)">删除</a>
-            </div>
+          <div class="selectAll">
+            <i
+              :class="item.selected?'el-icon-success':'el-icon-circle-check'"
+              @click="changeSelectedStatus(i)"
+            ></i>
+          </div>
+          <div class="goods-info">
+            <img :src="item.cover" />
+            <p>{{item.name}}</p>
+          </div>
+          <div class="goods-attr">{{item.attr}}</div>
+          <div class="goods-price">{{item.price}}</div>
+          <div class="goods-num">
+            <el-input-number size="mini" :min="1" v-model="item.num"></el-input-number>
+          </div>
+          <div class="all-price">{{parseInt(item.price)*item.num}}</div>
+          <div class="del">
+            <a href="#" @click.prevent="delCartItem(i)">删除</a>
+          </div>
         </div>
       </div>
 
@@ -87,6 +87,7 @@ import { setStore } from "@/lib/store";
 export default {
   data() {
     return {
+      abc: 123
       // selectedAll: true,
       // cartData: [
       //   {
@@ -111,8 +112,9 @@ export default {
   components: {
     addAddress
   },
-  created() {
+  mounted() {
     // 初始化选中状态
+    console.log(this);
     this.init_cart_data();
   },
   computed: {
@@ -142,12 +144,20 @@ export default {
   },
   methods: {
     init_cart_data() {
-      this.cartData.map(item => (item.selected = true));
+      console.log(11112222);
+      console.log(this.cartData)
+      this.cartData.map(item => {
+        item.selected = true;
+        
+      });
       setStore({
         name: "cartData",
         content: this.cartData,
         type: ""
       });
+    },
+    acc() {
+      console.log(234);
     },
     changeSelectedStatus(i) {
       // console.log(this.cartData[i].selected)
@@ -210,14 +220,15 @@ export default {
         this.$store.commit("total", totalData);
         this.$router.push("/total");
       }
+    },
+    gototal() {
+      this.$router.push("/settlement");
     }
-  },
+  }
   // 去结算
-  methods: {
-    gototal(){
-      this.$router.push("/settlement")
-    }
-  },
+  // methods: {
+
+  // },
 };
 </script>
 
