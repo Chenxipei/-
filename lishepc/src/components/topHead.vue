@@ -80,6 +80,7 @@ export default {
     clearLg(){
       this.user=''
       removeStore({name:"phone"})
+      removeStore({name:"cartData"})
     },
     showFollow() {
       this.$refs.follow.style.height = 480 + "px";

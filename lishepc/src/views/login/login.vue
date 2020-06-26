@@ -182,7 +182,8 @@ export default {
       loginArr: [
         { url: require("../../assets/imgs/login/login2.jpg") },
         { url: require("../../assets/imgs/login/login3.jpg") }
-      ]
+      ],
+      topath:this.$route.query.redirect
     };
   },
   computed: {
@@ -290,13 +291,14 @@ export default {
     },
     // 判断验证码是否输入准确
     checkCode() {
+       console.log(this.topath)
       if (this.Cphone && this.ccode != "" && this.ccode == this.isCode) {
         setStore({
           name:"phone",
           content:this.phone,
           type:""
         })
-        this.$router.push({ path: "/home" });
+        this.$router.replace(this.topath);
       } else {
         this.$refs.error_T.innerHTML = "*手机号或者验证码不正确";
       }

@@ -112,7 +112,8 @@ export default {
   components: {
     addAddress
   },
-  mounted() {
+  created() {
+    // console.log(this)
     // 初始化选中状态
     console.log(this);
     this.init_cart_data();
@@ -206,7 +207,7 @@ export default {
         this.$message.warning("请添加收货地址");
         return false;
       } else if (this.cartData.length === 0) {
-        console.log(this.selectedAll);
+        // console.log(this.selectedAll);
         this.$message.warning("商品空空如也，快去选购吧");
         return false;
       } else if (parseInt(this.allPrice) == 0) {

@@ -122,15 +122,15 @@ export default {
       var mySwiper = new Swiper(".swiper-container", {
         loop: true, // 循环模式选项
         // 如果需要前进后退按钮
+         observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true ,//修改swiper的父元素时，自动初始化swiper
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
         },
         slidesPerView: 4,
         spaceBetween: 20,
-
-        observer: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true //修改swiper的父元素时，自动初始化swiper
+       
       });
     }, 100);
 

@@ -139,7 +139,7 @@ export default {
           city: [...newCityName]
         };
       });
-      console.log("newAreaOptions", newAreaOptions);
+      // console.log("newAreaOptions", newAreaOptions);
       this.areaOptions = [...newAreaOptions];
     },
     submitForm(formName) {
@@ -154,7 +154,7 @@ export default {
             phone,
             defaultAddressStatus
           } = this.ruleForm;
-          console.log(area);
+          // console.log(area);
 
           if (defaultAddressStatus) {
             this.addressData.unshift({
@@ -176,7 +176,7 @@ export default {
             type: "success",
             duration: 1000
           });
-          console.log(this.addressData);
+          // console.log(this.addressData);
           this.$store.commit("addAddress", this.addressData);
           this.ruleForm = {
             name: "",
@@ -187,7 +187,7 @@ export default {
           };
           this.dialogFormVisible = false;
         } else {
-          console.log("error submit!!");
+          // console.log("error submit!!");
           return false;
         }
       });

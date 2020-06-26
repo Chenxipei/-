@@ -84,11 +84,14 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const userInfo = getStore({name:"phone"})
-  console.log(userInfo)
+//   console.log(userInfo)
   if (!userInfo && (to.path === "/cart"||to.path === "/myorder"||to.path === "/total"||to.path==="/payment"||to.path==="/member"||to.path==="/member/myorder")) {
     // 未登录且要跳转的页面是要登陆才能操作的页面
     next({
-      path: "/login" // 跳转到登录页
+	  path: "/login", // 跳转到登录页
+	  query:{
+        redirect:from.fullPath
+      }
     })
   } else if (!userInfo && to.path === "/login") {
     // 未登陆且要跳转的页面是登录页
